@@ -1,0 +1,13 @@
+# build artifacts
+*.o
+app
+artifacts/
+*.i
+*.out
+*.stderr
+*.stdout
+
+# temp files
+*.swp
+*.tmp
+
