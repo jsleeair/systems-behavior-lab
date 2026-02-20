@@ -1,4 +1,3 @@
-````md
 # 01 — ELF Symbol Table: Binding and Visibility
 
 ## Why This Experiment Exists
@@ -33,7 +32,6 @@ Built with:
 
 ```bash
 gcc -O0 -g
-````
 
 Inspection tools:
 
