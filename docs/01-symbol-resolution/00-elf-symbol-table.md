@@ -1,4 +1,4 @@
-# 01 — ELF Symbol Table: Binding and Visibility
+# 00 — ELF Symbol Table: Binding and Visibility
 
 ## Why This Experiment Exists
 
