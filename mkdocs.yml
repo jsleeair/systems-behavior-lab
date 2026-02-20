@@ -1,0 +1,26 @@
+site_name: systems-behavior-lab
+site_description: Experiments investigating why systems behave the way they do
+repo_url: https://github.com/jsleeair/systems-behavior-lab
+repo_name: jsleeair/systems-behavior-lab
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tracking
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - Build & Binary:
+      - 00 Translation Unit: build-and-binary/00-translation-unit.md
+  - About: about.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight
