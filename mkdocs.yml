@@ -14,8 +14,11 @@ theme:
 
 nav:
   - Home: index.md
-  - Build & Binary:
-      - 00 Translation Unit: build-and-binary/00-translation-unit.md
+  - Labs:
+        - 00 Build & Binary:
+                - 00 Translation Unit: 00-build-and-binary/00-translation-unit.md
+        - 01 Symbol Resolution:
+                - 00 ELF Symbol Table: 01-symbol-resolution/00-elf-symbol-table.md
   - About: about.md
 
 markdown_extensions:
