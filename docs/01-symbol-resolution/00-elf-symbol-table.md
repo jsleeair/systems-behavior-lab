@@ -32,6 +32,7 @@ Built with:
 
 ```bash
 gcc -O0 -g
+```
 
 Inspection tools:
 
