@@ -1,13 +1,34 @@
-# build artifacts
+# =========================
+# Build artifacts
+# =========================
+.venv/
+
+# object files
 *.o
-app
-artifacts/
+*.obj
+
+# preprocessed / intermediate
 *.i
+*.s
+
+# executables
+a.out
+**/app
+
+# artifacts folders (per experiment)
+**/artifacts/
+
+# runtime outputs
 *.out
 *.stderr
 *.stdout
 
-# temp files
+# =========================
+# Temp / editor
+# =========================
 *.swp
 *.tmp
+*.bak
 
+# macOS (if ever used)
+.DS_Store
