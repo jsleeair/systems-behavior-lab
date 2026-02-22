@@ -19,6 +19,7 @@ nav:
                 - 00 Translation Unit: 00-build-and-binary/00-translation-unit.md
         - 01 Symbol Resolution:
                 - 00 ELF Symbol Table: 01-symbol-resolution/00-elf-symbol-table.md
+                - 01 Relocation Process: 01-symbol-resolution/01-relocation-process.md
   - About: about.md
 
 markdown_extensions:
