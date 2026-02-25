@@ -1,15 +1,15 @@
 
-# Relocation Process: From Object to Executable
+# 01-Relocation Process: From Object to Executable
 
 In this lab, we investigate how the compiler and linker collaborate to handle symbols whose addresses are unknown at compile time. We focus on the **Relocation** mechanism in the x86_64 ELF format.
 
 ---
 
-## 1. Experimental Setup
+## Experimental Setup
 
 We use two separate translation units to force an external symbol reference.
 
-=== "src/main.c"
+  "src/main.c"
     ```c
     extern int ext_var;
     extern void ext_func(int a);
@@ -21,7 +21,7 @@ We use two separate translation units to force an external symbol reference.
     }
     ```
 
-=== "src/ext.c"
+  "src/ext.c"
     ```c
     int ext_var = 42;
     void ext_func(int a) {
@@ -31,7 +31,7 @@ We use two separate translation units to force an external symbol reference.
 
 ---
 
-## 2. The Evidence: Object File (`.o`)
+## The Evidence: Object File (`.o`)
 
 Before linking, the compiler leaves "holes" in the machine code.
 
@@ -47,7 +47,7 @@ Before linking, the compiler leaves "holes" in the machine code.
 
 ---
 
-## 3. The Resolution: Final Executable (`a.out`)
+## The Resolution: Final Executable (`a.out`)
 
 After linking, the static linker (`ld`) "consumes" the relocation entries and patches the binary.
 
@@ -61,7 +61,7 @@ After linking, the static linker (`ld`) "consumes" the relocation entries and pa
 
 ---
 
-## 4. Root-Cause Analysis
+## Root-Cause Analysis
 
 ### The PC-Relative Mathematics
 
@@ -77,7 +77,7 @@ In our case, the addend of **-4** compensates for the fact that the `RIP` (Instr
 
 ---
 
-## 5. Conclusion: "Linkers are the ultimate patchers"
+## Conclusion: "Linkers are the ultimate patchers"
 
 The compiler is short-sighted; it only sees its own file. The linker is the architect that sees the whole map and fills in the blanks left by the compiler. Without **Relocation**, modular programming (multi-file projects) would be impossible.
 
