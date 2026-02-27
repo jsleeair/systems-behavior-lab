@@ -21,6 +21,7 @@ nav:
         - 01 Symbol Resolution:
                 - 00 ELF Symbol Table: 01-symbol-resolution/00-elf-symbol-table.md
                 - 01 Relocation Process: 01-symbol-resolution/01-relocation-process.md
+                - 02 ABI and calling convention: 02-abi-and-calling-convention.md
   - About: about.md
 
 markdown_extensions:
