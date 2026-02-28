@@ -22,6 +22,8 @@ nav:
                 - 00 ELF Symbol Table: 01-symbol-resolution/00-elf-symbol-table.md
                 - 01 Relocation Process: 01-symbol-resolution/01-relocation-process.md
                 - 02 ABI and calling convention: 01-symbol-resolution/02-abi-and-calling-convention.md
+        - 02 Memory Hierarchy:
+                - 00 Cache Line Effect: 02-memory-hierarchy/00-cache-line-effect.md
   - About: about.md
 
 markdown_extensions:
