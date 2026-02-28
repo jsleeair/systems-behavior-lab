@@ -96,11 +96,11 @@ This means:
 
 ### Useful Throughput
 
-![Useful Throughput](/plots/stride_useful.png)
+![Useful Throughput](plots/stride_useful.png)
 
 ### Cache Line Utilization
 
-![Cache Line Utilization](/plots/stride_utilization.png)
+![Cache Line Utilization](plots/stride_utilization.png)
 
 The vertical line at 64 bytes highlights the cache-line boundary.
 
