@@ -11,23 +11,25 @@
       
       
       
-        <link rel="prev" href="../02-memory-hierarchy/00-cache-line-effect/">
+        <link rel="prev" href="../00-translation-unit/">
       
+      
+        <link rel="next" href="../03-plt-got-analysis/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>About - systems-behavior-lab</title>
+        <title>01 Weak vs Strong Symbol - systems-behavior-lab</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -46,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about" class="md-skip">
+        <a href="#01-weak-vs-strong-symbol-result" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="systems-behavior-lab" class="md-header__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+    <a href="../.." title="systems-behavior-lab" class="md-header__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About
+              01 Weak vs Strong Symbol
             
           </span>
         </div>
@@ -192,7 +194,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="systems-behavior-lab" class="md-nav__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+    <a href="../.." title="systems-behavior-lab" class="md-nav__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -222,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -246,8 +248,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -258,11 +262,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -283,7 +287,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -298,6 +302,8 @@
                 
   
   
+    
+  
   
   
     
@@ -307,11 +313,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -332,7 +338,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -350,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-build-and-binary/00-translation-unit/" class="md-nav__link">
+      <a href="../00-translation-unit/" class="md-nav__link">
         
   
   
@@ -375,10 +381,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../00-build-and-binary/01-weak-vs-strong-symbol/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Weak vs Strong Symbol
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -394,6 +427,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -406,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-build-and-binary/03-plt-got-analysis/" class="md-nav__link">
+      <a href="../03-plt-got-analysis/" class="md-nav__link">
         
   
   
@@ -491,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -519,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
         
   
   
@@ -547,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
         
   
   
@@ -632,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
         
   
   
@@ -672,19 +736,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -700,7 +755,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -725,9 +779,195 @@
   
 
 
-<h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
-<p>This site accompanies the GitHub repository and focuses on <strong>analysis and interpretation</strong>.
-For raw code and reproducibility, see the repository.</p>
+<h1 id="01-weak-vs-strong-symbol-result">01-weak-vs-strong-symbol — Result<a class="headerlink" href="#01-weak-vs-strong-symbol-result" title="Permanent link">&para;</a></h1>
+<h2 id="1-objective">1. Objective<a class="headerlink" href="#1-objective" title="Permanent link">&para;</a></h2>
+<p>This experiment investigates how the linker resolves symbols under the following scenarios:</p>
+<ul>
+<li>Strong vs Strong</li>
+<li>Weak vs Strong</li>
+<li>Weak vs Weak (implicitly observed)</li>
+<li>Tentative definitions under <code>-fcommon</code></li>
+<li>Tentative definitions under <code>-fno-common</code></li>
+</ul>
+<p>The goal is to confirm symbol resolution behavior using:</p>
+<ul>
+<li>Runtime output</li>
+<li><code>nm</code></li>
+<li><code>readelf -s</code></li>
+<li>Section header inspection</li>
+<li>Linker error messages</li>
+</ul>
+<hr />
+<h1 id="2-experimental-evidence">2. Experimental Evidence<a class="headerlink" href="#2-experimental-evidence" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="case-1-weak-variable-vs-strong-variable">Case 1 — Weak Variable vs Strong Variable<a class="headerlink" href="#case-1-weak-variable-vs-strong-variable" title="Permanent link">&para;</a></h2>
+<h3 id="runtime-output">Runtime Output<a class="headerlink" href="#runtime-output" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>g_value = 222
+[weak hook] default implementation
+</code></pre></div>
+<h3 id="nm-evidence">nm Evidence<a class="headerlink" href="#nm-evidence" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>0000000000004014 D g_value
+</code></pre></div>
+<ul>
+<li><code>D</code> → Initialized global data (.data section)</li>
+<li>Indicates strong data symbol</li>
+</ul>
+<h3 id="readelf-symbol-table">readelf Symbol Table<a class="headerlink" href="#readelf-symbol-table" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>name=g_value value=0000000000004014 size=4 type=OBJECT bind=GLOBAL vis=DEFAULT ndx=25
+</code></pre></div>
+<ul>
+<li><code>type=OBJECT</code></li>
+<li><code>bind=GLOBAL</code> → strong binding</li>
+<li><code>ndx=25</code></li>
+</ul>
+<h3 id="section-mapping">Section Mapping<a class="headerlink" href="#section-mapping" title="Permanent link">&para;</a></h3>
+<p>From section headers:</p>
+<div class="highlight"><pre><span></span><code>[25] .data
+</code></pre></div>
+<h3 id="interpretation">Interpretation<a class="headerlink" href="#interpretation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The weak definition (<code>__attribute__((weak)) int g_value = 111</code>) was discarded.</li>
+<li>The strong definition (<code>int g_value = 222</code>) was selected.</li>
+<li>Final symbol resides in <code>.data</code>.</li>
+</ul>
+<p><strong>Conclusion: Strong symbol overrides weak symbol.</strong></p>
+<hr />
+<h2 id="case-2-weak-function-vs-strong-function">Case 2 — Weak Function vs Strong Function<a class="headerlink" href="#case-2-weak-function-vs-strong-function" title="Permanent link">&para;</a></h2>
+<h3 id="runtime-output_1">Runtime Output<a class="headerlink" href="#runtime-output_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>g_value = 111
+[strong hook] overridden implementation
+</code></pre></div>
+<h3 id="nm-evidence_1">nm Evidence<a class="headerlink" href="#nm-evidence_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>00000000000011ad T hook
+</code></pre></div>
+<ul>
+<li><code>T</code> → Text section (strong function)</li>
+</ul>
+<h3 id="readelf-symbol-table_1">readelf Symbol Table<a class="headerlink" href="#readelf-symbol-table_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>name=hook value=00000000000011ad size=23 type=FUNC bind=GLOBAL vis=DEFAULT ndx=16
+</code></pre></div>
+<ul>
+<li><code>type=FUNC</code></li>
+<li><code>bind=GLOBAL</code> → strong binding</li>
+<li><code>ndx=16</code></li>
+</ul>
+<h3 id="section-mapping_1">Section Mapping<a class="headerlink" href="#section-mapping_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[16] .text
+</code></pre></div>
+<h3 id="interpretation_1">Interpretation<a class="headerlink" href="#interpretation_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The weak function definition was ignored.</li>
+<li>The strong function definition replaced it.</li>
+<li>Final symbol resides in <code>.text</code>.</li>
+</ul>
+<p><strong>Conclusion: Strong function overrides weak function.</strong></p>
+<hr />
+<h2 id="case-3-strong-vs-strong">Case 3 — Strong vs Strong<a class="headerlink" href="#case-3-strong-vs-strong" title="Permanent link">&para;</a></h2>
+<h3 id="linker-error">Linker Error<a class="headerlink" href="#linker-error" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>multiple definition of `dup&#39;
+first defined here
+</code></pre></div>
+<h3 id="interpretation_2">Interpretation<a class="headerlink" href="#interpretation_2" title="Permanent link">&para;</a></h3>
+<p>When two strong definitions of the same symbol exist:</p>
+<ul>
+<li>The linker cannot choose one.</li>
+<li>Linking fails with a multiple definition error.</li>
+</ul>
+<p><strong>Conclusion: Strong + Strong → Link Failure</strong></p>
+<hr />
+<h2 id="case-4-tentative-definitions-with-fcommon">Case 4 — Tentative Definitions with <code>-fcommon</code><a class="headerlink" href="#case-4-tentative-definitions-with-fcommon" title="Permanent link">&para;</a></h2>
+<p>Source:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">common</span><span class="p">;</span>
+</code></pre></div>
+<p>Compiled with <code>-fcommon</code>.</p>
+<h3 id="nm-evidence_2">nm Evidence<a class="headerlink" href="#nm-evidence_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>0000000000000004 C common
+</code></pre></div>
+<ul>
+<li><code>C</code> → COMMON symbol</li>
+</ul>
+<h3 id="readelf-evidence">readelf Evidence<a class="headerlink" href="#readelf-evidence" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>name=common value=0000000000000004 size=4 type=OBJECT bind=GLOBAL vis=DEFAULT ndx=COM
+</code></pre></div>
+<ul>
+<li><code>ndx=COM</code> → COMMON symbol (not placed in .bss yet)</li>
+<li>Symbol is mergeable across object files</li>
+</ul>
+<h3 id="interpretation_3">Interpretation<a class="headerlink" href="#interpretation_3" title="Permanent link">&para;</a></h3>
+<p>Under <code>-fcommon</code>:</p>
+<ul>
+<li>Tentative definitions do not become real definitions.</li>
+<li>They remain COMMON symbols.</li>
+<li>The linker merges them successfully.</li>
+</ul>
+<p><strong>Conclusion: <code>-fcommon</code> allows tentative definitions to co-exist.</strong></p>
+<hr />
+<h2 id="case-5-tentative-definitions-with-fno-common">Case 5 — Tentative Definitions with <code>-fno-common</code><a class="headerlink" href="#case-5-tentative-definitions-with-fno-common" title="Permanent link">&para;</a></h2>
+<h3 id="linker-error_1">Linker Error<a class="headerlink" href="#linker-error_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>multiple definition of `common&#39;
+first defined here
+</code></pre></div>
+<h3 id="interpretation_4">Interpretation<a class="headerlink" href="#interpretation_4" title="Permanent link">&para;</a></h3>
+<p>Under <code>-fno-common</code>:</p>
+<ul>
+<li>Tentative definitions become real definitions.</li>
+<li>Multiple definitions are treated as strong symbols.</li>
+<li>Linker fails.</li>
+</ul>
+<p><strong>Conclusion: <code>-fno-common</code> enforces strict definition rules.</strong></p>
+<hr />
+<h1 id="3-symbol-type-mapping-nm-readelf">3. Symbol Type Mapping (nm ↔ readelf)<a class="headerlink" href="#3-symbol-type-mapping-nm-readelf" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>nm</th>
+<th>Meaning</th>
+<th>readelf Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Text (function)</td>
+<td>FUNC + GLOBAL + .text</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Initialized data</td>
+<td>OBJECT + GLOBAL + .data</td>
+</tr>
+<tr>
+<td>C</td>
+<td>COMMON</td>
+<td>OBJECT + GLOBAL + ndx=COM</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Weak function</td>
+<td>FUNC + WEAK</td>
+</tr>
+<tr>
+<td>V</td>
+<td>Weak object</td>
+<td>OBJECT + WEAK</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="4-final-conclusions">4. Final Conclusions<a class="headerlink" href="#4-final-conclusions" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Strong definitions override weak definitions.</li>
+<li>Two strong definitions cause link failure.</li>
+<li>Weak definitions act as replaceable defaults.</li>
+<li><code>-fcommon</code> keeps tentative definitions in COMMON state.</li>
+<li><code>-fno-common</code> turns tentative definitions into real definitions, causing strict duplicate checks.</li>
+</ol>
+<hr />
+<h1 id="5-key-takeaway">5. Key Takeaway<a class="headerlink" href="#5-key-takeaway" title="Permanent link">&para;</a></h1>
+<p>Weak symbols are <em>fallback candidates</em>.</p>
+<p>Strong symbols are <em>authoritative definitions</em>.</p>
+<p>COMMON symbols are <em>unresolved global placeholders</em> that may be merged unless strict mode (<code>-fno-common</code>) is used.</p>
+<hr />
 
 
 
@@ -777,10 +1017,10 @@ For raw code and reproducibility, see the repository.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.tracking", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.sections", "navigation.tracking", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
