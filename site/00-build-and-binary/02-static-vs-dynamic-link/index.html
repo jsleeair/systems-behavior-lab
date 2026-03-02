@@ -11,23 +11,25 @@
       
       
       
-        <link rel="prev" href="../02-memory-hierarchy/00-cache-line-effect/">
+        <link rel="prev" href="../01-weak-vs-strong-symbol/">
       
+      
+        <link rel="next" href="../03-plt-got-analysis/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>About - systems-behavior-lab</title>
+        <title>02 Static vs Dynamic Link - systems-behavior-lab</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -46,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about" class="md-skip">
+        <a href="#static-vs-dynamic-linking-what-actually-changes" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="systems-behavior-lab" class="md-header__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+    <a href="../.." title="systems-behavior-lab" class="md-header__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About
+              02 Static vs Dynamic Link
             
           </span>
         </div>
@@ -192,7 +194,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="systems-behavior-lab" class="md-nav__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+    <a href="../.." title="systems-behavior-lab" class="md-nav__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -222,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -246,8 +248,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -258,11 +262,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -283,7 +287,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -298,6 +302,8 @@
                 
   
   
+    
+  
   
   
     
@@ -307,11 +313,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -332,7 +338,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -350,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-build-and-binary/00-translation-unit/" class="md-nav__link">
+      <a href="../00-translation-unit/" class="md-nav__link">
         
   
   
@@ -378,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-build-and-binary/01-weak-vs-strong-symbol/" class="md-nav__link">
+      <a href="../01-weak-vs-strong-symbol/" class="md-nav__link">
         
   
   
@@ -403,10 +409,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../00-build-and-binary/02-static-vs-dynamic-link/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Static vs Dynamic Link
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -422,6 +455,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -434,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-build-and-binary/03-plt-got-analysis/" class="md-nav__link">
+      <a href="../03-plt-got-analysis/" class="md-nav__link">
         
   
   
@@ -519,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -547,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
         
   
   
@@ -575,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
         
   
   
@@ -660,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
         
   
   
@@ -700,19 +764,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -728,7 +783,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -753,9 +807,191 @@
   
 
 
-<h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
-<p>This site accompanies the GitHub repository and focuses on <strong>analysis and interpretation</strong>.
-For raw code and reproducibility, see the repository.</p>
+<h1 id="static-vs-dynamic-linking-what-actually-changes">Static vs Dynamic Linking — What Actually Changes?<a class="headerlink" href="#static-vs-dynamic-linking-what-actually-changes" title="Permanent link">&para;</a></h1>
+<p>In this lab, we move beyond the textbook definition of static and dynamic linking.</p>
+<p>Instead of saying:</p>
+<blockquote>
+<p>"Static linking copies code. Dynamic linking loads at runtime."</p>
+</blockquote>
+<p>We <strong>prove it structurally and behaviorally</strong> using ELF inspection tools.</p>
+<hr />
+<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
+<p>We built a small library:</p>
+<ul>
+<li><code>libgreet.so</code> (shared object)</li>
+<li><code>libgreet.a</code>  (static archive)</li>
+</ul>
+<p>And two executables:</p>
+<ul>
+<li><code>main_dynamic</code> — linked against <code>libgreet.so</code></li>
+<li><code>main_staticlib</code> — linked against <code>libgreet.a</code></li>
+</ul>
+<p>The goal is to observe what changes at:</p>
+<ol>
+<li>Binary size level  </li>
+<li>ELF structure level  </li>
+<li>Symbol table level  </li>
+<li>Runtime loader behavior  </li>
+</ol>
+<hr />
+<h1 id="binary-size-comparison">Binary Size Comparison<a class="headerlink" href="#binary-size-comparison" title="Permanent link">&para;</a></h1>
+<p><div class="highlight"><pre><span></span><code>size main_dynamic main_staticlib
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>text    data     bss     dec     hex
+2124     648       8    2780     adc  main_dynamic
+2120     608       8    2736     ab0  main_staticlib
+</code></pre></div></p>
+<p>The size difference is small because the library is tiny.</p>
+<p>But conceptually:</p>
+<ul>
+<li><code>main_staticlib</code> contains the actual function body of <code>greet()</code></li>
+<li><code>main_dynamic</code> only contains references</li>
+</ul>
+<p>With larger libraries, this difference becomes significant.</p>
+<hr />
+<h1 id="runtime-dependency-ldd">Runtime Dependency (ldd)<a class="headerlink" href="#runtime-dependency-ldd" title="Permanent link">&para;</a></h1>
+<h3 id="dynamic">Dynamic<a class="headerlink" href="#dynamic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>libgreet.so =&gt; .../libgreet.so
+libc.so.6
+</code></pre></div>
+<h3 id="static-library-only">Static (library only)<a class="headerlink" href="#static-library-only" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>libc.so.6
+</code></pre></div>
+<p>Key observation:</p>
+<ul>
+<li><code>main_dynamic</code> requires <code>libgreet.so</code> at runtime.</li>
+<li><code>main_staticlib</code> does not.</li>
+</ul>
+<p>This already proves that dynamic linking introduces a runtime dependency.</p>
+<hr />
+<h1 id="elf-dynamic-section">ELF Dynamic Section<a class="headerlink" href="#elf-dynamic-section" title="Permanent link">&para;</a></h1>
+<p>Using:</p>
+<div class="highlight"><pre><span></span><code>readelf -d
+</code></pre></div>
+<h3 id="main_dynamic">main_dynamic<a class="headerlink" href="#main_dynamic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(NEEDED) Shared library: [libgreet.so]
+(RUNPATH) Library runpath: [$ORIGIN/../lib]
+</code></pre></div>
+<h3 id="main_staticlib">main_staticlib<a class="headerlink" href="#main_staticlib" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(NEEDED) Shared library: [libc.so.6]
+</code></pre></div>
+<p>The dynamic executable explicitly records:</p>
+<ul>
+<li>Which shared libraries it needs</li>
+<li>Where to find them</li>
+</ul>
+<p>The static-linked executable does not reference <code>libgreet.so</code> at all.</p>
+<p>This is not a runtime behavior difference —<br />
+it is a <strong>structural ELF difference</strong>.</p>
+<hr />
+<h1 id="4-symbol-table-difference">4️⃣ Symbol Table Difference<a class="headerlink" href="#4-symbol-table-difference" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>nm -an
+</code></pre></div>
+<h3 id="main_dynamic_1">main_dynamic<a class="headerlink" href="#main_dynamic_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>U greet
+</code></pre></div>
+<h3 id="main_staticlib_1">main_staticlib<a class="headerlink" href="#main_staticlib_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>T greet
+</code></pre></div>
+<p>Meaning:</p>
+<ul>
+<li><code>U</code> → Undefined symbol (resolved by the loader)</li>
+<li><code>T</code> → Defined in the executable text section</li>
+</ul>
+<p>This is the clearest structural proof that:</p>
+<blockquote>
+<p>Static linking copies object code into the executable.</p>
+</blockquote>
+<p>Dynamic linking does not.</p>
+<hr />
+<h1 id="runtime-failure-experiment">Runtime Failure Experiment<a class="headerlink" href="#runtime-failure-experiment" title="Permanent link">&para;</a></h1>
+<p>We temporarily removed <code>libgreet.so</code>.</p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>error while loading shared libraries: libgreet.so: cannot open shared object file
+</code></pre></div>
+<ul>
+<li><code>main_dynamic</code> → failed (exit code 127)</li>
+<li><code>main_staticlib</code> → still worked</li>
+</ul>
+<p>This confirms:</p>
+<p>Dynamic linking is a runtime resolution mechanism.</p>
+<p>Static linking is a build-time code inclusion mechanism.</p>
+<hr />
+<h1 id="memory-address-observation">Memory Address Observation<a class="headerlink" href="#memory-address-observation" title="Permanent link">&para;</a></h1>
+<p>Dynamic:</p>
+<div class="highlight"><pre><span></span><code>Address of greet() = 0x72ddd6dbd119
+</code></pre></div>
+<p>Static:</p>
+<div class="highlight"><pre><span></span><code>Address of greet() = 0x6387df030213
+</code></pre></div>
+<p>In the dynamic case, the function lives inside a shared object mapping.</p>
+<p>In the static case, it lives inside the executable’s own memory image.</p>
+<hr />
+<h1 id="final-takeaways">Final Takeaways<a class="headerlink" href="#final-takeaways" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Static Library (.a)</th>
+<th>Shared Object (.so)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code location</td>
+<td>Inside executable</td>
+<td>Separate file</td>
+</tr>
+<tr>
+<td>Runtime dependency</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Symbol resolution</td>
+<td>Build time</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>ELF <code>DT_NEEDED</code> entry</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Failure if library missing</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="what-this-really-means">What This Really Means<a class="headerlink" href="#what-this-really-means" title="Permanent link">&para;</a></h1>
+<p>Static linking is not just “old style linking.”</p>
+<p>It fundamentally changes:</p>
+<ul>
+<li>The ELF structure</li>
+<li>The symbol table</li>
+<li>The runtime behavior</li>
+<li>The loader’s responsibilities</li>
+</ul>
+<p>Dynamic linking shifts responsibility from the linker to the runtime loader.</p>
+<p>And that shift becomes critical when we later analyze:</p>
+<ul>
+<li>PLT / GOT</li>
+<li>Lazy binding</li>
+<li>Relocations</li>
+<li>Position Independent Code (PIC)</li>
+</ul>
+<hr />
+<h1 id="next-step">Next Step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h1>
+<p>Now that we understand <em>what</em> changes structurally,</p>
+<p>the next question becomes:</p>
+<p><strong>How does the dynamic loader actually resolve those undefined symbols?</strong></p>
+<p>That leads directly into:</p>
+<blockquote>
+<p>PIC and GOT/PLT analysis.
+```</p>
+</blockquote>
 
 
 
@@ -805,10 +1041,10 @@ For raw code and reproducibility, see the repository.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.tracking", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.sections", "navigation.tracking", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

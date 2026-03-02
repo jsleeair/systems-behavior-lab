@@ -18,6 +18,7 @@ nav:
         - 00 Build & Binary:
                 - 00 Translation Unit: 00-build-and-binary/00-translation-unit.md
                 - 01 Weak vs Strong Symbol : 00-build-and-binary/01-weak-vs-strong-symbol.md
+                - 02 Static vs Dynamic Link : 00-build-and-binary/02-static-vs-dynamic-link.md
                 - 03 plt-got-analysis: 00-build-and-binary/03-plt-got-analysis.md
         - 01 Symbol Resolution:
                 - 00 ELF Symbol Table: 01-symbol-resolution/00-elf-symbol-table.md
