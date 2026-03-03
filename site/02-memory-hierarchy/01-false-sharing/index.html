@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../00-elf-symbol-table/">
+        <link rel="prev" href="../00-cache-line-effect/">
       
       
-        <link rel="next" href="../02-abi-and-calling-convention/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>01 Relocation Process - systems-behavior-lab</title>
+        <title>01 False Sharing - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-relocation-process-from-object-to-executable" class="md-skip">
+        <a href="#02-false-sharing-when-independent-variables-fight-each-other" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              01 Relocation Process
+              01 False Sharing
             
           </span>
         </div>
@@ -471,8 +471,6 @@
                 
   
   
-    
-  
   
   
     
@@ -482,11 +480,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -507,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -525,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -533,6 +531,149 @@
     
   
     00 ELF Symbol Table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Relocation Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ABI and calling convention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Memory Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Memory Hierarchy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-cache-line-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Cache Line Effect
   
 
     
@@ -569,7 +710,7 @@
   <span class="md-ellipsis">
     
   
-    01 Relocation Process
+    01 False Sharing
   
 
     
@@ -587,7 +728,7 @@
   <span class="md-ellipsis">
     
   
-    01 Relocation Process
+    01 False Sharing
   
 
     
@@ -613,10 +754,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#experimental-setup" class="md-nav__link">
+  <a href="#what-is-false-sharing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Experimental Setup
+        What Is False Sharing?
       
     </span>
   </a>
@@ -624,22 +765,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-evidence-object-file-o" class="md-nav__link">
+  <a href="#experimental-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Evidence: Object File (.o)
+        Experimental Design
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The Evidence: Object File (.o)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout-1-packed-false-sharing-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout 1: Packed (False Sharing Case)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout-2-padded-cache-line-isolated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout 2: Padded (Cache-Line Isolated)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Observations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Observations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#binary-inspection-objdump-dr" class="md-nav__link">
+  <a href="#1-thread" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Binary Inspection (objdump -dr)
+        1 Thread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-threads-the-clearest-false-sharing-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Threads — The Clearest False Sharing Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#416-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4–16 Threads
       
     </span>
   </a>
@@ -652,22 +859,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-resolution-final-executable-aout" class="md-nav__link">
+  <a href="#why-does-nsop-decrease-with-more-threads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Resolution: Final Executable (a.out)
+        Why Does ns/op Decrease With More Threads?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The Resolution: Final Executable (a.out)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-experiment-proves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Experiment Proves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-strengthen-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Strengthen the Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Strengthen the Analysis">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#relocation-mapping" class="md-nav__link">
+  <a href="#print-counter-addresses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Relocation Mapping
+        Print Counter Addresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-perf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use perf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable Pinning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-physical-vs-smt-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Physical vs SMT Cores
       
     </span>
   </a>
@@ -680,49 +942,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#root-cause-analysis" class="md-nav__link">
+  <a href="#final-takeaway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Root-Cause Analysis
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Root-Cause Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-pc-relative-mathematics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The PC-Relative Mathematics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optimization-analysis-o0-vs-o2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optimization Analysis (-O0 vs -O2)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion-linkers-are-the-ultimate-patchers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion: "Linkers are the ultimate patchers"
+        Final Takeaway
       
     </span>
   </a>
@@ -733,147 +956,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-abi-and-calling-convention/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 ABI and calling convention
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 Memory Hierarchy
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    02 Memory Hierarchy
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    00 Cache Line Effect
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 False Sharing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -941,85 +1023,191 @@
   
 
 
-<h1 id="01-relocation-process-from-object-to-executable">01-Relocation Process: From Object to Executable<a class="headerlink" href="#01-relocation-process-from-object-to-executable" title="Permanent link">&para;</a></h1>
-<p>In this lab, we investigate how the compiler and linker collaborate to handle symbols whose addresses are unknown at compile time. We focus on the <strong>Relocation</strong> mechanism in the x86_64 ELF format.</p>
+<h1 id="02-false-sharing-when-independent-variables-fight-each-other">02-false-sharing: When Independent Variables Fight Each Other<a class="headerlink" href="#02-false-sharing-when-independent-variables-fight-each-other" title="Permanent link">&para;</a></h1>
+<p>Modern CPUs maintain cache coherence at the <strong>cache-line granularity</strong> (typically 64 bytes).
+This experiment demonstrates how independent variables can severely interfere with each other — purely due to memory layout.</p>
+<p>We will see a <strong>2–3× performance difference</strong> caused by false sharing alone.</p>
 <hr />
-<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
-<p>We use two separate translation units to force an external symbol reference.</p>
-<p>"src/main.c"
-    <div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ext_var</span><span class="p">;</span>
-<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ext_func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">ext_func</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext_var</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p>"src/ext.c"
-    <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">ext_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">ext_func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Implementation</span>
-<span class="p">}</span>
-</code></pre></div></p>
+<h2 id="what-is-false-sharing">What Is False Sharing?<a class="headerlink" href="#what-is-false-sharing" title="Permanent link">&para;</a></h2>
+<p>False sharing happens when:</p>
+<ul>
+<li>Multiple threads update <strong>different variables</strong></li>
+<li>Those variables reside on the <strong>same cache line</strong></li>
+<li>The hardware coherence protocol repeatedly invalidates the line across cores</li>
+</ul>
+<p>Even though the data is logically independent, the hardware treats the entire cache line as a single unit.</p>
+<p>The result?</p>
+<p><strong>Cache line ping-pong.</strong></p>
 <hr />
-<h2 id="the-evidence-object-file-o">The Evidence: Object File (<code>.o</code>)<a class="headerlink" href="#the-evidence-object-file-o" title="Permanent link">&para;</a></h2>
-<p>Before linking, the compiler leaves "holes" in the machine code.</p>
-<h3 id="binary-inspection-objdump-dr">Binary Inspection (<code>objdump -dr</code>)<a class="headerlink" href="#binary-inspection-objdump-dr" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>11: e8 00 00 00 00      callq  16 &lt;main+0x16&gt;  
-    12: R_X86_64_PLT32  ext_func-0x4
+<h2 id="experimental-design">Experimental Design<a class="headerlink" href="#experimental-design" title="Permanent link">&para;</a></h2>
+<p>Each thread increments its own counter:</p>
+<ul>
+<li>200,000,000 increments per thread</li>
+<li>Thread pinning enabled</li>
+<li>Cache line assumed: 64 bytes</li>
+<li>Thread counts tested: 1, 2, 4, 8, 16</li>
+</ul>
+<p>We compare two memory layouts.</p>
+<hr />
+<h2 id="layout-1-packed-false-sharing-case">Layout 1: Packed (False Sharing Case)<a class="headerlink" href="#layout-1-packed-false-sharing-case" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">counter_packed_t</span><span class="p">;</span>
 </code></pre></div>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Observation:</strong> The <code>callq</code> instruction is followed by <code>00 00 00 00</code>. This is the <strong>placeholder</strong>. The relocation entry <code>R_X86_64_PLT32</code> acts as a sticky note for the linker.</p>
-</blockquote>
+<p>Each counter is 8 bytes.</p>
+<p>Since cache lines are 64 bytes:</p>
+<ul>
+<li>8 counters fit in one cache line.</li>
+<li>Threads 0–7 likely share the same line.</li>
+<li>Writes from different cores cause continuous invalidation.</li>
+</ul>
 <hr />
-<h2 id="the-resolution-final-executable-aout">The Resolution: Final Executable (<code>a.out</code>)<a class="headerlink" href="#the-resolution-final-executable-aout" title="Permanent link">&para;</a></h2>
-<p>After linking, the static linker (<code>ld</code>) "consumes" the relocation entries and patches the binary.</p>
-<h3 id="relocation-mapping">Relocation Mapping<a class="headerlink" href="#relocation-mapping" title="Permanent link">&para;</a></h3>
+<h2 id="layout-2-padded-cache-line-isolated">Layout 2: Padded (Cache-Line Isolated)<a class="headerlink" href="#layout-2-padded-cache-line-isolated" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">64</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">padding</span><span class="p">[</span><span class="mi">64</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">)];</span>
+<span class="p">}</span><span class="w"> </span><span class="n">counter_padded_t</span><span class="p">;</span>
+</code></pre></div>
+<p>Each counter occupies an entire cache line.</p>
+<ul>
+<li>No cross-thread cache-line sharing.</li>
+<li>No coherence ping-pong.</li>
+</ul>
+<hr />
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Symbol</th>
-<th>Object File (.o)</th>
-<th>Executable (a.out)</th>
-<th>Status</th>
+<th>Threads</th>
+<th>Packed (ns/op)</th>
+<th>Padded (ns/op)</th>
+<th>Slowdown</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ext_func</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>2e 00 00 00</code></td>
-<td><strong>Patched</strong> (Static)</td>
+<td>1</td>
+<td>0.382</td>
+<td>0.379</td>
+<td>~1×</td>
 </tr>
 <tr>
-<td><code>ext_var</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>a8 2e 00 00</code></td>
-<td><strong>Patched</strong> (Static)</td>
+<td>2</td>
+<td>0.640</td>
+<td>0.203</td>
+<td><strong>3.15×</strong></td>
 </tr>
 <tr>
-<td><code>printf</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>ca fe ff ff</code></td>
-<td><strong>Patched</strong> (Dynamic/PLT)</td>
+<td>4</td>
+<td>0.331</td>
+<td>0.142</td>
+<td>2.33×</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.172</td>
+<td>0.082</td>
+<td>2.10×</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0.170</td>
+<td>0.084</td>
+<td>2.02×</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="root-cause-analysis">Root-Cause Analysis<a class="headerlink" href="#root-cause-analysis" title="Permanent link">&para;</a></h2>
-<h3 id="the-pc-relative-mathematics">The PC-Relative Mathematics<a class="headerlink" href="#the-pc-relative-mathematics" title="Permanent link">&para;</a></h3>
-<p>The linker calculates the displacement using the following formula:</p>
-<p>In our case, the addend of <strong>-4</strong> compensates for the fact that the <code>RIP</code> (Instruction Pointer) already points to the <em>next</em> instruction when the current one is being executed.</p>
-<h3 id="optimization-analysis-o0-vs-o2">Optimization Analysis (<code>-O0</code> vs <code>-O2</code>)<a class="headerlink" href="#optimization-analysis-o0-vs-o2" title="Permanent link">&para;</a></h3>
+<h2 id="key-observations">Key Observations<a class="headerlink" href="#key-observations" title="Permanent link">&para;</a></h2>
+<h3 id="1-thread">1 Thread<a class="headerlink" href="#1-thread" title="Permanent link">&para;</a></h3>
+<p>No difference.</p>
+<p>With only one core writing, coherence does not matter.</p>
+<hr />
+<h3 id="2-threads-the-clearest-false-sharing-case">2 Threads — The Clearest False Sharing Case<a class="headerlink" href="#2-threads-the-clearest-false-sharing-case" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>false  = 0.640 ns/op
+padded = 0.203 ns/op
+</code></pre></div>
+<p>Two cores repeatedly invalidate the same cache line.</p>
+<p>This is pure hardware-level contention — no locks, no shared data structures.</p>
+<hr />
+<h3 id="416-threads">4–16 Threads<a class="headerlink" href="#416-threads" title="Permanent link">&para;</a></h3>
+<p>The penalty remains ~2–3×.</p>
+<p>Even though overall throughput increases with parallelism, the packed layout consistently performs worse.</p>
+<p>This confirms that:</p>
 <ul>
-<li><strong>-O0</strong>: High relocation count. Every access is explicit.</li>
-<li><strong>-O2</strong>: More compact. The linker might use different relocation types if symbols are moved closer or optimized into registers.</li>
+<li>Coherence cost dominates</li>
+<li>Memory layout alone can dictate scalability</li>
 </ul>
 <hr />
-<h2 id="conclusion-linkers-are-the-ultimate-patchers">Conclusion: "Linkers are the ultimate patchers"<a class="headerlink" href="#conclusion-linkers-are-the-ultimate-patchers" title="Permanent link">&para;</a></h2>
-<p>The compiler is short-sighted; it only sees its own file. The linker is the architect that sees the whole map and fills in the blanks left by the compiler. Without <strong>Relocation</strong>, modular programming (multi-file projects) would be impossible.</p>
+<h2 id="why-does-nsop-decrease-with-more-threads">Why Does ns/op Decrease With More Threads?<a class="headerlink" href="#why-does-nsop-decrease-with-more-threads" title="Permanent link">&para;</a></h2>
+<p>The metric is:</p>
+<div class="highlight"><pre><span></span><code>ns_per_op = elapsed_time / (threads × iters)
+</code></pre></div>
+<p>As thread count increases:</p>
+<ul>
+<li>Total operations increase</li>
+<li>Wall-clock time increases sublinearly</li>
+<li>Therefore, ns/op decreases</li>
+</ul>
+<p>This reflects improved throughput — not reduced coherence cost.</p>
+<p>The important comparison is:</p>
+<blockquote>
+<p>Packed vs Padded at the same thread count.</p>
+</blockquote>
+<hr />
+<h2 id="what-this-experiment-proves">What This Experiment Proves<a class="headerlink" href="#what-this-experiment-proves" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Cache coherence operates at cache-line granularity.</li>
+<li>Independent variables can still interfere.</li>
+<li>False sharing easily causes 2–3× slowdown.</li>
+<li>Proper padding eliminates the issue entirely.</li>
+</ol>
+<p>This is a memory-layout problem — not an algorithm problem.</p>
+<hr />
+<h2 id="how-to-strengthen-the-analysis">How to Strengthen the Analysis<a class="headerlink" href="#how-to-strengthen-the-analysis" title="Permanent link">&para;</a></h2>
+<p>To deepen validation, try:</p>
+<h3 id="print-counter-addresses">Print Counter Addresses<a class="headerlink" href="#print-counter-addresses" title="Permanent link">&para;</a></h3>
+<p>Verify that packed counters map to the same cache line:</p>
+<div class="highlight"><pre><span></span><code>line = address / 64
+</code></pre></div>
+<p>Threads 0–7 should share a line in packed mode.</p>
+<hr />
+<h3 id="use-perf">Use <code>perf</code><a class="headerlink" href="#use-perf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>perf stat -e cache-references,cache-misses,LLC-store-misses ./false_sharing ...
+</code></pre></div>
+<p>Expected in packed mode:</p>
+<ul>
+<li>Higher cache misses</li>
+<li>More LLC store traffic</li>
+<li>Increased coherence activity</li>
+</ul>
+<hr />
+<h3 id="disable-pinning">Disable Pinning<a class="headerlink" href="#disable-pinning" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>--pin 0
+</code></pre></div>
+<p>Results may fluctuate due to scheduler migration.</p>
+<hr />
+<h3 id="test-physical-vs-smt-cores">Test Physical vs SMT Cores<a class="headerlink" href="#test-physical-vs-smt-cores" title="Permanent link">&para;</a></h3>
+<p>Pin threads:</p>
+<ul>
+<li>Only to physical cores</li>
+<li>Only to sibling hyperthreads</li>
+</ul>
+<p>False sharing behavior may differ.</p>
+<hr />
+<h2 id="final-takeaway">Final Takeaway<a class="headerlink" href="#final-takeaway" title="Permanent link">&para;</a></h2>
+<p>False sharing is not theoretical.</p>
+<p>A simple memory layout decision can cause a <strong>3× performance difference</strong>.</p>
+<p>This insight becomes critical when designing:</p>
+<ul>
+<li>Lock-free data structures</li>
+<li>Concurrent queues</li>
+<li>Thread pools</li>
+<li>Per-thread statistics counters</li>
+<li>High-performance systems</li>
+</ul>
+<p>Before optimizing algorithms,
+make sure your cache lines are not fighting each other.</p>
 <hr />
 
 
