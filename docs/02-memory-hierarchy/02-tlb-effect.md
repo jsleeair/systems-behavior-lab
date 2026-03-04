@@ -16,7 +16,7 @@ To avoid hardware prefetch effects, the experiment uses **pointer chasing**, whe
 
 ```c
 p = *p;
-````
+```
 
 This creates a strict dependency chain and forces the CPU to perform address translation for every access.
 

@@ -44,7 +44,7 @@ This range exceeds the CPU cache hierarchy and begins to involve **main memory a
 
 ## Result
 
-![Large sweep plot](artifacts/out/compare_cycles_vs_pages_1.png)
+![Large sweep plot](plots/compare_cycles_vs_pages_1.png)
 
 Observed measurements:
 
@@ -135,7 +135,7 @@ This range generally stays within the CPU cache hierarchy, allowing the experime
 
 ## Result
 
-![TLB window sweep plot](artifacts/out/compare_cycles_vs_pages.png)
+![TLB window sweep plot](plots/compare_cycles_vs_pages.png)
 
 Measured values:
 
