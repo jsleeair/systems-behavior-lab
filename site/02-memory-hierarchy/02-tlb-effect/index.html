@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../01-relocation-process/">
+        <link rel="prev" href="../01-false-sharing/">
       
       
-        <link rel="next" href="../../02-memory-hierarchy/00-cache-line-effect/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>02 ABI and calling convention - systems-behavior-lab</title>
+        <title>02 TLB Effect - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#02-abi-and-calling-convention-sysv-amd64" class="md-skip">
+        <a href="#02-tlb-effect" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              02 ABI and calling convention
+              02 TLB Effect
             
           </span>
         </div>
@@ -471,8 +471,6 @@
                 
   
   
-    
-  
   
   
     
@@ -482,11 +480,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -507,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -525,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -553,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-relocation-process/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
         
   
   
@@ -561,6 +559,149 @@
     
   
     01 Relocation Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ABI and calling convention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Memory Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Memory Hierarchy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-cache-line-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Cache Line Effect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-false-sharing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 False Sharing
   
 
     
@@ -590,197 +731,7 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 ABI and calling convention
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 ABI and calling convention
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why This Matters
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 Memory Hierarchy
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    02 Memory Hierarchy
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    00 Cache Line Effect
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 False Sharing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/02-tlb-effect/" class="md-nav__link">
         
   
   
@@ -796,6 +747,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -863,223 +815,165 @@
   
 
 
-<h1 id="02-abi-and-calling-convention-sysv-amd64">02 – ABI and Calling Convention (SysV AMD64)<a class="headerlink" href="#02-abi-and-calling-convention-sysv-amd64" title="Permanent link">&para;</a></h1>
-<p>In this lab, we move from <em>symbol resolution</em> to what happens <strong>at runtime</strong>:</p>
-<blockquote>
-<p>How are function arguments actually passed?<br />
-How are structures returned?<br />
-What really happens in a variadic call?</p>
-</blockquote>
-<p>Rather than relying on documentation alone, we verify everything through:</p>
-<ul>
-<li>Runtime register snapshots</li>
-<li><code>objdump</code> inspection</li>
-<li>Comparison between <code>-O0</code> and <code>-O2</code></li>
-</ul>
-<p>Target platform: <strong>Linux x86_64 (System V AMD64 ABI)</strong></p>
+<h1 id="02-tlb-effect">02-tlb-effect<a class="headerlink" href="#02-tlb-effect" title="Permanent link">&para;</a></h1>
+<p>Modern CPUs use <strong>virtual memory</strong>, which means every memory access requires a translation from a <strong>virtual address</strong> to a <strong>physical address</strong>.</p>
+<p>To make this translation fast, CPUs include a hardware cache called the <strong>Translation Lookaside Buffer (TLB)</strong>.</p>
+<p>This lab explores how TLB capacity affects memory access latency.</p>
 <hr />
-<h2 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h2>
-<p>Calling conventions define:</p>
-<ul>
-<li>Which registers carry arguments</li>
-<li>When the stack is used</li>
-<li>How large structures are returned</li>
-<li>How variadic calls encode floating-point usage</li>
-<li>How stack alignment must be preserved</li>
-</ul>
-<p>If you debug crashes, write profilers, reverse engineer binaries, or build compilers,<br />
-you <strong>must</strong> understand this layer.</p>
-<hr />
-<h1 id="experiment-1-8-integer-arguments">Experiment 1 — 8 Integer Arguments<a class="headerlink" href="#experiment-1-8-integer-arguments" title="Permanent link">&para;</a></h1>
-<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kt">uint64_t</span><span class="w"> </span><span class="nf">sum_u64_8</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a3</span><span class="p">,</span>
-<span class="w">                   </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a4</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a5</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a6</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a7</span><span class="p">);</span>
+<h1 id="experiment-setup">Experiment Setup<a class="headerlink" href="#experiment-setup" title="Permanent link">&para;</a></h1>
+<p>We measure the latency of memory accesses while increasing the number of distinct pages touched.</p>
+<p>To avoid hardware prefetch effects, the experiment uses <strong>pointer chasing</strong>, where each memory access depends on the result of the previous one:</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
 <span class="err">````</span>
+
+<span class="n">This</span><span class="w"> </span><span class="n">creates</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="n">chain</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">forces</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">perform</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">every</span><span class="w"> </span><span class="n">access</span><span class="p">.</span>
 
 <span class="o">---</span>
 
-<span class="cp">## Runtime Result</span>
+<span class="cp"># Large Working Set Sweep</span>
+
+<span class="n">First</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">sweep</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pages</span><span class="p">.</span>
 </code></pre></div>
-sum_u64_8 result = 0x26664
-<div class="highlight"><pre><span></span><code>Works in both `-O0` and `-O2`.
+CPU=1
+MAX_PAGES=8192
+STEP_PAGES=64
+ITERS=5000000
+WARMUP=500000
+<div class="highlight"><pre><span></span><code>Maximum working set size:
+</code></pre></div>
+8192 pages × 4KB ≈ 32MB
+<div class="highlight"><pre><span></span><code>---
+
+## Result
+
+![Large sweep plot](plots/compare_cycles_vs_pages_1.png)
+
+Observed latency:
+</code></pre></div>
+baseline latency ≈ 10.7 cycles
+max latency ≈ 213 cycles
+slowdown ≈ 20×
+<div class="highlight"><pre><span></span><code>---
+
+## Interpretation
+
+The final latency (~200 cycles) is close to typical **DRAM latency**.
+
+This indicates that the experiment eventually reaches the point where memory accesses require:
+</code></pre></div>
+TLB miss
++ cache miss
++ DRAM access
+<div class="highlight"><pre><span></span><code>Thus, the knee observed in this configuration reflects the **memory hierarchy transition**, not purely the TLB capacity.
 
 ---
 
-## Binary Evidence (dbg build)
+# TLB Window Sweep
 
-Call site:
+To isolate the TLB effect, we restrict the working set to a smaller range.
 </code></pre></div>
-11e3: pushq  $0x8888
-11e8: pushq  $0x7777
-11ed: mov    $0x6666,%r9d
-11f3: mov    $0x5555,%r8d
-11f9: mov    $0x4444,%ecx
-11fe: mov    $0x3333,%edx
-1203: mov    $0x2222,%esi
-1208: mov    $0x1111,%edi
-120d: callq  <sum_u64_8>
-1212: add    $0x10,%rsp
-<div class="highlight"><pre><span></span><code>### Interpretation
-
-* Arguments 1–6 → registers
-  `RDI, RSI, RDX, RCX, R8, R9`
-* Arguments 7–8 → pushed to stack
-* Stack cleaned after call
-
-Inside the callee:
+CPU=1
+MIN_PAGES=32
+MAX_PAGES=2048
+STEP_PAGES=32
+ITERS=15000000
+WARMUP=1000000
+<div class="highlight"><pre><span></span><code>Working set range:
 </code></pre></div>
-mov 0x10(%rbp),%rax
-mov 0x18(%rbp),%rax
-<div class="highlight"><pre><span></span><code>These correspond to `a6` and `a7`.
-
-### Conclusion
-
-SysV AMD64 rule confirmed:
-
-&gt; First 6 integer arguments in registers.
-&gt; Remaining arguments on the stack.
+32 pages → 2048 pages
+128KB → 8MB
+<div class="highlight"><pre><span></span><code>This keeps most accesses within the CPU cache hierarchy.
 
 ---
 
-# Experiment 2 — Struct Return
+## Result
 
-We tested two structs:
+![TLB window sweep plot](plots/compare_cycles_vs_pages.png)
+
+Measured values:
+</code></pre></div>
+knee pages ≈ 1408
+knee size ≈ 5.5MB</p>
+<p>baseline latency ≈ 17.8 cycles
+max latency ≈ 74 cycles
+slowdown ≈ 4.2×
+<div class="highlight"><pre><span></span><code>---
+
+# TLB Reach
+
+The effective coverage of a TLB can be estimated as:
+</code></pre></div>
+TLB Reach = TLB Entries × Page Size
+<div class="highlight"><pre><span></span><code>For example:
+</code></pre></div>
+STLB entries ≈ 1500
+page size = 4KB
+<div class="highlight"><pre><span></span><code>Coverage:
+</code></pre></div>
+1500 × 4KB ≈ 6MB
+<div class="highlight"><pre><span></span><code>Our measured coverage:
+</code></pre></div>
+1408 × 4KB ≈ 5.5MB
+<div class="highlight"><pre><span></span><code>This closely matches the expected capacity of the **second-level TLB (STLB)** on modern x86 processors.
+
+---
+
+# TLB Architecture
+
+A simplified TLB hierarchy:
+</code></pre></div>
+Virtual Address
+      │
+      ▼
++------------------+
+|   L1 Data TLB    |
+| (~64 entries)    |
++------------------+
+      │ miss
+      ▼
++------------------+
+|   L2 TLB (STLB)  |
+| (~1500 entries)  |
++------------------+
+      │ miss
+      ▼
++------------------+
+| Page Table Walk  |
+| (memory access)  |
++------------------+
+      │
+      ▼
+Physical Address
+<div class="highlight"><pre><span></span><code>The L1 TLB is small but extremely fast, while the second-level TLB provides a much larger coverage.
+
+If both levels miss, the CPU must perform a **page table walk**, which requires multiple memory accesses.
+
+---
+
+# Why Pointer Chasing
+
+Modern CPUs contain hardware prefetchers that attempt to predict future memory accesses.
+
+If we used a simple loop:
 
 ```c
-typedef struct {
-    uint32_t a;
-    uint32_t b;
-} Pair32;
-
-typedef struct {
-    uint64_t x;
-    uint64_t y;
-    uint64_t z;
-} Triple64;
+for (i = 0; i &lt; N; i++)
+    sum += array[i * stride];
 </code></pre></div></p>
+<p>the hardware prefetcher might preload data and hide latency.</p>
+<p>Pointer chasing avoids this problem:</p>
+<div class="highlight"><pre><span></span><code><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</code></pre></div>
+<p>Each access depends on the previous one:</p>
+<div class="highlight"><pre><span></span><code>access(i+1) depends on access(i)
+</code></pre></div>
+<p>This prevents the CPU from issuing memory requests in parallel and exposes the true latency of each memory access.</p>
 <hr />
-<h2 id="a-small-struct-pair32">A) Small Struct (Pair32)<a class="headerlink" href="#a-small-struct-pair32" title="Permanent link">&para;</a></h2>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>callq &lt;make_pair32&gt;
-mov %rax,%rcx
-mov %rax,%rdx
-</code></pre></div>
-<p>Returned directly in registers.</p>
-<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
-<p>Small structs are returned via registers.</p>
-<hr />
-<h2 id="b-larger-struct-triple64-24-bytes">B) Larger Struct (Triple64, 24 bytes)<a class="headerlink" href="#b-larger-struct-triple64-24-bytes" title="Permanent link">&para;</a></h2>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>lea -0x20(%rbp),%rdi   ; return buffer
-movabs ..., %rsi
-movabs ..., %rdx
-movabs ..., %rcx
-callq &lt;make_triple64&gt;
-</code></pre></div>
-<p>The caller allocates memory and passes its address in <code>RDI</code>.</p>
-<p>Inside callee:</p>
-<div class="highlight"><pre><span></span><code>mov %rdi, ...
-mov %rax,(%rcx)
-mov %rdx,0x8(%rcx)
-mov %rax,0x10(%rcx)
-</code></pre></div>
-<h3 id="conclusion_1">Conclusion<a class="headerlink" href="#conclusion_1" title="Permanent link">&para;</a></h3>
-<p>Large structs use <strong>sret (structure return)</strong>:</p>
-<ul>
-<li>Caller allocates memory</li>
-<li>Pointer passed as hidden first argument</li>
-<li>Callee writes into that buffer</li>
-</ul>
-<hr />
-<h1 id="experiment-3-variadic-calls-and-al">Experiment 3 — Variadic Calls and <code>%al</code><a class="headerlink" href="#experiment-3-variadic-calls-and-al" title="Permanent link">&para;</a></h1>
-<p>This is where ABI gets subtle.</p>
-<p>SysV AMD64 rule:</p>
-<blockquote>
-<p>In variadic calls, <code>%al</code> encodes how many XMM registers were used for floating-point arguments.</p>
-</blockquote>
-<p>We implemented an assembly entry wrapper to capture registers before any compiler prologue.</p>
-<hr />
-<h2 id="double-variadic-call">Double Variadic Call<a class="headerlink" href="#double-variadic-call" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">variadic_observer</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span><span class="w"> </span><span class="mf">4.25</span><span class="p">);</span>
-</code></pre></div>
-<p>Entry snapshot:</p>
-<div class="highlight"><pre><span></span><code>rsi = 4
-al  = 4
-</code></pre></div>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>mov $0x4,%eax
-callq &lt;variadic_observer&gt;
-</code></pre></div>
-<h3 id="meaning">Meaning<a class="headerlink" href="#meaning" title="Permanent link">&para;</a></h3>
-<p>4 doubles → XMM0–XMM3 used → <code>%al = 4</code></p>
-<p>Confirmed in both <code>-O0</code> and <code>-O2</code>.</p>
-<hr />
-<h2 id="integer-variadic-call">Integer Variadic Call<a class="headerlink" href="#integer-variadic-call" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">variadic_observer</span><span class="p">(</span><span class="s">&quot;u&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mh">0xA</span><span class="p">,</span><span class="w"> </span><span class="mh">0xB</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC</span><span class="p">,</span><span class="w"> </span><span class="mh">0xD</span><span class="p">);</span>
-</code></pre></div>
-<p>Entry snapshot:</p>
-<div class="highlight"><pre><span></span><code>rdx = 0xA
-rcx = 0xB
-r8  = 0xC
-r9  = 0xD
-al  = 0
-</code></pre></div>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>xor %eax,%eax
-callq &lt;variadic_observer&gt;
-</code></pre></div>
-<h3 id="meaning_1">Meaning<a class="headerlink" href="#meaning_1" title="Permanent link">&para;</a></h3>
-<p>No floating-point registers used → <code>%al = 0</code></p>
-<hr />
-<h1 id="stack-alignment">Stack Alignment<a class="headerlink" href="#stack-alignment" title="Permanent link">&para;</a></h1>
-<p>All entry snapshots show:</p>
-<div class="highlight"><pre><span></span><code>rsp % 16 = 8
-</code></pre></div>
-<p>Explanation:</p>
-<ul>
-<li>Caller ensures 16-byte alignment before <code>call</code></li>
-<li><code>call</code> pushes return address (8 bytes)</li>
-<li>Callee sees <code>%rsp % 16 == 8</code></li>
-</ul>
-<p>Correct SysV behavior.</p>
-<hr />
-<h1 id="optimization-effects-o2">Optimization Effects (-O2)<a class="headerlink" href="#optimization-effects-o2" title="Permanent link">&para;</a></h1>
-<p>Under <code>-O2</code>:</p>
-<ul>
-<li>Fewer spills</li>
-<li>Reordered instructions</li>
-<li>More direct register usage</li>
-</ul>
-<p>But unchanged:</p>
-<ul>
-<li>Register argument rules</li>
-<li>Stack passing for argument 7+</li>
-<li>sret mechanism</li>
-<li><code>%al</code> semantics</li>
-<li>Stack alignment rule</li>
-</ul>
-<p>Optimization changes code shape — not ABI contract.</p>
-<hr />
-<h1 id="final-summary">Final Summary<a class="headerlink" href="#final-summary" title="Permanent link">&para;</a></h1>
-<p>We verified the System V AMD64 ABI through direct binary inspection:</p>
-<ul>
-<li>6 integer registers, then stack</li>
-<li>Large struct return via hidden pointer (sret)</li>
-<li><code>%al</code> encodes XMM usage in variadic calls</li>
-<li>Stack alignment invariant preserved</li>
-<li><code>-O2</code> preserves ABI semantics</li>
-</ul>
-<hr />
-<h2 id="next-directions">Next Directions<a class="headerlink" href="#next-directions" title="Permanent link">&para;</a></h2>
-<p>Possible extensions:</p>
-<ul>
-<li>Red zone behavior</li>
-<li>Callee-saved register corruption experiment</li>
-<li>Windows x64 ABI comparison</li>
-<li>Tail-call optimization effects</li>
-<li>Variadic + mixed FP/integer classification edge cases</li>
-</ul>
-<p>```</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>This experiment demonstrates that memory performance depends not only on <strong>cache locality</strong> but also on <strong>address translation locality</strong>.</p>
+<p>The large working set sweep reveals the dramatic slowdown when accesses reach <strong>DRAM latency (~200 cycles)</strong>.</p>
+<p>By restricting the working set, the TLB window sweep captures the <strong>TLB capacity effect</strong>, showing a clear knee around <strong>5.5MB</strong>, consistent with the expected coverage of the second-level TLB.</p>
+<p>Even when data fits within the cache hierarchy, exceeding the TLB capacity can still introduce significant performance penalties.</p>
 
 
 
