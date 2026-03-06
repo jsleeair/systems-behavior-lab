@@ -14,7 +14,7 @@
         <link rel="prev" href="../01-false-sharing/">
       
       
-        <link rel="next" href="../../about/">
+        <link rel="next" href="../03-prefetch-and-locality/">
       
       
         
@@ -753,6 +753,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-prefetch-and-locality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Prefetch and Locality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -823,106 +851,84 @@
 <h1 id="experiment-setup">Experiment Setup<a class="headerlink" href="#experiment-setup" title="Permanent link">&para;</a></h1>
 <p>We measure the latency of memory accesses while increasing the number of distinct pages touched.</p>
 <p>To avoid hardware prefetch effects, the experiment uses <strong>pointer chasing</strong>, where each memory access depends on the result of the previous one:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
-<span class="err">````</span>
-
-<span class="n">This</span><span class="w"> </span><span class="n">creates</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="n">chain</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">forces</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">perform</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">every</span><span class="w"> </span><span class="n">access</span><span class="p">.</span>
-
-<span class="o">---</span>
-
-<span class="cp"># Large Working Set Sweep</span>
-
-<span class="n">First</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">sweep</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pages</span><span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </code></pre></div>
-CPU=1
+<p>This creates a strict dependency chain and forces the CPU to perform address translation for every access.</p>
+<hr />
+<h1 id="large-working-set-sweep">Large Working Set Sweep<a class="headerlink" href="#large-working-set-sweep" title="Permanent link">&para;</a></h1>
+<p>First, we sweep a large range of pages.</p>
+<div class="highlight"><pre><span></span><code>CPU=1
 MAX_PAGES=8192
 STEP_PAGES=64
 ITERS=5000000
 WARMUP=500000
-<div class="highlight"><pre><span></span><code>Maximum working set size:
 </code></pre></div>
-8192 pages × 4KB ≈ 32MB
-<div class="highlight"><pre><span></span><code>---
-
-## Result
-
-![Large sweep plot](plots/compare_cycles_vs_pages_1.png)
-
-Observed latency:
+<p>Maximum working set size:</p>
+<div class="highlight"><pre><span></span><code>8192 pages × 4KB ≈ 32MB
 </code></pre></div>
-baseline latency ≈ 10.7 cycles
+<hr />
+<h2 id="result">Result<a class="headerlink" href="#result" title="Permanent link">&para;</a></h2>
+<p><img alt="Large sweep plot" src="../plots/compare_cycles_vs_pages_1.png" /></p>
+<p>Observed latency:</p>
+<div class="highlight"><pre><span></span><code>baseline latency ≈ 10.7 cycles
 max latency ≈ 213 cycles
 slowdown ≈ 20×
-<div class="highlight"><pre><span></span><code>---
-
-## Interpretation
-
-The final latency (~200 cycles) is close to typical **DRAM latency**.
-
-This indicates that the experiment eventually reaches the point where memory accesses require:
 </code></pre></div>
-TLB miss
+<hr />
+<h2 id="interpretation">Interpretation<a class="headerlink" href="#interpretation" title="Permanent link">&para;</a></h2>
+<p>The final latency (~200 cycles) is close to typical <strong>DRAM latency</strong>.</p>
+<p>This indicates that the experiment eventually reaches the point where memory accesses require:</p>
+<div class="highlight"><pre><span></span><code>TLB miss
 + cache miss
 + DRAM access
-<div class="highlight"><pre><span></span><code>Thus, the knee observed in this configuration reflects the **memory hierarchy transition**, not purely the TLB capacity.
-
----
-
-# TLB Window Sweep
-
-To isolate the TLB effect, we restrict the working set to a smaller range.
 </code></pre></div>
-CPU=1
+<p>Thus, the knee observed in this configuration reflects the <strong>memory hierarchy transition</strong>, not purely the TLB capacity.</p>
+<hr />
+<h1 id="tlb-window-sweep">TLB Window Sweep<a class="headerlink" href="#tlb-window-sweep" title="Permanent link">&para;</a></h1>
+<p>To isolate the TLB effect, we restrict the working set to a smaller range.</p>
+<div class="highlight"><pre><span></span><code>CPU=1
 MIN_PAGES=32
 MAX_PAGES=2048
 STEP_PAGES=32
 ITERS=15000000
 WARMUP=1000000
-<div class="highlight"><pre><span></span><code>Working set range:
 </code></pre></div>
-32 pages → 2048 pages
+<p>Working set range:</p>
+<div class="highlight"><pre><span></span><code>32 pages → 2048 pages
 128KB → 8MB
-<div class="highlight"><pre><span></span><code>This keeps most accesses within the CPU cache hierarchy.
-
----
-
-## Result
-
-![TLB window sweep plot](plots/compare_cycles_vs_pages.png)
-
-Measured values:
 </code></pre></div>
-knee pages ≈ 1408
-knee size ≈ 5.5MB</p>
-<p>baseline latency ≈ 17.8 cycles
+<p>This keeps most accesses within the CPU cache hierarchy.</p>
+<hr />
+<h2 id="result_1">Result<a class="headerlink" href="#result_1" title="Permanent link">&para;</a></h2>
+<p><img alt="TLB window sweep plot" src="../plots/compare_cycles_vs_pages.png" /></p>
+<p>Measured values:</p>
+<div class="highlight"><pre><span></span><code>knee pages ≈ 1408
+knee size ≈ 5.5MB
+
+baseline latency ≈ 17.8 cycles
 max latency ≈ 74 cycles
 slowdown ≈ 4.2×
-<div class="highlight"><pre><span></span><code>---
-
-# TLB Reach
-
-The effective coverage of a TLB can be estimated as:
 </code></pre></div>
-TLB Reach = TLB Entries × Page Size
-<div class="highlight"><pre><span></span><code>For example:
+<hr />
+<h1 id="tlb-reach">TLB Reach<a class="headerlink" href="#tlb-reach" title="Permanent link">&para;</a></h1>
+<p>The effective coverage of a TLB can be estimated as:</p>
+<div class="highlight"><pre><span></span><code>TLB Reach = TLB Entries × Page Size
 </code></pre></div>
-STLB entries ≈ 1500
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>STLB entries ≈ 1500
 page size = 4KB
-<div class="highlight"><pre><span></span><code>Coverage:
 </code></pre></div>
-1500 × 4KB ≈ 6MB
-<div class="highlight"><pre><span></span><code>Our measured coverage:
+<p>Coverage:</p>
+<div class="highlight"><pre><span></span><code>1500 × 4KB ≈ 6MB
 </code></pre></div>
-1408 × 4KB ≈ 5.5MB
-<div class="highlight"><pre><span></span><code>This closely matches the expected capacity of the **second-level TLB (STLB)** on modern x86 processors.
-
----
-
-# TLB Architecture
-
-A simplified TLB hierarchy:
+<p>Our measured coverage:</p>
+<div class="highlight"><pre><span></span><code>1408 × 4KB ≈ 5.5MB
 </code></pre></div>
-Virtual Address
+<p>This closely matches the expected capacity of the <strong>second-level TLB (STLB)</strong> on modern x86 processors.</p>
+<hr />
+<h1 id="tlb-architecture">TLB Architecture<a class="headerlink" href="#tlb-architecture" title="Permanent link">&para;</a></h1>
+<p>A simplified TLB hierarchy:</p>
+<div class="highlight"><pre><span></span><code>Virtual Address
       │
       ▼
 +------------------+
@@ -944,22 +950,16 @@ Virtual Address
       │
       ▼
 Physical Address
-<div class="highlight"><pre><span></span><code>The L1 TLB is small but extremely fast, while the second-level TLB provides a much larger coverage.
-
-If both levels miss, the CPU must perform a **page table walk**, which requires multiple memory accesses.
-
----
-
-# Why Pointer Chasing
-
-Modern CPUs contain hardware prefetchers that attempt to predict future memory accesses.
-
-If we used a simple loop:
-
-```c
-for (i = 0; i &lt; N; i++)
-    sum += array[i * stride];
-</code></pre></div></p>
+</code></pre></div>
+<p>The L1 TLB is small but extremely fast, while the second-level TLB provides a much larger coverage.</p>
+<p>If both levels miss, the CPU must perform a <strong>page table walk</strong>, which requires multiple memory accesses.</p>
+<hr />
+<h1 id="why-pointer-chasing">Why Pointer Chasing<a class="headerlink" href="#why-pointer-chasing" title="Permanent link">&para;</a></h1>
+<p>Modern CPUs contain hardware prefetchers that attempt to predict future memory accesses.</p>
+<p>If we used a simple loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">stride</span><span class="p">];</span>
+</code></pre></div>
 <p>the hardware prefetcher might preload data and hide latency.</p>
 <p>Pointer chasing avoids this problem:</p>
 <div class="highlight"><pre><span></span><code><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>

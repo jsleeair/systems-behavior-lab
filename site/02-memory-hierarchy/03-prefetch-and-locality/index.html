@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../01-relocation-process/">
+        <link rel="prev" href="../02-tlb-effect/">
       
       
-        <link rel="next" href="../../02-memory-hierarchy/00-cache-line-effect/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>02 ABI and calling convention - systems-behavior-lab</title>
+        <title>03 Prefetch and Locality - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#02-abi-and-calling-convention-sysv-amd64" class="md-skip">
+        <a href="#03-prefetch-and-locality" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              02 ABI and calling convention
+              03 Prefetch and Locality
             
           </span>
         </div>
@@ -471,8 +471,6 @@
                 
   
   
-    
-  
   
   
     
@@ -482,11 +480,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -507,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -525,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -553,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-relocation-process/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
         
   
   
@@ -561,6 +559,177 @@
     
   
     01 Relocation Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ABI and calling convention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Memory Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Memory Hierarchy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-cache-line-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Cache Line Effect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-false-sharing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 False Sharing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tlb-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 TLB Effect
   
 
     
@@ -597,7 +766,7 @@
   <span class="md-ellipsis">
     
   
-    02 ABI and calling convention
+    03 Prefetch and Locality
   
 
     
@@ -615,7 +784,7 @@
   <span class="md-ellipsis">
     
   
-    02 ABI and calling convention
+    03 Prefetch and Locality
   
 
     
@@ -641,10 +810,93 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
+  <a href="#the-idea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why This Matters
+        The Idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l1-sized-working-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L1-sized working set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l2l3-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L2/L3 region
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dram-scale-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DRAM-scale dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Happens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Takeaway
       
     </span>
   </a>
@@ -655,175 +907,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 Memory Hierarchy
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    02 Memory Hierarchy
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    00 Cache Line Effect
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 False Sharing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/02-tlb-effect/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 TLB Effect
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-hierarchy/03-prefetch-and-locality/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 Prefetch and Locality
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -891,223 +974,73 @@
   
 
 
-<h1 id="02-abi-and-calling-convention-sysv-amd64">02 – ABI and Calling Convention (SysV AMD64)<a class="headerlink" href="#02-abi-and-calling-convention-sysv-amd64" title="Permanent link">&para;</a></h1>
-<p>In this lab, we move from <em>symbol resolution</em> to what happens <strong>at runtime</strong>:</p>
-<blockquote>
-<p>How are function arguments actually passed?<br />
-How are structures returned?<br />
-What really happens in a variadic call?</p>
-</blockquote>
-<p>Rather than relying on documentation alone, we verify everything through:</p>
+<h1 id="03-prefetch-and-locality">03-prefetch-and-locality<a class="headerlink" href="#03-prefetch-and-locality" title="Permanent link">&para;</a></h1>
+<p>Modern CPUs rely heavily on <strong>hardware prefetching</strong> and <strong>spatial locality</strong> to hide memory latency.</p>
+<p>This experiment demonstrates how memory access patterns influence performance.</p>
+<hr />
+<h2 id="the-idea">The Idea<a class="headerlink" href="#the-idea" title="Permanent link">&para;</a></h2>
+<p>Two traversal patterns are compared:</p>
 <ul>
-<li>Runtime register snapshots</li>
-<li><code>objdump</code> inspection</li>
-<li>Comparison between <code>-O0</code> and <code>-O2</code></li>
+<li>Sequential traversal</li>
+<li>Random traversal</li>
 </ul>
-<p>Target platform: <strong>Linux x86_64 (System V AMD64 ABI)</strong></p>
+<p>Both access the <strong>same set of memory locations</strong>, but in different orders.</p>
+<p>Sequential traversal allows hardware prefetchers to predict future accesses.</p>
+<p>Random traversal breaks this predictability.</p>
 <hr />
-<h2 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h2>
-<p>Calling conventions define:</p>
+<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
+<p>The benchmark accesses a large array while varying:</p>
 <ul>
-<li>Which registers carry arguments</li>
-<li>When the stack is used</li>
-<li>How large structures are returned</li>
-<li>How variadic calls encode floating-point usage</li>
-<li>How stack alignment must be preserved</li>
+<li>working set size</li>
+<li>stride size</li>
+<li>access order</li>
 </ul>
-<p>If you debug crashes, write profilers, reverse engineer binaries, or build compilers,<br />
-you <strong>must</strong> understand this layer.</p>
-<hr />
-<h1 id="experiment-1-8-integer-arguments">Experiment 1 — 8 Integer Arguments<a class="headerlink" href="#experiment-1-8-integer-arguments" title="Permanent link">&para;</a></h1>
-<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kt">uint64_t</span><span class="w"> </span><span class="nf">sum_u64_8</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a3</span><span class="p">,</span>
-<span class="w">                   </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a4</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a5</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a6</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">a7</span><span class="p">);</span>
-<span class="err">````</span>
-
-<span class="o">---</span>
-
-<span class="cp">## Runtime Result</span>
-</code></pre></div>
-sum_u64_8 result = 0x26664
-<div class="highlight"><pre><span></span><code>Works in both `-O0` and `-O2`.
-
----
-
-## Binary Evidence (dbg build)
-
-Call site:
-</code></pre></div>
-11e3: pushq  $0x8888
-11e8: pushq  $0x7777
-11ed: mov    $0x6666,%r9d
-11f3: mov    $0x5555,%r8d
-11f9: mov    $0x4444,%ecx
-11fe: mov    $0x3333,%edx
-1203: mov    $0x2222,%esi
-1208: mov    $0x1111,%edi
-120d: callq  <sum_u64_8>
-1212: add    $0x10,%rsp
-<div class="highlight"><pre><span></span><code>### Interpretation
-
-* Arguments 1–6 → registers
-  `RDI, RSI, RDX, RCX, R8, R9`
-* Arguments 7–8 → pushed to stack
-* Stack cleaned after call
-
-Inside the callee:
-</code></pre></div>
-mov 0x10(%rbp),%rax
-mov 0x18(%rbp),%rax
-<div class="highlight"><pre><span></span><code>These correspond to `a6` and `a7`.
-
-### Conclusion
-
-SysV AMD64 rule confirmed:
-
-&gt; First 6 integer arguments in registers.
-&gt; Remaining arguments on the stack.
-
----
-
-# Experiment 2 — Struct Return
-
-We tested two structs:
-
-```c
-typedef struct {
-    uint32_t a;
-    uint32_t b;
-} Pair32;
-
-typedef struct {
-    uint64_t x;
-    uint64_t y;
-    uint64_t z;
-} Triple64;
-</code></pre></div></p>
-<hr />
-<h2 id="a-small-struct-pair32">A) Small Struct (Pair32)<a class="headerlink" href="#a-small-struct-pair32" title="Permanent link">&para;</a></h2>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>callq &lt;make_pair32&gt;
-mov %rax,%rcx
-mov %rax,%rdx
-</code></pre></div>
-<p>Returned directly in registers.</p>
-<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
-<p>Small structs are returned via registers.</p>
-<hr />
-<h2 id="b-larger-struct-triple64-24-bytes">B) Larger Struct (Triple64, 24 bytes)<a class="headerlink" href="#b-larger-struct-triple64-24-bytes" title="Permanent link">&para;</a></h2>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>lea -0x20(%rbp),%rdi   ; return buffer
-movabs ..., %rsi
-movabs ..., %rdx
-movabs ..., %rcx
-callq &lt;make_triple64&gt;
-</code></pre></div>
-<p>The caller allocates memory and passes its address in <code>RDI</code>.</p>
-<p>Inside callee:</p>
-<div class="highlight"><pre><span></span><code>mov %rdi, ...
-mov %rax,(%rcx)
-mov %rdx,0x8(%rcx)
-mov %rax,0x10(%rcx)
-</code></pre></div>
-<h3 id="conclusion_1">Conclusion<a class="headerlink" href="#conclusion_1" title="Permanent link">&para;</a></h3>
-<p>Large structs use <strong>sret (structure return)</strong>:</p>
+<p>Working set sizes:</p>
 <ul>
-<li>Caller allocates memory</li>
-<li>Pointer passed as hidden first argument</li>
-<li>Callee writes into that buffer</li>
+<li>32KB (L1-sized)</li>
+<li>1MB (L2/L3 region)</li>
+<li>64MB (DRAM)</li>
+</ul>
+<p>Stride sizes:</p>
+<p>8B → 4096B</p>
+<p>Each test performs roughly <strong>64 million memory accesses</strong>.</p>
+<hr />
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<h3 id="l1-sized-working-set">L1-sized working set<a class="headerlink" href="#l1-sized-working-set" title="Permanent link">&para;</a></h3>
+<p><img alt="prefetch" src="../plots/prefetch_32768.png" /></p>
+<p>When the working set fits entirely inside L1 cache, access pattern has little impact.</p>
+<hr />
+<h3 id="l2l3-region">L2/L3 region<a class="headerlink" href="#l2l3-region" title="Permanent link">&para;</a></h3>
+<p><img alt="prefetch" src="../plots/prefetch_1048576.png" /></p>
+<p>Sequential traversal begins to outperform random access.</p>
+<p>Hardware prefetchers become effective here.</p>
+<hr />
+<h3 id="dram-scale-dataset">DRAM-scale dataset<a class="headerlink" href="#dram-scale-dataset" title="Permanent link">&para;</a></h3>
+<p><img alt="prefetch" src="../plots/prefetch_67108864.png" /></p>
+<p>The difference becomes dramatic:</p>
+<ul>
+<li>Sequential access remains relatively efficient</li>
+<li>Random access incurs significantly higher latency</li>
 </ul>
 <hr />
-<h1 id="experiment-3-variadic-calls-and-al">Experiment 3 — Variadic Calls and <code>%al</code><a class="headerlink" href="#experiment-3-variadic-calls-and-al" title="Permanent link">&para;</a></h1>
-<p>This is where ABI gets subtle.</p>
-<p>SysV AMD64 rule:</p>
-<blockquote>
-<p>In variadic calls, <code>%al</code> encodes how many XMM registers were used for floating-point arguments.</p>
-</blockquote>
-<p>We implemented an assembly entry wrapper to capture registers before any compiler prologue.</p>
-<hr />
-<h2 id="double-variadic-call">Double Variadic Call<a class="headerlink" href="#double-variadic-call" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">variadic_observer</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span><span class="w"> </span><span class="mf">4.25</span><span class="p">);</span>
-</code></pre></div>
-<p>Entry snapshot:</p>
-<div class="highlight"><pre><span></span><code>rsi = 4
-al  = 4
-</code></pre></div>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>mov $0x4,%eax
-callq &lt;variadic_observer&gt;
-</code></pre></div>
-<h3 id="meaning">Meaning<a class="headerlink" href="#meaning" title="Permanent link">&para;</a></h3>
-<p>4 doubles → XMM0–XMM3 used → <code>%al = 4</code></p>
-<p>Confirmed in both <code>-O0</code> and <code>-O2</code>.</p>
-<hr />
-<h2 id="integer-variadic-call">Integer Variadic Call<a class="headerlink" href="#integer-variadic-call" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">variadic_observer</span><span class="p">(</span><span class="s">&quot;u&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mh">0xA</span><span class="p">,</span><span class="w"> </span><span class="mh">0xB</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC</span><span class="p">,</span><span class="w"> </span><span class="mh">0xD</span><span class="p">);</span>
-</code></pre></div>
-<p>Entry snapshot:</p>
-<div class="highlight"><pre><span></span><code>rdx = 0xA
-rcx = 0xB
-r8  = 0xC
-r9  = 0xD
-al  = 0
-</code></pre></div>
-<p>Call site:</p>
-<div class="highlight"><pre><span></span><code>xor %eax,%eax
-callq &lt;variadic_observer&gt;
-</code></pre></div>
-<h3 id="meaning_1">Meaning<a class="headerlink" href="#meaning_1" title="Permanent link">&para;</a></h3>
-<p>No floating-point registers used → <code>%al = 0</code></p>
-<hr />
-<h1 id="stack-alignment">Stack Alignment<a class="headerlink" href="#stack-alignment" title="Permanent link">&para;</a></h1>
-<p>All entry snapshots show:</p>
-<div class="highlight"><pre><span></span><code>rsp % 16 = 8
-</code></pre></div>
-<p>Explanation:</p>
+<h2 id="why-this-happens">Why This Happens<a class="headerlink" href="#why-this-happens" title="Permanent link">&para;</a></h2>
+<p>Modern CPUs fetch memory in <strong>cache-line units</strong> (typically 64 bytes).</p>
+<p>Sequential traversal:</p>
 <ul>
-<li>Caller ensures 16-byte alignment before <code>call</code></li>
-<li><code>call</code> pushes return address (8 bytes)</li>
-<li>Callee sees <code>%rsp % 16 == 8</code></li>
+<li>uses most of each cache line</li>
+<li>allows prefetchers to detect patterns</li>
 </ul>
-<p>Correct SysV behavior.</p>
-<hr />
-<h1 id="optimization-effects-o2">Optimization Effects (-O2)<a class="headerlink" href="#optimization-effects-o2" title="Permanent link">&para;</a></h1>
-<p>Under <code>-O2</code>:</p>
+<p>Random traversal:</p>
 <ul>
-<li>Fewer spills</li>
-<li>Reordered instructions</li>
-<li>More direct register usage</li>
-</ul>
-<p>But unchanged:</p>
-<ul>
-<li>Register argument rules</li>
-<li>Stack passing for argument 7+</li>
-<li>sret mechanism</li>
-<li><code>%al</code> semantics</li>
-<li>Stack alignment rule</li>
-</ul>
-<p>Optimization changes code shape — not ABI contract.</p>
-<hr />
-<h1 id="final-summary">Final Summary<a class="headerlink" href="#final-summary" title="Permanent link">&para;</a></h1>
-<p>We verified the System V AMD64 ABI through direct binary inspection:</p>
-<ul>
-<li>6 integer registers, then stack</li>
-<li>Large struct return via hidden pointer (sret)</li>
-<li><code>%al</code> encodes XMM usage in variadic calls</li>
-<li>Stack alignment invariant preserved</li>
-<li><code>-O2</code> preserves ABI semantics</li>
+<li>wastes cache lines</li>
+<li>prevents prefetch prediction</li>
+<li>exposes full DRAM latency</li>
 </ul>
 <hr />
-<h2 id="next-directions">Next Directions<a class="headerlink" href="#next-directions" title="Permanent link">&para;</a></h2>
-<p>Possible extensions:</p>
-<ul>
-<li>Red zone behavior</li>
-<li>Callee-saved register corruption experiment</li>
-<li>Windows x64 ABI comparison</li>
-<li>Tail-call optimization effects</li>
-<li>Variadic + mixed FP/integer classification edge cases</li>
-</ul>
-<p>```</p>
+<h2 id="takeaway">Takeaway<a class="headerlink" href="#takeaway" title="Permanent link">&para;</a></h2>
+<p>Memory access patterns can dominate performance.</p>
+<p>Even when algorithms perform the same number of loads, sequential access may be <strong>several times faster</strong> than random access.</p>
+<p>Designing cache-friendly data structures and traversal patterns is therefore crucial for high-performance systems.</p>
 
 
 

@@ -28,6 +28,7 @@ nav:
                 - 00 Cache Line Effect: 02-memory-hierarchy/00-cache-line-effect.md
                 - 01 False Sharing: 02-memory-hierarchy/01-false-sharing.md
                 - 02 TLB Effect: 02-memory-hierarchy/02-tlb-effect.md
+                - 03 Prefetch and Locality: 02-memory-hierarchy/03-prefetch-and-locality.md
   - About: about.md
 
 markdown_extensions:
