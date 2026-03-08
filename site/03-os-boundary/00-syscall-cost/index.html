@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../02-tlb-effect/">
+        <link rel="prev" href="../../02-memory-hierarchy/03-prefetch-and-locality/">
       
       
-        <link rel="next" href="../../03-os-boundary/00-syscall-cost/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>03 Prefetch and Locality - systems-behavior-lab</title>
+        <title>00 Syscall Cost - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#03-prefetch-and-locality" class="md-skip">
+        <a href="#00-syscall-cost" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03 Prefetch and Locality
+              00 Syscall Cost
             
           </span>
         </div>
@@ -612,8 +612,6 @@
                 
   
   
-    
-  
   
   
     
@@ -623,11 +621,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -648,7 +646,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -666,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-cache-line-effect/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
         
   
   
@@ -694,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-false-sharing/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
         
   
   
@@ -722,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-tlb-effect/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/02-tlb-effect/" class="md-nav__link">
         
   
   
@@ -747,19 +745,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/03-prefetch-and-locality/" class="md-nav__link">
         
   
   
@@ -775,7 +764,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -793,6 +781,8 @@
                 
   
   
+    
+  
   
   
     
@@ -802,11 +792,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -827,7 +817,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -842,10 +832,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../03-os-boundary/00-syscall-cost/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -861,6 +860,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -928,253 +928,190 @@
   
 
 
-<h1 id="03-prefetch-and-locality">03-prefetch-and-locality<a class="headerlink" href="#03-prefetch-and-locality" title="Permanent link">&para;</a></h1>
-<p>Modern CPUs rely heavily on <strong>spatial locality</strong> and <strong>hardware prefetching</strong> to hide memory latency.</p>
-<p>This experiment demonstrates how <strong>memory access patterns</strong> influence performance even when the total number of memory loads is identical.</p>
-<p>We compare two traversal patterns:</p>
-<ul>
-<li><strong>Sequential traversal</strong></li>
-<li><strong>Random traversal</strong></li>
-</ul>
-<p>Both patterns access the <strong>same memory locations</strong>, but in different orders.</p>
+<h1 id="00-syscall-cost">00-syscall-cost<a class="headerlink" href="#00-syscall-cost" title="Permanent link">&para;</a></h1>
+<p>Modern software frequently interacts with the operating system through <strong>system calls (syscalls)</strong>.<br />
+Although syscalls provide essential services such as file I/O, process management, and networking, they require crossing the <strong>user–kernel boundary</strong>, which introduces non-trivial overhead.</p>
+<p>This experiment measures the cost of a minimal syscall and compares it with normal user-space execution.</p>
 <hr />
-<h1 id="experiment-setup">Experiment Setup<a class="headerlink" href="#experiment-setup" title="Permanent link">&para;</a></h1>
-<p>The benchmark iterates over a large array while varying:</p>
+<h1 id="why-measure-system-call-cost">Why Measure System Call Cost?<a class="headerlink" href="#why-measure-system-call-cost" title="Permanent link">&para;</a></h1>
+<p>User-space code runs in <strong>unprivileged mode</strong>, while the operating system runs in <strong>kernel mode</strong>.</p>
+<p>A system call must perform the following steps:</p>
+<ol>
+<li>Switch from user mode to kernel mode</li>
+<li>Execute kernel-side logic</li>
+<li>Return back to user mode</li>
+</ol>
+<p>Even when the kernel performs very little work, the privilege transition itself has a measurable cost.</p>
+<p>Understanding this cost is important for performance-sensitive systems because:</p>
 <ul>
-<li><strong>working set size</strong></li>
-<li><strong>stride size</strong></li>
-<li><strong>access order</strong></li>
+<li>Frequent syscalls can become a bottleneck</li>
+<li>Small I/O operations may suffer from syscall overhead</li>
+<li>High-performance systems often batch operations to reduce kernel interactions</li>
 </ul>
-<p>Working set sizes:</p>
+<hr />
+<h1 id="experiment-design">Experiment Design<a class="headerlink" href="#experiment-design" title="Permanent link">&para;</a></h1>
+<p>We compare four scenarios:</p>
 <table>
 <thead>
 <tr>
-<th>Size</th>
-<th>Region</th>
+<th>Mode</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>32KB</td>
-<td>L1-sized</td>
+<td>empty_loop</td>
+<td>Baseline loop overhead</td>
 </tr>
 <tr>
-<td>1MB</td>
-<td>L2/L3 region</td>
+<td>function_call</td>
+<td>Simple user-space function call</td>
 </tr>
 <tr>
-<td>64MB</td>
-<td>DRAM</td>
+<td>getpid_wrapper</td>
+<td>libc wrapper (<code>getpid()</code>)</td>
+</tr>
+<tr>
+<td>direct_syscall_getpid</td>
+<td>direct syscall (<code>syscall(SYS_getpid)</code>)</td>
 </tr>
 </tbody>
 </table>
-<p>Stride sizes:</p>
-<div class="highlight"><pre><span></span><code>8B → 4096B
-</code></pre></div>
-<p>Each configuration performs approximately <strong>64 million memory accesses</strong>.</p>
-<p>Metrics reported:</p>
-<ul>
-<li><strong>ns per access</strong></li>
-<li><strong>useful MiB/s</strong></li>
-</ul>
+<p>This allows us to isolate the cost of crossing the <strong>user–kernel boundary</strong>.</p>
+<hr />
+<h1 id="benchmark-configuration">Benchmark Configuration<a class="headerlink" href="#benchmark-configuration" title="Permanent link">&para;</a></h1>
+<p>iterations = 10,000,000
+repeats = 5
+CPU pinning = enabled
+clock source = CLOCK_MONOTONIC</p>
+<p>The benchmark measures:</p>
+<p>elapsed_ns
+ns_per_iter</p>
+<p>Results are stored in:</p>
+<p>artifacts/data/syscall_cost.csv</p>
 <hr />
 <h1 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h1>
-<h2 id="l1-sized-dataset-32kb">L1-sized dataset (32KB)<a class="headerlink" href="#l1-sized-dataset-32kb" title="Permanent link">&para;</a></h2>
-<p><img alt="prefetch" src="../plots/prefetch_32768.png" /></p>
-<h3 id="observation">Observation<a class="headerlink" href="#observation" title="Permanent link">&para;</a></h3>
-<p>Latency remains extremely low across all stride sizes.</p>
-<p>Sequential and random access perform almost identically.</p>
-<h3 id="explanation">Explanation<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
-<p>Because the dataset fits entirely inside <strong>L1 cache</strong>, most accesses are served from the fastest level of the memory hierarchy.</p>
-<p>In this regime:</p>
-<div class="highlight"><pre><span></span><code>memory access pattern has little effect
-</code></pre></div>
-<p>Latency is dominated by <strong>L1 cache access time</strong> rather than DRAM latency.</p>
+<p>Average values across 5 runs:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Mean (ns per iteration)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty_loop</td>
+<td>~0.23 ns</td>
+</tr>
+<tr>
+<td>function_call</td>
+<td>~0.54 ns</td>
+</tr>
+<tr>
+<td>getpid_wrapper</td>
+<td>~98 ns</td>
+</tr>
+<tr>
+<td>direct_syscall_getpid</td>
+<td>~99 ns</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h1 id="l2l3-region-1mb">L2/L3 region (1MB)<a class="headerlink" href="#l2l3-region-1mb" title="Permanent link">&para;</a></h1>
-<p><img alt="prefetch" src="../plots/prefetch_1048576.png" /></p>
-<h3 id="observation_1">Observation<a class="headerlink" href="#observation_1" title="Permanent link">&para;</a></h3>
-<p>Sequential traversal begins to outperform random access.</p>
-<p>Latency gradually increases as stride grows.</p>
-<h3 id="explanation_1">Explanation<a class="headerlink" href="#explanation_1" title="Permanent link">&para;</a></h3>
-<p>Once the dataset exceeds L1 capacity:</p>
+<h1 id="visualization">Visualization<a class="headerlink" href="#visualization" title="Permanent link">&para;</a></h1>
+<p><img alt="syscall cost" src="../plots/syscall_cost.png" /></p>
+<p>The figure shows the average cost per iteration.</p>
+<p>Two observations immediately stand out:</p>
 <ul>
-<li>cache-line reuse becomes important</li>
-<li>hardware prefetchers begin to matter</li>
+<li>User-space execution is extremely cheap</li>
+<li>Syscalls are roughly <strong>two orders of magnitude more expensive</strong></li>
 </ul>
-<p>Sequential traversal produces predictable access patterns that prefetchers can follow.</p>
-<p>Random access breaks that predictability and increases cache misses.</p>
 <hr />
-<h1 id="dram-scale-dataset-64mb">DRAM-scale dataset (64MB)<a class="headerlink" href="#dram-scale-dataset-64mb" title="Permanent link">&para;</a></h1>
-<p><img alt="prefetch" src="../plots/prefetch_67108864.png" /></p>
-<p>This working set exceeds the last-level cache and therefore reflects <strong>main memory behavior</strong>.</p>
-<p>Selected measurements:</p>
+<h1 id="key-observations">Key Observations<a class="headerlink" href="#key-observations" title="Permanent link">&para;</a></h1>
+<h2 id="1-user-space-execution-is-extremely-fast">1. User-space execution is extremely fast<a class="headerlink" href="#1-user-space-execution-is-extremely-fast" title="Permanent link">&para;</a></h2>
+<p>A simple function call costs roughly:</p>
+<p>~0.5 ns</p>
+<p>This corresponds to only a few CPU cycles.</p>
+<hr />
+<h2 id="2-system-calls-are-about-200-slower">2. System calls are about 200× slower<a class="headerlink" href="#2-system-calls-are-about-200-slower" title="Permanent link">&para;</a></h2>
+<p>A minimal syscall (<code>getpid</code>) costs approximately:</p>
+<p>~100 ns</p>
+<p>Relative cost:</p>
+<p>syscall / function_call ≈ 100 ns / 0.54 ns ≈ 185×</p>
+<p>Even the simplest syscall is roughly <strong>two orders of magnitude more expensive</strong> than a normal function call.</p>
+<hr />
+<h2 id="3-libc-wrapper-overhead-is-negligible">3. libc wrapper overhead is negligible<a class="headerlink" href="#3-libc-wrapper-overhead-is-negligible" title="Permanent link">&para;</a></h2>
+<p>Comparing:</p>
+<p>getpid()
+syscall(SYS_getpid)</p>
+<p>shows almost identical results.</p>
 <table>
 <thead>
 <tr>
-<th>Stride</th>
-<th>Seq (ns/access)</th>
-<th>Random (ns/access)</th>
+<th>Mode</th>
+<th>Mean ns</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>8B</td>
-<td>0.84</td>
-<td>13.91</td>
+<td>getpid_wrapper</td>
+<td>~98</td>
 </tr>
 <tr>
-<td>16B</td>
-<td>1.43</td>
-<td>12.39</td>
-</tr>
-<tr>
-<td>32B</td>
-<td>2.23</td>
-<td>11.20</td>
-</tr>
-<tr>
-<td>64B</td>
-<td>4.05</td>
-<td>20.72</td>
-</tr>
-<tr>
-<td>128B</td>
-<td>13.39</td>
-<td>23.93</td>
-</tr>
-<tr>
-<td>256B</td>
-<td>12.36</td>
-<td>29.37</td>
-</tr>
-<tr>
-<td>512B</td>
-<td>17.26</td>
-<td>22.17</td>
-</tr>
-<tr>
-<td>1024B</td>
-<td>11.26</td>
-<td>24.09</td>
-</tr>
-<tr>
-<td>2048B</td>
-<td>18.77</td>
-<td>26.07</td>
-</tr>
-<tr>
-<td>4096B</td>
-<td>26.85</td>
-<td>28.68</td>
+<td>direct syscall</td>
+<td>~99</td>
 </tr>
 </tbody>
 </table>
-<h3 id="key-observations">Key observations<a class="headerlink" href="#key-observations" title="Permanent link">&para;</a></h3>
-<p>Sequential access is dramatically faster for small strides.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code>stride = 8B
-
-sequential : 0.84 ns
-random     : 13.91 ns
-</code></pre></div>
-<p>This is roughly a <strong>16× difference</strong>.</p>
+<p>This indicates that the majority of the cost comes from the <strong>kernel boundary crossing</strong>, not from the libc wrapper.</p>
 <hr />
-<h1 id="why-sequential-access-is-faster">Why Sequential Access Is Faster<a class="headerlink" href="#why-sequential-access-is-faster" title="Permanent link">&para;</a></h1>
-<h2 id="spatial-locality">Spatial locality<a class="headerlink" href="#spatial-locality" title="Permanent link">&para;</a></h2>
-<p>Modern CPUs fetch memory in <strong>cache-line units</strong> (typically 64 bytes).</p>
-<p>Sequential traversal reuses most of each cache line:</p>
-<div class="highlight"><pre><span></span><code>A[i], A[i+1], A[i+2] ...
-</code></pre></div>
-<p>Random access often wastes most of the fetched cache line.</p>
+<h1 id="estimated-cpu-cycle-cost">Estimated CPU Cycle Cost<a class="headerlink" href="#estimated-cpu-cycle-cost" title="Permanent link">&para;</a></h1>
+<p>Assuming a CPU frequency of <strong>3–4 GHz</strong>:</p>
+<p>1 cycle ≈ 0.25–0.33 ns</p>
+<p>Therefore:</p>
+<p>100 ns ≈ 300–400 cycles</p>
+<p>This aligns well with commonly reported syscall entry/exit costs on modern x86 systems.</p>
 <hr />
-<h2 id="hardware-prefetching">Hardware prefetching<a class="headerlink" href="#hardware-prefetching" title="Permanent link">&para;</a></h2>
-<p>CPUs detect predictable access patterns.</p>
-<p>When accesses follow a regular pattern such as:</p>
-<div class="highlight"><pre><span></span><code>A[i]
-A[i + stride]
-A[i + 2*stride]
-</code></pre></div>
-<p>the hardware prefetcher can fetch future cache lines in advance.</p>
-<p>Random access destroys this predictability.</p>
+<h1 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h1>
+<p>Because syscalls are expensive relative to user-space operations, high-performance software often tries to:</p>
+<ul>
+<li>batch system calls</li>
+<li>buffer I/O operations</li>
+<li>avoid very small reads/writes</li>
+<li>minimize kernel transitions</li>
+</ul>
+<p>This principle is widely used in systems such as:</p>
+<ul>
+<li>high-performance web servers</li>
+<li>database engines</li>
+<li>networking stacks</li>
+</ul>
 <hr />
-<h1 id="interpreting-the-irregularities">Interpreting the Irregularities<a class="headerlink" href="#interpreting-the-irregularities" title="Permanent link">&para;</a></h1>
-<p>The sequential latency curve is <strong>not perfectly monotonic</strong>.</p>
-<p>Examples from the data:</p>
-<div class="highlight"><pre><span></span><code>stride=128B   → 13.39 ns
-stride=256B   → 12.36 ns
-stride=1024B  → 11.26 ns
-</code></pre></div>
-<p>These small fluctuations are expected.</p>
-<p>Several microarchitectural effects can cause this.</p>
+<h1 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h1>
+<p>This experiment measures a <strong>minimal syscall (<code>getpid</code>)</strong>.</p>
+<p>Real-world syscalls may involve additional overhead due to:</p>
+<ul>
+<li>disk I/O</li>
+<li>scheduler interactions</li>
+<li>memory allocation</li>
+<li>blocking operations</li>
+</ul>
+<p>Additionally, measurements may vary depending on:</p>
+<ul>
+<li>CPU frequency scaling</li>
+<li>background processes</li>
+<li>kernel version</li>
+<li>hardware architecture</li>
+</ul>
 <hr />
-<h2 id="stride-aware-hardware-prefetchers">Stride-aware hardware prefetchers<a class="headerlink" href="#stride-aware-hardware-prefetchers" title="Permanent link">&para;</a></h2>
-<p>Modern CPUs include <strong>stride-detecting prefetchers</strong>.</p>
-<p>Some stride values may trigger more effective prefetching than others.</p>
-<hr />
-<h2 id="memory-level-parallelism-mlp">Memory-Level Parallelism (MLP)<a class="headerlink" href="#memory-level-parallelism-mlp" title="Permanent link">&para;</a></h2>
-<p>Out-of-order CPUs can overlap multiple outstanding memory requests.</p>
-<p>Even when individual loads are slow, several can be processed concurrently.</p>
-<hr />
-<h2 id="dram-row-buffer-behavior">DRAM row buffer behavior<a class="headerlink" href="#dram-row-buffer-behavior" title="Permanent link">&para;</a></h2>
-<p>DRAM is organized around <strong>row buffers</strong>.</p>
-<p>Accesses that fall within the same DRAM row may experience slightly lower latency.</p>
-<hr />
-<h1 id="bandwidth-perspective">Bandwidth Perspective<a class="headerlink" href="#bandwidth-perspective" title="Permanent link">&para;</a></h1>
-<p>The bandwidth metric highlights the same effect.</p>
-<p>Example results:</p>
-<table>
-<thead>
-<tr>
-<th>Stride</th>
-<th>Seq (MiB/s)</th>
-<th>Random (MiB/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8B</td>
-<td>9096</td>
-<td>548</td>
-</tr>
-<tr>
-<td>16B</td>
-<td>5323</td>
-<td>615</td>
-</tr>
-<tr>
-<td>64B</td>
-<td>1880</td>
-<td>368</td>
-</tr>
-<tr>
-<td>128B</td>
-<td>569</td>
-<td>318</td>
-</tr>
-</tbody>
-</table>
-<p>Sequential traversal achieves dramatically higher bandwidth because each fetched cache line is used efficiently.</p>
-<p>Random traversal wastes most of the data fetched from memory.</p>
-<hr />
-<h1 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h1>
-<p><strong>1. Sequential traversal is critical for performance</strong></p>
-<p>Predictable access patterns allow hardware prefetchers to hide memory latency.</p>
-<hr />
-<p><strong>2. Random access exposes true memory latency</strong></p>
-<p>Without predictable patterns, most loads behave like cache misses.</p>
-<hr />
-<p><strong>3. Stride determines cache-line efficiency</strong></p>
-<p>Large strides waste bandwidth and reduce effective throughput.</p>
-<hr />
-<h1 id="final-insight">Final Insight<a class="headerlink" href="#final-insight" title="Permanent link">&para;</a></h1>
-<p>This experiment highlights an important systems principle:</p>
-<div class="highlight"><pre><span></span><code>algorithm complexity
-≠
-memory performance
-</code></pre></div>
-<p>Two algorithms performing the same number of loads can exhibit <strong>an order-of-magnitude performance difference</strong> purely due to memory access patterns.</p>
-<p>Understanding locality and prefetch behavior is therefore essential for designing high-performance systems and data structures.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>This experiment confirms a key systems performance insight:</p>
+<p>empty loop ≈ 0.2 ns
+function call ≈ 0.5 ns
+minimal syscall ≈ 100 ns</p>
+<p>Even the lightest system call is roughly <strong>two orders of magnitude more expensive</strong> than a typical user-space function call.</p>
+<p>The difference arises from the <strong>user–kernel privilege boundary</strong>, making syscall frequency a critical factor in performance-sensitive systems.</p>
 
 
 
