@@ -221,7 +221,3 @@ minimal syscall       ≈ 100 ns
 Thus, even the lightest system call is roughly **two orders of magnitude more expensive** than a typical user-space function call.
 
 This overhead originates from the **user–kernel privilege boundary**, making syscall frequency an important consideration in systems performance design.
-```
-
----
-

@@ -31,6 +31,7 @@ nav:
                 - 03 Prefetch and Locality: 02-memory-hierarchy/03-prefetch-and-locality.md
         - 03 OS Boundary:
                 - 00 Syscall Cost: 03-os-boundary/00-syscall-cost.md
+                - 01 Context Switch: 03-os-boundary/01-context-switch.md
   - About: about.md
 
 markdown_extensions:
