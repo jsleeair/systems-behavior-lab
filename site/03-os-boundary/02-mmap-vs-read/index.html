@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../00-elf-symbol-table/">
+        <link rel="prev" href="../01-context-switch/">
       
       
-        <link rel="next" href="../02-abi-and-calling-convention/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>01 Relocation Process - systems-behavior-lab</title>
+        <title>02 mmap vs read - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-relocation-process-from-object-to-executable" class="md-skip">
+        <a href="#02-mmap-vs-read-what-really-happens-at-the-os-boundary" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              01 Relocation Process
+              02 mmap vs read
             
           </span>
         </div>
@@ -471,8 +471,6 @@
                 
   
   
-    
-  
   
   
     
@@ -482,11 +480,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -507,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -525,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-elf-symbol-table/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
         
   
   
@@ -550,37 +548,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 Relocation Process
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
         
   
   
@@ -596,143 +567,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#experimental-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Experimental Setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-evidence-object-file-o" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Evidence: Object File (.o)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Evidence: Object File (.o)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binary-inspection-objdump-dr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Binary Inspection (objdump -dr)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-resolution-final-executable-aout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Resolution: Final Executable (a.out)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Resolution: Final Executable (a.out)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#relocation-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Relocation Mapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#root-cause-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Root-Cause Analysis
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Root-Cause Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-pc-relative-mathematics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The PC-Relative Mathematics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optimization-analysis-o0-vs-o2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optimization Analysis (-O0 vs -O2)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion-linkers-are-the-ultimate-patchers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion: "Linkers are the ultimate patchers"
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -745,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-abi-and-calling-convention/" class="md-nav__link">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
         
   
   
@@ -947,6 +781,8 @@
                 
   
   
+    
+  
   
   
     
@@ -956,11 +792,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -981,7 +817,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -999,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-os-boundary/00-syscall-cost/" class="md-nav__link">
+      <a href="../00-syscall-cost/" class="md-nav__link">
         
   
   
@@ -1027,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-os-boundary/01-context-switch/" class="md-nav__link">
+      <a href="../01-context-switch/" class="md-nav__link">
         
   
   
@@ -1052,10 +888,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../03-os-boundary/02-mmap-vs-read/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1071,6 +916,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1138,86 +984,312 @@
   
 
 
-<h1 id="01-relocation-process-from-object-to-executable">01-Relocation Process: From Object to Executable<a class="headerlink" href="#01-relocation-process-from-object-to-executable" title="Permanent link">&para;</a></h1>
-<p>In this lab, we investigate how the compiler and linker collaborate to handle symbols whose addresses are unknown at compile time. We focus on the <strong>Relocation</strong> mechanism in the x86_64 ELF format.</p>
+<h1 id="02-mmap-vs-read-what-really-happens-at-the-os-boundary">02-mmap-vs-read: What Really Happens at the OS Boundary<a class="headerlink" href="#02-mmap-vs-read-what-really-happens-at-the-os-boundary" title="Permanent link">&para;</a></h1>
+<p>Modern Unix systems provide two common ways to access file data:</p>
+<ul>
+<li><code>read()</code> — the traditional system call interface</li>
+<li><code>mmap()</code> — memory-mapped file access</li>
+</ul>
+<p>At first glance, both ultimately retrieve bytes from the same file.
+However, they follow <strong>very different execution paths through the operating system</strong>.</p>
+<p>This experiment investigates what happens when we scan a file using these two mechanisms, focusing on <strong>the cost of crossing the OS boundary</strong> rather than raw disk performance.</p>
 <hr />
-<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
-<p>We use two separate translation units to force an external symbol reference.</p>
-<p>"src/main.c"
-    <div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ext_var</span><span class="p">;</span>
-<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ext_func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">ext_func</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext_var</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p>"src/ext.c"
-    <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">ext_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">ext_func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Implementation</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<hr />
-<h2 id="the-evidence-object-file-o">The Evidence: Object File (<code>.o</code>)<a class="headerlink" href="#the-evidence-object-file-o" title="Permanent link">&para;</a></h2>
-<p>Before linking, the compiler leaves "holes" in the machine code.</p>
-<h3 id="binary-inspection-objdump-dr">Binary Inspection (<code>objdump -dr</code>)<a class="headerlink" href="#binary-inspection-objdump-dr" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>11: e8 00 00 00 00      callq  16 &lt;main+0x16&gt;  
-    12: R_X86_64_PLT32  ext_func-0x4
-</code></pre></div>
+<h1 id="the-core-question">The Core Question<a class="headerlink" href="#the-core-question" title="Permanent link">&para;</a></h1>
+<p>When reading file-backed data sequentially:</p>
 <blockquote>
-<p>[!IMPORTANT]
-<strong>Observation:</strong> The <code>callq</code> instruction is followed by <code>00 00 00 00</code>. This is the <strong>placeholder</strong>. The relocation entry <code>R_X86_64_PLT32</code> acts as a sticky note for the linker.</p>
+<p>Is it faster to repeatedly call <code>read()</code> or to map the file with <code>mmap()</code> and access it as memory?</p>
 </blockquote>
+<p>To answer this, we implemented a small benchmark comparing the two access paths.</p>
 <hr />
-<h2 id="the-resolution-final-executable-aout">The Resolution: Final Executable (<code>a.out</code>)<a class="headerlink" href="#the-resolution-final-executable-aout" title="Permanent link">&para;</a></h2>
-<p>After linking, the static linker (<code>ld</code>) "consumes" the relocation entries and patches the binary.</p>
-<h3 id="relocation-mapping">Relocation Mapping<a class="headerlink" href="#relocation-mapping" title="Permanent link">&para;</a></h3>
+<h1 id="two-ways-to-access-file-data">Two Ways to Access File Data<a class="headerlink" href="#two-ways-to-access-file-data" title="Permanent link">&para;</a></h1>
+<h2 id="read">read()<a class="headerlink" href="#read" title="Permanent link">&para;</a></h2>
+<p><code>read()</code> performs explicit system calls to transfer data from the kernel to a user buffer.</p>
+<div class="highlight"><pre><span></span><code>user code
+   │
+   ├─ read(fd, buf, size)
+   │
+kernel
+   │
+   ├─ locate page in page cache
+   ├─ copy data → user buffer
+   │
+user scans buffer
+</code></pre></div>
+<p>Key properties:</p>
+<ul>
+<li>repeated system calls</li>
+<li>kernel → user buffer copy</li>
+<li>explicit buffer management</li>
+</ul>
+<hr />
+<h2 id="mmap">mmap()<a class="headerlink" href="#mmap" title="Permanent link">&para;</a></h2>
+<p><code>mmap()</code> maps file pages directly into the process address space.</p>
+<div class="highlight"><pre><span></span><code>user code
+   │
+   ├─ mmap(file)
+   │
+kernel installs mapping
+   │
+user accesses memory
+   │
+page fault on first touch
+   │
+page cache page mapped
+</code></pre></div>
+<p>Key properties:</p>
+<ul>
+<li>mapping created once</li>
+<li>data accessed via normal memory loads</li>
+<li>first access may trigger a page fault</li>
+</ul>
+<hr />
+<h1 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h1>
+<p>Environment:</p>
+<ul>
+<li>Linux userspace</li>
+<li>x86_64 laptop CPU</li>
+<li>file size: <strong>256 MiB</strong></li>
+<li>sequential scan</li>
+<li>page stride: <strong>4096 bytes</strong></li>
+<li>samples per run: <strong>65536</strong></li>
+<li>iterations: <strong>5</strong></li>
+</ul>
+<p>Both access modes touch <strong>exactly the same offsets</strong> to ensure a fair comparison.</p>
+<p>We also sweep different <code>read()</code> buffer sizes:</p>
+<div class="highlight"><pre><span></span><code>4 KiB
+16 KiB
+64 KiB
+256 KiB
+1024 KiB
+</code></pre></div>
+<p>Measured metrics:</p>
+<ul>
+<li>elapsed time</li>
+<li>throughput</li>
+<li>time per sample</li>
+<li>page fault counters</li>
+</ul>
+<hr />
+<h1 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h1>
+<h2 id="time-per-sample">Time per Sample<a class="headerlink" href="#time-per-sample" title="Permanent link">&para;</a></h2>
+<p><img alt="time per sample" src="../plots/mmap_read_ns_per_sample.png" /></p>
+<p>Observations:</p>
+<ul>
+<li><code>read()</code> improves as buffer size increases</li>
+<li>performance stabilizes around <strong>64–256 KiB</strong></li>
+<li><code>mmap()</code> remains almost constant</li>
+</ul>
+<p>Approximate values:</p>
 <table>
 <thead>
 <tr>
-<th>Symbol</th>
-<th>Object File (.o)</th>
-<th>Executable (a.out)</th>
-<th>Status</th>
+<th>chunk</th>
+<th>read(ns/sample)</th>
+<th>mmap(ns/sample)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ext_func</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>2e 00 00 00</code></td>
-<td><strong>Patched</strong> (Static)</td>
+<td>4 KB</td>
+<td>~410</td>
+<td>~110</td>
 </tr>
 <tr>
-<td><code>ext_var</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>a8 2e 00 00</code></td>
-<td><strong>Patched</strong> (Static)</td>
+<td>16 KB</td>
+<td>~340</td>
+<td>~116</td>
 </tr>
 <tr>
-<td><code>printf</code></td>
-<td><code>00 00 00 00</code></td>
-<td><code>ca fe ff ff</code></td>
-<td><strong>Patched</strong> (Dynamic/PLT)</td>
+<td>64 KB</td>
+<td>~315</td>
+<td>~118</td>
+</tr>
+<tr>
+<td>256 KB</td>
+<td>~315</td>
+<td>~118</td>
+</tr>
+<tr>
+<td>1024 KB</td>
+<td>~340</td>
+<td>~116</td>
 </tr>
 </tbody>
 </table>
+<p>In this workload:</p>
+<div class="highlight"><pre><span></span><code>mmap ≈ 3× faster per sampled access
+</code></pre></div>
 <hr />
-<h2 id="root-cause-analysis">Root-Cause Analysis<a class="headerlink" href="#root-cause-analysis" title="Permanent link">&para;</a></h2>
-<h3 id="the-pc-relative-mathematics">The PC-Relative Mathematics<a class="headerlink" href="#the-pc-relative-mathematics" title="Permanent link">&para;</a></h3>
-<p>The linker calculates the displacement using the following formula:</p>
-<p>In our case, the addend of <strong>-4</strong> compensates for the fact that the <code>RIP</code> (Instruction Pointer) already points to the <em>next</em> instruction when the current one is being executed.</p>
-<h3 id="optimization-analysis-o0-vs-o2">Optimization Analysis (<code>-O0</code> vs <code>-O2</code>)<a class="headerlink" href="#optimization-analysis-o0-vs-o2" title="Permanent link">&para;</a></h3>
+<h2 id="throughput">Throughput<a class="headerlink" href="#throughput" title="Permanent link">&para;</a></h2>
+<p><img alt="throughput" src="../plots/mmap_read_throughput_mib_per_sec.png" /></p>
+<p>Measured throughput:</p>
+<table>
+<thead>
+<tr>
+<th>chunk</th>
+<th>read(MiB/s)</th>
+<th>mmap(MiB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 KB</td>
+<td>~9,500</td>
+<td>~35,000</td>
+</tr>
+<tr>
+<td>64 KB</td>
+<td>~12,000</td>
+<td>~33,000</td>
+</tr>
+<tr>
+<td>256 KB</td>
+<td>~12,200</td>
+<td>~33,500</td>
+</tr>
+</tbody>
+</table>
+<p>Important note:</p>
+<p>These numbers <strong>do not represent disk bandwidth</strong>.</p>
+<p>The file was already resident in the <strong>page cache</strong>, meaning this benchmark primarily measures:</p>
+<div class="highlight"><pre><span></span><code>memory bandwidth + kernel overhead
+</code></pre></div>
+<hr />
+<h2 id="elapsed-time">Elapsed Time<a class="headerlink" href="#elapsed-time" title="Permanent link">&para;</a></h2>
+<p><img alt="elapsed time" src="../plots/mmap_read_elapsed_ms.png" /></p>
+<p>Total scan time for the 256 MiB file:</p>
+<table>
+<thead>
+<tr>
+<th>chunk</th>
+<th>read(ms)</th>
+<th>mmap(ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 KB</td>
+<td>~27 ms</td>
+<td>~7 ms</td>
+</tr>
+<tr>
+<td>64 KB</td>
+<td>~21 ms</td>
+<td>~7.7 ms</td>
+</tr>
+<tr>
+<td>256 KB</td>
+<td>~21 ms</td>
+<td>~7.6 ms</td>
+</tr>
+</tbody>
+</table>
+<p>Overall:</p>
+<div class="highlight"><pre><span></span><code>mmap ≈ 2.7× faster
+</code></pre></div>
+<hr />
+<h1 id="perf-counter-analysis">perf Counter Analysis<a class="headerlink" href="#perf-counter-analysis" title="Permanent link">&para;</a></h1>
+<p>We collected page fault statistics using:</p>
+<div class="highlight"><pre><span></span><code>perf stat -e page-faults,minor-faults,major-faults
+</code></pre></div>
+<p>Results:</p>
+<div class="highlight"><pre><span></span><code>page-faults:   24638
+minor-faults:  24638
+major-faults:      0
+</code></pre></div>
+<p>Interpretation:</p>
 <ul>
-<li><strong>-O0</strong>: High relocation count. Every access is explicit.</li>
-<li><strong>-O2</strong>: More compact. The linker might use different relocation types if symbols are moved closer or optimized into registers.</li>
+<li>no major faults occurred</li>
+<li>the file was already cached in memory</li>
+<li>observed faults were minor mapping faults</li>
 </ul>
+<p>Therefore the benchmark was <strong>not disk-bound</strong>.</p>
+<p>Instead, it highlights the difference between two kernel execution paths:</p>
+<div class="highlight"><pre><span></span><code>read()
+  syscall
+  buffer copy
+
+mmap()
+  page mapping
+  memory load
+</code></pre></div>
 <hr />
-<h2 id="conclusion-linkers-are-the-ultimate-patchers">Conclusion: "Linkers are the ultimate patchers"<a class="headerlink" href="#conclusion-linkers-are-the-ultimate-patchers" title="Permanent link">&para;</a></h2>
-<p>The compiler is short-sighted; it only sees its own file. The linker is the architect that sees the whole map and fills in the blanks left by the compiler. Without <strong>Relocation</strong>, modular programming (multi-file projects) would be impossible.</p>
+<h1 id="why-read-depends-on-chunk-size">Why read() Depends on Chunk Size<a class="headerlink" href="#why-read-depends-on-chunk-size" title="Permanent link">&para;</a></h1>
+<p>Small buffers require more system calls.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>4 KiB buffer   → ~65536 read syscalls
+256 KiB buffer → ~1024 read syscalls
+</code></pre></div>
+<p>Larger buffers amortize syscall overhead, which explains the improvement between 4 KiB and 64 KiB.</p>
 <hr />
+<h1 id="why-mmap-is-stable">Why mmap() Is Stable<a class="headerlink" href="#why-mmap-is-stable" title="Permanent link">&para;</a></h1>
+<p>After the mapping is created, accesses become simple memory loads:</p>
+<div class="highlight"><pre><span></span><code>load instruction
+→ page table translation
+→ cached memory page
+</code></pre></div>
+<p>Buffer size has no effect because there is <strong>no repeated read call</strong>.</p>
+<hr />
+<h1 id="why-mmap-looks-faster-here">Why mmap Looks Faster Here<a class="headerlink" href="#why-mmap-looks-faster-here" title="Permanent link">&para;</a></h1>
+<p>Under warm-cache conditions the two paths behave like this:</p>
+<div class="highlight"><pre><span></span><code>read()
+  syscall
+  copy to user buffer
+  scan buffer
+
+mmap()
+  memory load
+  occasional minor fault
+</code></pre></div>
+<p>Avoiding repeated syscalls and explicit buffer copies gives <code>mmap()</code> an advantage.</p>
+<hr />
+<h1 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h1>
+<p>This experiment represents <strong>one specific workload</strong>:</p>
+<ul>
+<li>sequential scan</li>
+<li>page-stride sampling</li>
+<li>warm page cache</li>
+</ul>
+<p>Performance may change significantly when:</p>
+<ul>
+<li>the page cache is cold</li>
+<li>access patterns are random</li>
+<li>files are smaller</li>
+<li>the scan touches every byte</li>
+</ul>
+<p>For example, when the cache is cold:</p>
+<div class="highlight"><pre><span></span><code>mmap() may trigger major page faults
+</code></pre></div>
+<p>which can drastically change performance.</p>
+<hr />
+<h1 id="takeaway">Takeaway<a class="headerlink" href="#takeaway" title="Permanent link">&para;</a></h1>
+<p>The key lesson is not that one API is universally faster.</p>
+<p>Instead, the experiment reveals something deeper:</p>
+<blockquote>
+<p>File access APIs encode <strong>different interactions with the operating system</strong>.</p>
+</blockquote>
+<p>In this particular workload:</p>
+<div class="highlight"><pre><span></span><code>mmap ≈ 2.7× faster than read
+</code></pre></div>
+<p>because it avoids repeated system calls and explicit kernel-to-user copies.</p>
+<p>Understanding these differences helps explain why systems software sometimes prefers memory-mapped I/O — and why it isn't always the right choice.</p>
+<hr />
+<h1 id="source-code">Source Code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h1>
+<p>Full benchmark source code is available in the repository:</p>
+<div class="highlight"><pre><span></span><code>systems-behavior-lab
+└── 03-os-boundary
+    └── 02-mmap-vs-read
+</code></pre></div>
+<hr />
+<h1 id="next-experiments">Next Experiments<a class="headerlink" href="#next-experiments" title="Permanent link">&para;</a></h1>
+<p>Future extensions of this lab:</p>
+<ul>
+<li>cold page cache measurements</li>
+<li>random access patterns</li>
+<li>dense scans (touch every byte)</li>
+<li>measuring major page faults</li>
+</ul>
+<p>These variations help reveal how storage, memory, and the OS interact under different workloads.</p>
 
 
 
