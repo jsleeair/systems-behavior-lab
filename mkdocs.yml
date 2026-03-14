@@ -36,6 +36,7 @@ nav:
                 - 03 copy on write: 03-os-boundary/03-copy-on-write.md
         - 04 Concurrency:
                 - 00 Mutex vs Spinloc: 04-concurrency/00-mutex-vs-spinlock.md
+                - 01 Memory Ordering: 04-concurrency/01-memory-ordering.md
   - About: about.md
 
 markdown_extensions:

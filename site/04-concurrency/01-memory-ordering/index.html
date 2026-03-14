@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../01-symbol-resolution/02-abi-and-calling-convention/">
+        <link rel="prev" href="../00-mutex-vs-spinlock/">
       
       
-        <link rel="next" href="../01-false-sharing/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>00 Cache Line Effect - systems-behavior-lab</title>
+        <title>01 Memory Ordering - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#00-cache-line-effect-measuring-spatial-locality" class="md-skip">
+        <a href="#01-memory-ordering-and-the-store-buffering-experiment" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              00 Cache Line Effect
+              01 Memory Ordering
             
           </span>
         </div>
@@ -612,8 +612,6 @@
                 
   
   
-    
-  
   
   
     
@@ -623,11 +621,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -648,7 +646,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -663,37 +661,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    00 Cache Line Effect
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
         
   
   
@@ -709,176 +680,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#experimental-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Experimental Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Experimental Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useful-throughput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Useful Throughput
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traffic-throughput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Traffic Throughput
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-observation-at-stride-64-bytes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Observation at Stride = 64 Bytes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interpretation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Interpretation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Interpretation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cache-line-utilization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cache-Line Utilization
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visual-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visual Analysis
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Visual Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useful-throughput_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Useful Throughput
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cache-line-utilization_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cache Line Utilization
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limitations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -891,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-false-sharing/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
         
   
   
@@ -919,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-tlb-effect/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/02-tlb-effect/" class="md-nav__link">
         
   
   
@@ -947,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-prefetch-and-locality/" class="md-nav__link">
+      <a href="../../02-memory-hierarchy/03-prefetch-and-locality/" class="md-nav__link">
         
   
   
@@ -1149,6 +950,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1158,11 +961,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -1183,7 +986,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1201,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-concurrency/00-mutex-vs-spinlock/" class="md-nav__link">
+      <a href="../00-mutex-vs-spinlock/" class="md-nav__link">
         
   
   
@@ -1226,10 +1029,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../04-concurrency/01-memory-ordering/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1245,6 +1057,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1312,111 +1125,222 @@
   
 
 
-<h1 id="00-cache-line-effect-measuring-spatial-locality">00-Cache Line Effect: Measuring Spatial Locality<a class="headerlink" href="#00-cache-line-effect-measuring-spatial-locality" title="Permanent link">&para;</a></h1>
-<p>This lab investigates how memory is transferred at cache-line granularity and how spatial locality affects performance.</p>
-<p>We experimentally compare two access patterns:</p>
+<h1 id="01-memory-ordering-and-the-store-buffering-experiment">01-memory-ordering and the Store Buffering Experiment<a class="headerlink" href="#01-memory-ordering-and-the-store-buffering-experiment" title="Permanent link">&para;</a></h1>
+<p>Modern multi-core processors do not guarantee that memory operations appear to other threads in the same order they are written in the program.</p>
+<p>This experiment explores <strong>memory ordering effects</strong> using the classic <strong>Store Buffering (SB) litmus test</strong> and compares three C11 atomic memory orders:</p>
 <ul>
-<li><strong>Sparse</strong>: touch 1 byte per step</li>
-<li><strong>Dense</strong>: touch 64 bytes per step (full cache-line utilization)</li>
+<li><code>memory_order_relaxed</code></li>
+<li><code>memory_order_acq_rel</code></li>
+<li><code>memory_order_seq_cst</code></li>
 </ul>
+<p>The goal is to observe how different memory orders affect the visibility of memory operations across threads.</p>
 <hr />
-<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Working set size: <strong>8 MB</strong></li>
-<li>Repetitions: <strong>16</strong></li>
-<li>Flush policy: <code>once</code></li>
-<li>Compiler flags: <code>-O2 -march=native</code></li>
-<li>Assumed cache line size: <strong>64 bytes</strong></li>
-</ul>
-<p>Two throughput metrics are measured:</p>
-<h3 id="useful-throughput">Useful Throughput<a class="headerlink" href="#useful-throughput" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>useful_GBps = bytes_touched / elapsed_time
+<h1 id="the-store-buffering-litmus-test">The Store Buffering Litmus Test<a class="headerlink" href="#the-store-buffering-litmus-test" title="Permanent link">&para;</a></h1>
+<p>The test uses two shared variables initialized to zero.</p>
+<div class="highlight"><pre><span></span><code>x = 0
+y = 0
 </code></pre></div>
-<p>Represents the actual bytes accessed by the program.</p>
-<h3 id="traffic-throughput">Traffic Throughput<a class="headerlink" href="#traffic-throughput" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>traffic_GBps = estimated_cacheline_bytes / elapsed_time
+<p>Two threads execute the following code concurrently.</p>
+<p>Thread 0</p>
+<div class="highlight"><pre><span></span><code>x = 1
+r0 = y
 </code></pre></div>
-<p>Represents memory movement at cache-line granularity.</p>
-<p>Additionally:</p>
-<div class="highlight"><pre><span></span><code>utilization = useful_GBps / traffic_GBps
+<p>Thread 1</p>
+<div class="highlight"><pre><span></span><code>y = 1
+r1 = x
 </code></pre></div>
-<p>This approximates how efficiently each fetched cache line is used.</p>
-<hr />
-<h2 id="key-observation-at-stride-64-bytes">Key Observation at Stride = 64 Bytes<a class="headerlink" href="#key-observation-at-stride-64-bytes" title="Permanent link">&para;</a></h2>
-<p>At stride = 64 bytes, each access aligns with a cache-line boundary.</p>
+<p>Possible results:</p>
 <table>
 <thead>
 <tr>
-<th>stride</th>
-<th>mode</th>
-<th>useful_GBps</th>
-<th>traffic_GBps</th>
-<th>utilization</th>
+<th>r0</th>
+<th>r1</th>
+<th>meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>64</td>
-<td>dense</td>
-<td>3.588</td>
-<td>3.588</td>
-<td>1.000</td>
+<td>0</td>
+<td>0</td>
+<td>both threads missed the other's store</td>
 </tr>
 <tr>
-<td>64</td>
-<td>sparse</td>
-<td>0.683</td>
-<td>43.702</td>
-<td>0.015625</td>
+<td>0</td>
+<td>1</td>
+<td>thread1 store observed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>thread0 store observed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>both stores observed</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="interpretation">Interpretation<a class="headerlink" href="#interpretation" title="Permanent link">&para;</a></h2>
-<h3 id="cache-line-utilization">Cache-Line Utilization<a class="headerlink" href="#cache-line-utilization" title="Permanent link">&para;</a></h3>
-<p>Sparse mode:</p>
-<div class="highlight"><pre><span></span><code>utilization ≈ 0.015625 ≈ 1 / 64
+<p>The surprising case is:</p>
+<div class="highlight"><pre><span></span><code>r0 = 0
+r1 = 0
 </code></pre></div>
-<p>This means:
-- Each 64-byte cache line fetch provides only 1 useful byte.
-- 63 bytes are fetched but unused.</p>
-<p>Dense mode:</p>
-<div class="highlight"><pre><span></span><code>utilization ≈ 1.0
-</code></pre></div>
-<p>This means:
-- The entire cache line is used.
-- No spatial locality is wasted.</p>
+<p>This means both loads occurred <strong>before the other core's store became visible</strong>.</p>
+<p>This behavior arises due to <strong>store buffers</strong> in modern CPUs.</p>
 <hr />
-<h2 id="visual-analysis">Visual Analysis<a class="headerlink" href="#visual-analysis" title="Permanent link">&para;</a></h2>
-<h3 id="useful-throughput_1">Useful Throughput<a class="headerlink" href="#useful-throughput_1" title="Permanent link">&para;</a></h3>
-<p><img alt="Useful Throughput" src="../plots/stride_useful.png" /></p>
-<h3 id="cache-line-utilization_1">Cache Line Utilization<a class="headerlink" href="#cache-line-utilization_1" title="Permanent link">&para;</a></h3>
-<p><img alt="Cache Line Utilization" src="../plots/stride_utilization.png" /></p>
-<p>The vertical line at 64 bytes highlights the cache-line boundary.</p>
-<p>We observe a sharp divergence between sparse and dense modes at this point.</p>
-<hr />
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>This experiment empirically demonstrates:</p>
-<ol>
-<li>Memory is transferred in fixed-size cache-line units (≈64 bytes).</li>
-<li>Sparse access patterns waste most of each fetched cache line.</li>
-<li>Dense access patterns fully utilize each cache line.</li>
-<li>Measured utilization closely matches <code>1 / cache_line_size</code>.</li>
-</ol>
-<p>The results provide strong experimental evidence of cache-line granularity and the impact of spatial locality.</p>
-<hr />
-<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<h1 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Cache line size was assumed to be 64 bytes.</li>
-<li>Prefetching may influence small-stride behavior.</li>
-<li>Traffic estimation for stride &lt; 64 is a lower-bound approximation.</li>
-<li>CPU frequency scaling and background load may introduce noise.</li>
+<li>Platform: x86_64</li>
+<li>Compiler: GCC</li>
+<li>Threads: 2</li>
+<li>Iterations per run: 200000</li>
+<li>Warmup iterations: 5000</li>
+</ul>
+<p>Each memory ordering mode was executed multiple times.</p>
+<hr />
+<h1 id="both-zero-outcome">Both-Zero Outcome<a class="headerlink" href="#both-zero-outcome" title="Permanent link">&para;</a></h1>
+<p>The key metric is how often the <strong>both-zero</strong> result occurs.</p>
+<p><img alt="both-zero" src="../plots/both_zero_by_mode.png" /></p>
+<p>Average counts per run:</p>
+<table>
+<thead>
+<tr>
+<th>mode</th>
+<th>avg both-zero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>relaxed</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>acqrel</td>
+<td>7.2</td>
+</tr>
+<tr>
+<td>seqcst</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Observations:</p>
+<ul>
+<li><code>relaxed</code> frequently produces the both-zero outcome</li>
+<li><code>acqrel</code> also allows the both-zero outcome</li>
+<li><code>seqcst</code> completely eliminates it</li>
+</ul>
+<p>This confirms that:</p>
+<blockquote>
+<p>acquire-release ordering alone does not prevent store-buffering reordering, while sequential consistency does.</p>
+</blockquote>
+<hr />
+<h1 id="outcome-distribution">Outcome Distribution<a class="headerlink" href="#outcome-distribution" title="Permanent link">&para;</a></h1>
+<p><img alt="outcome-ratio" src="../plots/outcome_ratio_by_mode.png" /></p>
+<p>Most executions produce:</p>
+<div class="highlight"><pre><span></span><code>01
+10
+</code></pre></div>
+<p>meaning one thread observes the other's store.</p>
+<p>The <code>00</code> outcome is rare because it requires a precise timing window where both loads occur before the other store becomes visible.</p>
+<hr />
+<h1 id="runtime-cost">Runtime Cost<a class="headerlink" href="#runtime-cost" title="Permanent link">&para;</a></h1>
+<p>Stronger ordering can introduce performance overhead.</p>
+<p><img alt="runtime" src="../plots/ns_per_trial_by_mode.png" /></p>
+<p>Average runtime:</p>
+<table>
+<thead>
+<tr>
+<th>mode</th>
+<th>ns per trial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>relaxed</td>
+<td>~60780</td>
+</tr>
+<tr>
+<td>acqrel</td>
+<td>~61100</td>
+</tr>
+<tr>
+<td>seqcst</td>
+<td>~61200</td>
+</tr>
+</tbody>
+</table>
+<p>Sequential consistency is slightly slower due to additional ordering constraints.</p>
+<hr />
+<h1 id="what-the-compiler-actually-generates">What the Compiler Actually Generates<a class="headerlink" href="#what-the-compiler-actually-generates" title="Permanent link">&para;</a></h1>
+<p>Disassembling the binary reveals how each memory order is implemented.</p>
+<h2 id="relaxed">Relaxed<a class="headerlink" href="#relaxed" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov [x],1
+mov eax,[y]
+</code></pre></div>
+<p>No ordering constraints are emitted.</p>
+<hr />
+<h2 id="acquire-release">Acquire / Release<a class="headerlink" href="#acquire-release" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov [x],1
+mov eax,[y]
+</code></pre></div>
+<p>On x86, acquire and release semantics are already guaranteed by the architecture, so the compiler emits the same instructions as relaxed.</p>
+<hr />
+<h2 id="sequential-consistency">Sequential Consistency<a class="headerlink" href="#sequential-consistency" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov [x],1
+mfence
+mov eax,[y]
+</code></pre></div>
+<p>The <code>mfence</code> instruction enforces a <strong>full memory barrier</strong>, preventing the store→load reordering responsible for the both-zero outcome.</p>
+<hr />
+<h1 id="why-acquirerelease-does-not-prevent-this">Why Acquire/Release Does Not Prevent This<a class="headerlink" href="#why-acquirerelease-does-not-prevent-this" title="Permanent link">&para;</a></h1>
+<p>Acquire-release ordering only establishes a synchronization relationship when the same atomic variable is used:</p>
+<div class="highlight"><pre><span></span><code>store_release(A)
+load_acquire(A)
+</code></pre></div>
+<p>In this experiment:</p>
+<div class="highlight"><pre><span></span><code>Thread0 writes x then reads y
+Thread1 writes y then reads x
+</code></pre></div>
+<p>Since the synchronization chain is broken, the both-zero outcome remains possible.</p>
+<hr />
+<h1 id="why-sequential-consistency-prevents-it">Why Sequential Consistency Prevents It<a class="headerlink" href="#why-sequential-consistency-prevents-it" title="Permanent link">&para;</a></h1>
+<p>Sequential consistency requires all atomic operations to appear in a <strong>single global order</strong> that respects program order.</p>
+<p>Under this constraint the following ordering cannot occur:</p>
+<div class="highlight"><pre><span></span><code>T0: load y
+T1: load x
+T0: store x
+T1: store y
+</code></pre></div>
+<p>Therefore the <code>00</code> result becomes impossible.</p>
+<hr />
+<h1 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h1>
+<p>This experiment highlights three important facts about memory ordering.</p>
+<ol>
+<li>
+<p><strong>Relaxed atomics allow weak memory behaviors such as store buffering.</strong></p>
+</li>
+<li>
+<p><strong>Acquire-release ordering does not automatically prevent reordering unless a synchronization chain is formed.</strong></p>
+</li>
+<li>
+<p><strong>Sequential consistency enforces a stronger global order and eliminates the store-buffering outcome.</strong></p>
+</li>
+</ol>
+<p>Disassembly confirms that:</p>
+<ul>
+<li><code>relaxed</code> and <code>acqrel</code> compile to identical instructions on x86</li>
+<li><code>seq_cst</code> introduces a memory fence</li>
+</ul>
+<p>The experimental results directly reflect the underlying hardware memory model.</p>
+<hr />
+<h1 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Sewell et al., <em>x86-TSO: A Rigorous and Usable Programmer's Model for x86 Multiprocessors</em></li>
+<li>C11 Atomic Memory Model</li>
+<li>Intel® 64 Architecture Memory Ordering</li>
 </ul>
 <hr />
-<h2 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link">&para;</a></h2>
-<p>Source code and full benchmark data are available in:</p>
-<div class="highlight"><pre><span></span><code>02-memory-hierarchy/00-cache-line-effect
-</code></pre></div>
 
 
 
