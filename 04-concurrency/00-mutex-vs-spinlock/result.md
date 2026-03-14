@@ -30,12 +30,11 @@ Compiler: `gcc -O2`
 
 Benchmark structure:
 
-```
-
 for each iteration:
+
+```
 outside_work()
 
-```
 lock()
 
 critical_section_work()
@@ -43,6 +42,7 @@ critical_section_work()
 shared_counter++
 
 unlock()
+
 ```
 
 Parameters swept:
