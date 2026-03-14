@@ -34,6 +34,8 @@ nav:
                 - 01 Context Switch: 03-os-boundary/01-context-switch.md
                 - 02 mmap vs read: 03-os-boundary/02-mmap-vs-read.md
                 - 03 copy on write: 03-os-boundary/03-copy-on-write.md
+        - 04 Concurrency:
+                - 00 Mutex vs Spinloc: 04-concurrency/00-mutex-vs-spinlock.md
   - About: about.md
 
 markdown_extensions:
