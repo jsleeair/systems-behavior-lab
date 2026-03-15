@@ -37,6 +37,7 @@ nav:
         - 04 Concurrency:
                 - 00 Mutex vs Spinloc: 04-concurrency/00-mutex-vs-spinlock.md
                 - 01 Memory Ordering: 04-concurrency/01-memory-ordering.md
+                - 02 Lock Contention: 04-concurrency/02-lock-contention.md
   - About: about.md
 
 markdown_extensions:

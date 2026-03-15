@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../00-syscall-cost/">
+        <link rel="prev" href="../01-memory-ordering/">
       
       
-        <link rel="next" href="../02-mmap-vs-read/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>01 Context Switch - systems-behavior-lab</title>
+        <title>02 Lock Contention - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-context-switch" class="md-skip">
+        <a href="#02-lock-contention-when-more-threads-make-things-slower" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              01 Context Switch
+              02 Lock Contention
             
           </span>
         </div>
@@ -781,8 +781,6 @@
                 
   
   
-    
-  
   
   
     
@@ -792,11 +790,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -817,7 +815,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -835,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-syscall-cost/" class="md-nav__link">
+      <a href="../../03-os-boundary/00-syscall-cost/" class="md-nav__link">
         
   
   
@@ -843,6 +841,205 @@
     
   
     00 Syscall Cost
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/01-context-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Context Switch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/02-mmap-vs-read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 mmap vs read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/03-copy-on-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 copy on write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-mutex-vs-spinlock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Mutex vs Spinloc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-memory-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Memory Ordering
   
 
     
@@ -879,204 +1076,6 @@
   <span class="md-ellipsis">
     
   
-    01 Context Switch
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-mmap-vs-read/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 mmap vs read
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-copy-on-write/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 copy on write
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 Concurrency
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    04 Concurrency
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-concurrency/00-mutex-vs-spinlock/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    00 Mutex vs Spinloc
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-concurrency/01-memory-ordering/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 Memory Ordering
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-concurrency/02-lock-contention/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
     02 Lock Contention
   
 
@@ -1086,6 +1085,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1153,187 +1153,235 @@
   
 
 
-<h1 id="01-context-switch">01-context-switch<a class="headerlink" href="#01-context-switch" title="Permanent link">&para;</a></h1>
-<h1 id="context-switch-cost">Context Switch Cost<a class="headerlink" href="#context-switch-cost" title="Permanent link">&para;</a></h1>
-<p>In this lab we measure the latency of <strong>process hand-offs across the operating system boundary</strong>.</p>
-<p>Modern systems constantly switch execution between tasks:</p>
-<ul>
-<li>processes</li>
-<li>threads</li>
-<li>kernel tasks</li>
-<li>interrupt handlers</li>
-</ul>
-<p>Each transition requires a <strong>context switch</strong>, where the scheduler suspends one task and resumes another.</p>
-<p>Understanding the cost of this operation is fundamental to systems performance.</p>
+<h1 id="02-lock-contention-when-more-threads-make-things-slower">02-lock-contention: When More Threads Make Things Slower<a class="headerlink" href="#02-lock-contention-when-more-threads-make-things-slower" title="Permanent link">&para;</a></h1>
+<p>Modern CPUs have many cores, so it is tempting to assume that simply adding more threads will increase performance.<br />
+However, this assumption quickly breaks down when threads compete for shared resources.</p>
+<p>One of the most common bottlenecks in concurrent systems is <strong>lock contention</strong>.</p>
+<p>This experiment investigates how a shared mutex behaves when multiple threads repeatedly acquire and release it.</p>
 <hr />
-<h1 id="experiment-goal">Experiment Goal<a class="headerlink" href="#experiment-goal" title="Permanent link">&para;</a></h1>
-<p>The goal of this experiment is to estimate the latency of a context switch.</p>
-<p>We approximate this cost using a <strong>ping-pong benchmark</strong> between two processes.</p>
-<div class="highlight"><pre><span></span><code>parent → child → parent
+<h1 id="the-problem-shared-locks">The Problem: Shared Locks<a class="headerlink" href="#the-problem-shared-locks" title="Permanent link">&para;</a></h1>
+<p>Consider a simple shared counter protected by a mutex.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+<span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </code></pre></div>
-<p>Each round-trip involves two scheduler hand-offs:</p>
-<ol>
-<li>parent blocks and child wakes up</li>
-<li>child blocks and parent wakes up</li>
-</ol>
-<p>Therefore we estimate:</p>
-<div class="highlight"><pre><span></span><code>context_switch_cost ≈ roundtrip_latency / 2
-</code></pre></div>
-<p>This estimate includes additional overhead such as:</p>
-<ul>
-<li>pipe syscall cost</li>
-<li>scheduler wakeup latency</li>
-<li>cache and TLB effects</li>
-</ul>
+<p>If multiple threads repeatedly execute this code, they must <strong>serialize access</strong> to the counter.</p>
+<p>Even on a multi-core machine, only <strong>one thread can hold the lock at a time</strong>.</p>
+<p>This creates a <strong>scalability bottleneck</strong>.</p>
 <hr />
-<h1 id="benchmark-design">Benchmark Design<a class="headerlink" href="#benchmark-design" title="Permanent link">&para;</a></h1>
-<p>The benchmark uses two pipes to exchange a single byte between a parent and child process.</p>
-<div class="highlight"><pre><span></span><code>## Parent                      Child
+<h1 id="experimental-design">Experimental Design<a class="headerlink" href="#experimental-design" title="Permanent link">&para;</a></h1>
+<p>Each worker thread repeatedly executes the following loop:</p>
+<div class="highlight"><pre><span></span><code>lock(mutex)
+    do cs_work
+    shared_counter++
+unlock(mutex)
 
-write(pipe)
-read(pipe)
-write(pipe)
-read(pipe)
+do outside_work
 </code></pre></div>
-<p>Execution flow:</p>
-<div class="highlight"><pre><span></span><code>parent write
-child wakeup
-child write
-parent wakeup
+<p>Parameters we vary:</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>threads</code></td>
+<td>number of worker threads</td>
+</tr>
+<tr>
+<td><code>cs_work</code></td>
+<td>work inside the critical section</td>
+</tr>
+<tr>
+<td><code>outside_work</code></td>
+<td>work outside the lock</td>
+</tr>
+</tbody>
+</table>
+<p>Each thread performs:</p>
+<div class="highlight"><pre><span></span><code>1,000,000 lock acquisitions
 </code></pre></div>
-<p>This pattern forces the scheduler to alternate execution between the two processes.</p>
+<p>Metrics collected:</p>
+<ul>
+<li>elapsed time</li>
+<li>ns/op</li>
+<li>throughput (Mops/s)</li>
+</ul>
 <hr />
-<h1 id="experimental-environment">Experimental Environment<a class="headerlink" href="#experimental-environment" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>CPU: Intel Core i7-1360P
-Architecture: x86_64
-Threads: 16
-Kernel: 6.6.87.2-microsoft-standard-WSL2
-Hypervisor: Microsoft Hyper-V
-Environment: WSL2
+<h1 id="correctness-check">Correctness Check<a class="headerlink" href="#correctness-check" title="Permanent link">&para;</a></h1>
+<p>To verify synchronization correctness we ensure:</p>
+<div class="highlight"><pre><span></span><code>final_counter = threads × iterations
 </code></pre></div>
-<p>The benchmark runs inside <strong>Windows Subsystem for Linux (WSL2)</strong>.</p>
-<p>This means scheduling may involve multiple layers:</p>
-<div class="highlight"><pre><span></span><code>Linux guest scheduler
-→ Hyper-V hypervisor
-→ Windows host scheduler
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>1000000 vs 1000000
+2000000 vs 2000000
 </code></pre></div>
-<p>Cross-CPU wakeups therefore may be significantly slower than on bare metal Linux.</p>
+<p>This confirms the mutex correctly protects the shared counter.</p>
 <hr />
-<h1 id="measurement-setup">Measurement Setup<a class="headerlink" href="#measurement-setup" title="Permanent link">&para;</a></h1>
-<p>Benchmark parameters:</p>
-<div class="highlight"><pre><span></span><code>iterations = 200000
-warmup = 20000
-repeats = 5
+<h1 id="baseline-throughput-vs-threads">Baseline: Throughput vs Threads<a class="headerlink" href="#baseline-throughput-vs-threads" title="Permanent link">&para;</a></h1>
+<p>Configuration:</p>
+<div class="highlight"><pre><span></span><code>cs_work = 0
+outside_work = 0
 </code></pre></div>
-<p>Two scheduling modes were tested:</p>
-<h3 id="same-core">Same-core<a class="headerlink" href="#same-core" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>parent_cpu = 0
-child_cpu = 0
-</code></pre></div>
-<p>Both processes run on the same logical CPU.</p>
-<h3 id="split-core">Split-core<a class="headerlink" href="#split-core" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>parent_cpu = 0
-child_cpu = 1
-</code></pre></div>
-<p>Parent and child run on different CPUs.</p>
-<hr />
-<h1 id="raw-measurements">Raw Measurements<a class="headerlink" href="#raw-measurements" title="Permanent link">&para;</a></h1>
-<h2 id="same-core-roundtrip-latency">Same-core roundtrip latency<a class="headerlink" href="#same-core-roundtrip-latency" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>3281.94 ns
-3429.07 ns
-3239.27 ns
-3498.98 ns
-3523.14 ns
-</code></pre></div>
-<p>Average:</p>
-<div class="highlight"><pre><span></span><code>3394.48 ns roundtrip
-1697.24 ns estimated context switch
-</code></pre></div>
-<hr />
-<h2 id="split-core-roundtrip-latency">Split-core roundtrip latency<a class="headerlink" href="#split-core-roundtrip-latency" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>42388.11 ns
-42457.03 ns
-44279.63 ns
-46564.50 ns
-43755.49 ns
-</code></pre></div>
-<p>Average:</p>
-<div class="highlight"><pre><span></span><code>43889 ns roundtrip
-21944 ns estimated context switch
+<p><img alt="throughput" src="../plots/throughput_vs_threads_cs0_out0.png" /></p>
+<p>Results:</p>
+<table>
+<thead>
+<tr>
+<th>threads</th>
+<th>throughput (Mops/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>39.188</td>
+</tr>
+<tr>
+<td>2</td>
+<td>19.055</td>
+</tr>
+<tr>
+<td>4</td>
+<td>16.475</td>
+</tr>
+<tr>
+<td>8</td>
+<td>12.267</td>
+</tr>
+</tbody>
+</table>
+<p>Instead of increasing with thread count, throughput <strong>decreases</strong>.</p>
+<p>Why?</p>
+<p>Because the mutex becomes a <strong>serialization point</strong>.</p>
+<div class="highlight"><pre><span></span><code>more threads
+→ more waiting
+→ less throughput
 </code></pre></div>
 <hr />
-<h1 id="scheduler-validation">Scheduler Validation<a class="headerlink" href="#scheduler-validation" title="Permanent link">&para;</a></h1>
-<p>To verify that the benchmark actually produces context switches, we measured scheduler events using <code>perf</code>.</p>
-<div class="highlight"><pre><span></span><code>sudo perf stat -e context-switches,cpu-migrations ./context_switch
-</code></pre></div>
-<p>Result:</p>
-<div class="highlight"><pre><span></span><code>context-switches: 440005
-cpu-migrations: 2
-</code></pre></div>
-<p>Total ping-pong operations executed:</p>
-<div class="highlight"><pre><span></span><code>warmup + iterations
-= 20000 + 200000
-= 220000
-</code></pre></div>
-<p>Expected context switches:</p>
-<div class="highlight"><pre><span></span><code>220000 × 2 = 440000
-</code></pre></div>
-<p>Observed:</p>
-<div class="highlight"><pre><span></span><code>440005
-</code></pre></div>
-<p>This confirms that the benchmark generates approximately <strong>two context switches per round-trip</strong>.</p>
+<h1 id="lock-latency-growth">Lock Latency Growth<a class="headerlink" href="#lock-latency-growth" title="Permanent link">&para;</a></h1>
+<p><img alt="ns per op" src="../plots/ns_per_op_vs_threads_cs0_out0.png" /></p>
+<table>
+<thead>
+<tr>
+<th>threads</th>
+<th>ns/op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>25.52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>52.48</td>
+</tr>
+<tr>
+<td>4</td>
+<td>60.70</td>
+</tr>
+<tr>
+<td>8</td>
+<td>81.52</td>
+</tr>
+</tbody>
+</table>
+<p>Latency per operation increases because threads must wait longer to acquire the mutex.</p>
+<p>Three main effects contribute:</p>
+<ul>
+<li>mutex wait queues</li>
+<li>cache-line bouncing</li>
+<li>scheduler interaction</li>
+</ul>
 <hr />
-<h1 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h1>
-<h2 id="round-trip-latency">Round-trip latency<a class="headerlink" href="#round-trip-latency" title="Permanent link">&para;</a></h2>
-<p><img alt="Roundtrip" src="../plots/context_switch_roundtrip.png" /></p>
-<hr />
-<h2 id="estimated-context-switch-latency">Estimated context switch latency<a class="headerlink" href="#estimated-context-switch-latency" title="Permanent link">&para;</a></h2>
-<p><img alt="CtxSwitch" src="../plots/context_switch_estimated_ctxswitch.png" /></p>
-<hr />
-<h2 id="log-scale-comparison">Log-scale comparison<a class="headerlink" href="#log-scale-comparison" title="Permanent link">&para;</a></h2>
-<p><img alt="LogScale" src="../plots/context_switch_roundtrip_logscale.png" /></p>
-<hr />
-<h1 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h1>
-<h3 id="same-core-switching">Same-core switching<a class="headerlink" href="#same-core-switching" title="Permanent link">&para;</a></h3>
-<p>Measured latency:</p>
-<div class="highlight"><pre><span></span><code>~3.4 µs roundtrip
-~1.7 µs per context switch
+<h1 id="impact-of-critical-section-length">Impact of Critical Section Length<a class="headerlink" href="#impact-of-critical-section-length" title="Permanent link">&para;</a></h1>
+<p>When the critical section becomes longer, contention becomes dramatically worse.</p>
+<p>Threads = 8</p>
+<p><img alt="cs work" src="../plots/throughput_vs_cs_work_threads8_out0.png" /></p>
+<table>
+<thead>
+<tr>
+<th>cs_work</th>
+<th>throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>12.267</td>
+</tr>
+<tr>
+<td>50</td>
+<td>2.870</td>
+</tr>
+<tr>
+<td>200</td>
+<td>1.143</td>
+</tr>
+</tbody>
+</table>
+<p>Longer critical sections increase <strong>lock hold time</strong>, which increases waiting time for other threads.</p>
+<div class="highlight"><pre><span></span><code>longer lock hold
+→ longer queues
+→ throughput collapse
 </code></pre></div>
-<p>This value is higher than typical bare-metal Linux measurements (often below 1 µs) but reasonable in a virtualized environment.</p>
 <hr />
-<h3 id="split-core-switching">Split-core switching<a class="headerlink" href="#split-core-switching" title="Permanent link">&para;</a></h3>
-<p>Measured latency:</p>
-<div class="highlight"><pre><span></span><code>~44 µs roundtrip
-</code></pre></div>
-<p>This is roughly:</p>
-<div class="highlight"><pre><span></span><code>13× slower than same-core switching
-</code></pre></div>
-<p>The most plausible explanation is <strong>cross-vCPU wakeup overhead in WSL2</strong>.</p>
-<p>In this configuration, a wakeup must traverse:</p>
-<div class="highlight"><pre><span></span><code>guest scheduler
-→ hypervisor
-→ host scheduler
-→ target vCPU
-</code></pre></div>
-<p>This multi-layer scheduling path introduces significant latency.</p>
+<h1 id="impact-of-outside-work">Impact of Outside Work<a class="headerlink" href="#impact-of-outside-work" title="Permanent link">&para;</a></h1>
+<p>Threads = 8</p>
+<p><img alt="outside work" src="../plots/throughput_vs_outside_work_threads8_cs0.png" /></p>
+<p>Increasing work outside the lock changes how frequently threads attempt to acquire the mutex.</p>
+<p>However, because the outside work itself consumes CPU cycles, total throughput still decreases.</p>
+<hr />
+<h1 id="contention-overview">Contention Overview<a class="headerlink" href="#contention-overview" title="Permanent link">&para;</a></h1>
+<p>The following heatmap summarizes the interaction between:</p>
+<ul>
+<li>thread count</li>
+<li>critical section size</li>
+</ul>
+<p><img alt="heatmap" src="../plots/heatmap_throughput_out0.png" /></p>
+<p>Two patterns are clearly visible:</p>
+<ol>
+<li><strong>More threads → lower throughput</strong></li>
+<li><strong>Longer critical section → severe contention</strong></li>
+</ol>
+<hr />
+<h1 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h1>
+<p>Many real systems suffer from the same issue.</p>
+<p>Examples include:</p>
+<ul>
+<li>global counters</li>
+<li>shared queues</li>
+<li>centralized allocators</li>
+<li>global caches</li>
+</ul>
+<p>To avoid contention bottlenecks, scalable systems often use:</p>
+<ul>
+<li>per-thread structures</li>
+<li>sharded locks</li>
+<li>lock-free data structures</li>
+<li>RCU-based synchronization</li>
+</ul>
 <hr />
 <h1 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h1>
-<ul>
-<li>A simple pipe-based ping-pong benchmark can effectively measure scheduler switching behavior.</li>
-<li>Same-core context switching in WSL2 costs roughly <strong>1–2 µs</strong>.</li>
-<li>Cross-CPU wakeups in virtualized environments can be <strong>an order of magnitude slower</strong>.</li>
-<li>Scheduler topology and virtualization strongly influence observed latency.</li>
-</ul>
+<p>This experiment demonstrates three fundamental properties of lock-based concurrency.</p>
+<h3 id="1-shared-locks-limit-scalability">1. Shared locks limit scalability<a class="headerlink" href="#1-shared-locks-limit-scalability" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>threads ↑ → throughput ↓
+</code></pre></div>
+<h3 id="2-critical-section-length-amplifies-contention">2. Critical section length amplifies contention<a class="headerlink" href="#2-critical-section-length-amplifies-contention" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>cs_work ↑ → throughput collapse
+</code></pre></div>
+<h3 id="3-work-distribution-affects-lock-pressure">3. Work distribution affects lock pressure<a class="headerlink" href="#3-work-distribution-affects-lock-pressure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>outside_work ↑ → lock frequency ↓
+</code></pre></div>
+<p>Understanding these behaviors is essential when designing high-performance concurrent systems.</p>
 <hr />
-<h1 id="next-experiments">Next Experiments<a class="headerlink" href="#next-experiments" title="Permanent link">&para;</a></h1>
-<p>This experiment opens the door to several follow-up measurements:</p>
-<ul>
-<li>thread ping-pong using <code>futex</code></li>
-<li><code>sched_yield</code> microbenchmarks</li>
-<li>lock contention experiments</li>
-<li>thread-pool wakeup latency</li>
-</ul>
-<h2 id="these-will-be-explored-in-the-concurrency-section-of-this-repository">These will be explored in the <strong>concurrency section</strong> of this repository.<a class="headerlink" href="#these-will-be-explored-in-the-concurrency-section-of-this-repository" title="Permanent link">&para;</a></h2>
+<h1 id="next-experiment">Next Experiment<a class="headerlink" href="#next-experiment" title="Permanent link">&para;</a></h1>
+<p>Next we investigate <strong>thread pool scaling</strong>, where work distribution and scheduling overhead introduce new performance limits.</p>
+<hr />
 
 
 
