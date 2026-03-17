@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../00-syscall-cost/">
+        <link rel="prev" href="../02-lock-contention/">
       
       
-        <link rel="next" href="../02-mmap-vs-read/">
+        <link rel="next" href="../../about/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>01 Context Switch - systems-behavior-lab</title>
+        <title>03 Thread Pool Scaling - systems-behavior-lab</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-context-switch" class="md-skip">
+        <a href="#thread-pool-scaling-why-more-threads-dont-always-make-it-faster" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              01 Context Switch
+              03 Thread Pool Scaling
             
           </span>
         </div>
@@ -781,8 +781,6 @@
                 
   
   
-    
-  
   
   
     
@@ -792,11 +790,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -817,7 +815,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -835,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-syscall-cost/" class="md-nav__link">
+      <a href="../../03-os-boundary/00-syscall-cost/" class="md-nav__link">
         
   
   
@@ -860,19 +858,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/01-context-switch/" class="md-nav__link">
         
   
   
@@ -888,7 +877,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -901,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-mmap-vs-read/" class="md-nav__link">
+      <a href="../../03-os-boundary/02-mmap-vs-read/" class="md-nav__link">
         
   
   
@@ -929,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-copy-on-write/" class="md-nav__link">
+      <a href="../../03-os-boundary/03-copy-on-write/" class="md-nav__link">
         
   
   
@@ -962,6 +950,8 @@
                 
   
   
+    
+  
   
   
     
@@ -971,11 +961,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -996,7 +986,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1014,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-concurrency/00-mutex-vs-spinlock/" class="md-nav__link">
+      <a href="../00-mutex-vs-spinlock/" class="md-nav__link">
         
   
   
@@ -1042,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-concurrency/01-memory-ordering/" class="md-nav__link">
+      <a href="../01-memory-ordering/" class="md-nav__link">
         
   
   
@@ -1070,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-concurrency/02-lock-contention/" class="md-nav__link">
+      <a href="../02-lock-contention/" class="md-nav__link">
         
   
   
@@ -1095,10 +1085,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../04-concurrency/03-thread-pool-scaling/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Thread Pool Scaling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1114,6 +1131,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-want-to-understand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Want to Understand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experimental Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Takeaway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Thought
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1181,187 +1312,239 @@
   
 
 
-<h1 id="01-context-switch">01-context-switch<a class="headerlink" href="#01-context-switch" title="Permanent link">&para;</a></h1>
-<h1 id="context-switch-cost">Context Switch Cost<a class="headerlink" href="#context-switch-cost" title="Permanent link">&para;</a></h1>
-<p>In this lab we measure the latency of <strong>process hand-offs across the operating system boundary</strong>.</p>
-<p>Modern systems constantly switch execution between tasks:</p>
-<ul>
-<li>processes</li>
-<li>threads</li>
-<li>kernel tasks</li>
-<li>interrupt handlers</li>
-</ul>
-<p>Each transition requires a <strong>context switch</strong>, where the scheduler suspends one task and resumes another.</p>
-<p>Understanding the cost of this operation is fundamental to systems performance.</p>
+<h1 id="thread-pool-scaling-why-more-threads-dont-always-make-it-faster">Thread Pool Scaling: Why More Threads Don't Always Make It Faster<a class="headerlink" href="#thread-pool-scaling-why-more-threads-dont-always-make-it-faster" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>A thread pool is not a free performance boost.<br />
+In fact, adding more threads can <em>make things worse</em>.</p>
+</blockquote>
 <hr />
-<h1 id="experiment-goal">Experiment Goal<a class="headerlink" href="#experiment-goal" title="Permanent link">&para;</a></h1>
-<p>The goal of this experiment is to estimate the latency of a context switch.</p>
-<p>We approximate this cost using a <strong>ping-pong benchmark</strong> between two processes.</p>
-<div class="highlight"><pre><span></span><code>parent → child → parent
-</code></pre></div>
-<p>Each round-trip involves two scheduler hand-offs:</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>Thread pools are one of the most common abstractions in systems programming.</p>
+<p>We use them everywhere:</p>
+<ul>
+<li>web servers</li>
+<li>databases</li>
+<li>async runtimes</li>
+<li>job schedulers</li>
+</ul>
+<p>The intuitive expectation is simple:</p>
+<blockquote>
+<p>More threads → more parallelism → faster execution</p>
+</blockquote>
+<p>But in real systems, this assumption often fails.</p>
+<p>This experiment explores <strong>why</strong>.</p>
+<hr />
+<h2 id="what-we-want-to-understand">What We Want to Understand<a class="headerlink" href="#what-we-want-to-understand" title="Permanent link">&para;</a></h2>
+<p>We focus on three key questions:</p>
 <ol>
-<li>parent blocks and child wakes up</li>
-<li>child blocks and parent wakes up</li>
+<li>Does increasing the number of worker threads always improve performance?</li>
+<li>How does <strong>task size</strong> affect scalability?</li>
+<li>Does <strong>CPU pinning</strong> (thread affinity) help or hurt?</li>
 </ol>
-<p>Therefore we estimate:</p>
-<div class="highlight"><pre><span></span><code>context_switch_cost ≈ roundtrip_latency / 2
-</code></pre></div>
-<p>This estimate includes additional overhead such as:</p>
+<hr />
+<h2 id="experimental-setup">Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permanent link">&para;</a></h2>
+<h3 id="machine">Machine<a class="headerlink" href="#machine" title="Permanent link">&para;</a></h3>
 <ul>
-<li>pipe syscall cost</li>
-<li>scheduler wakeup latency</li>
-<li>cache and TLB effects</li>
+<li>8 physical cores</li>
+<li>16 logical CPUs (SMT)</li>
+<li>Single NUMA node</li>
 </ul>
 <hr />
-<h1 id="benchmark-design">Benchmark Design<a class="headerlink" href="#benchmark-design" title="Permanent link">&para;</a></h1>
-<p>The benchmark uses two pipes to exchange a single byte between a parent and child process.</p>
-<div class="highlight"><pre><span></span><code>## Parent                      Child
+<h3 id="workload">Workload<a class="headerlink" href="#workload" title="Permanent link">&para;</a></h3>
+<p>We implemented a simple thread pool with:</p>
+<ul>
+<li>Mutex + condition variable</li>
+<li>Bounded queue</li>
+<li>Fixed worker threads</li>
+</ul>
+<p>Each task performs CPU-bound work:</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">cpu_burn</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="n">task_iters</span><span class="p">);</span>
+<span class="err">````</span>
 
-write(pipe)
-read(pipe)
-write(pipe)
-read(pipe)
+<span class="o">---</span>
+
+<span class="cp">### Parameters</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Tasks</span><span class="o">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="mo">000</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Threads</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">sizes</span><span class="o">:</span>
+
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="mo">000</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="mo">000</span><span class="w"> </span><span class="n">iterations</span>
+
+<span class="o">---</span>
+
+<span class="cp">## Results</span>
+
+<span class="cp">### Throughput vs Threads</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">throughput</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">throughput_vs_threads</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="cp">### Speedup vs Threads</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">speedup</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">speedup_vs_threads</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="cp">### Efficiency vs Threads</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">efficiency</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">efficiency_vs_threads</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="cp">### CPU Pinning Comparison</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">pinning</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">pinning_compare_1000</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="cp">## Key Insight #1: Small Tasks Kill Parallelism</span>
+
+<span class="n">Look</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="err">`</span><span class="n">task_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="err">`</span><span class="p">.</span>
+
+<span class="n">Instead</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="n">faster</span><span class="p">,</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="o">**</span><span class="n">gets</span><span class="w"> </span><span class="n">worse</span><span class="o">**</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">threads</span><span class="p">.</span>
+
+<span class="n">Why</span><span class="o">?</span>
+
+<span class="n">Because</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">dominated</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">**</span><span class="n">overhead</span><span class="o">**:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="n">lock</span><span class="o">/</span><span class="n">unlock</span>
+<span class="o">*</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">wakeups</span>
+<span class="o">*</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">operations</span>
+<span class="o">*</span><span class="w"> </span><span class="n">scheduler</span><span class="w"> </span><span class="n">interaction</span>
+
+<span class="n">In</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">regime</span><span class="o">:</span>
+
+<span class="o">&gt;</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">coordination</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">larger</span><span class="w"> </span><span class="n">than</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">useful</span><span class="w"> </span><span class="n">work</span><span class="p">.</span>
+
+<span class="o">---</span>
+
+<span class="cp">## Key Insight #2: The &quot;2-Thread Valley&quot;</span>
+
+<span class="n">For</span><span class="w"> </span><span class="err">`</span><span class="n">task_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">something</span><span class="w"> </span><span class="n">surprising</span><span class="w"> </span><span class="n">happens</span><span class="p">.</span>
+
+<span class="n">Performance</span><span class="w"> </span><span class="n">behaves</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">this</span><span class="o">:</span>
 </code></pre></div>
-<p>Execution flow:</p>
-<div class="highlight"><pre><span></span><code>parent write
-child wakeup
-child write
-parent wakeup
+1 thread  → baseline
+2 threads → WORSE
+4 threads → much better
+8 threads → even better
+<div class="highlight"><pre><span></span><code>This is not a smooth scaling curve.
+
+This is a **non-monotonic scaling pattern**.
+
+---
+
+### Why does this happen?
+
+At 2 threads:
+
+* We already pay synchronization costs
+* But parallel work is still too small
+
+So we get:
+
+&gt; Worst of both worlds: overhead without enough parallel benefit
+
+At 4+ threads:
+
+* Enough parallel work accumulates
+* Overhead becomes relatively small
+
+This creates a **&quot;scaling valley&quot;**.
+
+---
+
+## Key Insight #3: Large Tasks Scale Well
+
+For `task_iters = 10000` and `100000`:
+
+* Throughput increases consistently
+* Speedup approaches linear scaling
+* Efficiency stays high
+
+Here:
+
+&gt; Work dominates overhead
+
+This is the only regime where thread pools behave &quot;as expected&quot;.
+
+---
+
+## Key Insight #4: CPU Pinning is Not Always Good
+
+Pinning threads to CPUs sounds like a good idea.
+
+But results show:
+
+* 2 threads → pinning hurts
+* 4 threads → mixed
+* 8 threads → sometimes helps
+
+Why?
+
+Because:
+
+* The OS scheduler can sometimes place threads better dynamically
+* Pinning can lock threads into suboptimal cores
+* Benefits only appear when workload is large enough
+
+---
+
+## What This Means in Practice
+
+### Myth
+
+&gt; &quot;More threads always make programs faster&quot;
+
+### Reality
+
+Performance depends on:
+
+* Task granularity
+* Synchronization overhead
+* Scheduler behavior
+* CPU topology
+
+---
+
+## The Real Model
+
+A better mental model:
 </code></pre></div>
-<p>This pattern forces the scheduler to alternate execution between the two processes.</p>
+Total time =
+    useful work
+  + synchronization cost
+  + scheduling cost
+  + memory/cache effects
+<div class="highlight"><pre><span></span><code>Scaling only works when:
+</code></pre></div>
+useful work &gt;&gt; overhead
+```</p>
 <hr />
-<h1 id="experimental-environment">Experimental Environment<a class="headerlink" href="#experimental-environment" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>CPU: Intel Core i7-1360P
-Architecture: x86_64
-Threads: 16
-Kernel: 6.6.87.2-microsoft-standard-WSL2
-Hypervisor: Microsoft Hyper-V
-Environment: WSL2
-</code></pre></div>
-<p>The benchmark runs inside <strong>Windows Subsystem for Linux (WSL2)</strong>.</p>
-<p>This means scheduling may involve multiple layers:</p>
-<div class="highlight"><pre><span></span><code>Linux guest scheduler
-→ Hyper-V hypervisor
-→ Windows host scheduler
-</code></pre></div>
-<p>Cross-CPU wakeups therefore may be significantly slower than on bare metal Linux.</p>
+<h2 id="takeaway">Takeaway<a class="headerlink" href="#takeaway" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>A thread pool is not a magic speedup tool.
+It is a trade-off between parallelism and coordination cost.</p>
+</blockquote>
 <hr />
-<h1 id="measurement-setup">Measurement Setup<a class="headerlink" href="#measurement-setup" title="Permanent link">&para;</a></h1>
-<p>Benchmark parameters:</p>
-<div class="highlight"><pre><span></span><code>iterations = 200000
-warmup = 20000
-repeats = 5
-</code></pre></div>
-<p>Two scheduling modes were tested:</p>
-<h3 id="same-core">Same-core<a class="headerlink" href="#same-core" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>parent_cpu = 0
-child_cpu = 0
-</code></pre></div>
-<p>Both processes run on the same logical CPU.</p>
-<h3 id="split-core">Split-core<a class="headerlink" href="#split-core" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>parent_cpu = 0
-child_cpu = 1
-</code></pre></div>
-<p>Parent and child run on different CPUs.</p>
-<hr />
-<h1 id="raw-measurements">Raw Measurements<a class="headerlink" href="#raw-measurements" title="Permanent link">&para;</a></h1>
-<h2 id="same-core-roundtrip-latency">Same-core roundtrip latency<a class="headerlink" href="#same-core-roundtrip-latency" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>3281.94 ns
-3429.07 ns
-3239.27 ns
-3498.98 ns
-3523.14 ns
-</code></pre></div>
-<p>Average:</p>
-<div class="highlight"><pre><span></span><code>3394.48 ns roundtrip
-1697.24 ns estimated context switch
-</code></pre></div>
-<hr />
-<h2 id="split-core-roundtrip-latency">Split-core roundtrip latency<a class="headerlink" href="#split-core-roundtrip-latency" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>42388.11 ns
-42457.03 ns
-44279.63 ns
-46564.50 ns
-43755.49 ns
-</code></pre></div>
-<p>Average:</p>
-<div class="highlight"><pre><span></span><code>43889 ns roundtrip
-21944 ns estimated context switch
-</code></pre></div>
-<hr />
-<h1 id="scheduler-validation">Scheduler Validation<a class="headerlink" href="#scheduler-validation" title="Permanent link">&para;</a></h1>
-<p>To verify that the benchmark actually produces context switches, we measured scheduler events using <code>perf</code>.</p>
-<div class="highlight"><pre><span></span><code>sudo perf stat -e context-switches,cpu-migrations ./context_switch
-</code></pre></div>
-<p>Result:</p>
-<div class="highlight"><pre><span></span><code>context-switches: 440005
-cpu-migrations: 2
-</code></pre></div>
-<p>Total ping-pong operations executed:</p>
-<div class="highlight"><pre><span></span><code>warmup + iterations
-= 20000 + 200000
-= 220000
-</code></pre></div>
-<p>Expected context switches:</p>
-<div class="highlight"><pre><span></span><code>220000 × 2 = 440000
-</code></pre></div>
-<p>Observed:</p>
-<div class="highlight"><pre><span></span><code>440005
-</code></pre></div>
-<p>This confirms that the benchmark generates approximately <strong>two context switches per round-trip</strong>.</p>
-<hr />
-<h1 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h1>
-<h2 id="round-trip-latency">Round-trip latency<a class="headerlink" href="#round-trip-latency" title="Permanent link">&para;</a></h2>
-<p><img alt="Roundtrip" src="../plots/context_switch_roundtrip.png" /></p>
-<hr />
-<h2 id="estimated-context-switch-latency">Estimated context switch latency<a class="headerlink" href="#estimated-context-switch-latency" title="Permanent link">&para;</a></h2>
-<p><img alt="CtxSwitch" src="../plots/context_switch_estimated_ctxswitch.png" /></p>
-<hr />
-<h2 id="log-scale-comparison">Log-scale comparison<a class="headerlink" href="#log-scale-comparison" title="Permanent link">&para;</a></h2>
-<p><img alt="LogScale" src="../plots/context_switch_roundtrip_logscale.png" /></p>
-<hr />
-<h1 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h1>
-<h3 id="same-core-switching">Same-core switching<a class="headerlink" href="#same-core-switching" title="Permanent link">&para;</a></h3>
-<p>Measured latency:</p>
-<div class="highlight"><pre><span></span><code>~3.4 µs roundtrip
-~1.7 µs per context switch
-</code></pre></div>
-<p>This value is higher than typical bare-metal Linux measurements (often below 1 µs) but reasonable in a virtualized environment.</p>
-<hr />
-<h3 id="split-core-switching">Split-core switching<a class="headerlink" href="#split-core-switching" title="Permanent link">&para;</a></h3>
-<p>Measured latency:</p>
-<div class="highlight"><pre><span></span><code>~44 µs roundtrip
-</code></pre></div>
-<p>This is roughly:</p>
-<div class="highlight"><pre><span></span><code>13× slower than same-core switching
-</code></pre></div>
-<p>The most plausible explanation is <strong>cross-vCPU wakeup overhead in WSL2</strong>.</p>
-<p>In this configuration, a wakeup must traverse:</p>
-<div class="highlight"><pre><span></span><code>guest scheduler
-→ hypervisor
-→ host scheduler
-→ target vCPU
-</code></pre></div>
-<p>This multi-layer scheduling path introduces significant latency.</p>
-<hr />
-<h1 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h1>
+<h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link">&para;</a></h2>
 <ul>
-<li>A simple pipe-based ping-pong benchmark can effectively measure scheduler switching behavior.</li>
-<li>Same-core context switching in WSL2 costs roughly <strong>1–2 µs</strong>.</li>
-<li>Cross-CPU wakeups in virtualized environments can be <strong>an order of magnitude slower</strong>.</li>
-<li>Scheduler topology and virtualization strongly influence observed latency.</li>
+<li>Lock-free queue vs mutex queue</li>
+<li>Work-stealing thread pool</li>
+<li>NUMA-aware scheduling</li>
+<li>Context switch analysis (<code>perf</code>)</li>
+<li>Cache miss profiling</li>
 </ul>
 <hr />
-<h1 id="next-experiments">Next Experiments<a class="headerlink" href="#next-experiments" title="Permanent link">&para;</a></h1>
-<p>This experiment opens the door to several follow-up measurements:</p>
-<ul>
-<li>thread ping-pong using <code>futex</code></li>
-<li><code>sched_yield</code> microbenchmarks</li>
-<li>lock contention experiments</li>
-<li>thread-pool wakeup latency</li>
-</ul>
-<h2 id="these-will-be-explored-in-the-concurrency-section-of-this-repository">These will be explored in the <strong>concurrency section</strong> of this repository.<a class="headerlink" href="#these-will-be-explored-in-the-concurrency-section-of-this-repository" title="Permanent link">&para;</a></h2>
+<h2 id="final-thought">Final Thought<a class="headerlink" href="#final-thought" title="Permanent link">&para;</a></h2>
+<p>If your tasks are too small,
+your thread pool is just a very expensive way to go slower.</p>
+<hr />
 
 
 
