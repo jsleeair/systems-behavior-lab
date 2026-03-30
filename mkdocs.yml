@@ -39,6 +39,8 @@ nav:
                 - 01 Memory Ordering: 04-concurrency/01-memory-ordering.md
                 - 02 Lock Contention: 04-concurrency/02-lock-contention.md
                 - 03 Thread Pool Scaling: 04-concurrency/03-thread-pool-scaling.md
+        - 05 CPU Microarchitecture:
+                - 00 Branch Prediction: 05-cpu-microarchitecture/00-branch-prediction.md
   - About: about.md
 
 markdown_extensions:
