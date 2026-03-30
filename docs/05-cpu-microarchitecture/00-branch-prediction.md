@@ -18,7 +18,7 @@ if (data[i] > threshold) {
 } else {
     sum += 1;
 }
-````
+```
 
 The computation is identical.
 Only the **pattern of `true/false`** changes.
