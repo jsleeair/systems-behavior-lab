@@ -12,7 +12,7 @@ When we write code like this:
 ```c
 for (i = 0; i < N; i++)
     sum += arr[i];
-````
+```
 
 everything is fast.
 
