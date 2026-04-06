@@ -41,6 +41,7 @@ nav:
                 - 01 Memory Ordering: 04-concurrency/01-memory-ordering.md
                 - 02 Lock Contention: 04-concurrency/02-lock-contention.md
                 - 03 Thread Pool Scaling: 04-concurrency/03-thread-pool-scaling.md
+                - 04 Ring Buffer: 04-concurrency/04-ring-buffer.md
         - 05 CPU Microarchitecture:
                 - 00 Branch Prediction: 05-cpu-microarchitecture/00-branch-prediction.md
                 - 01 ILP vs Dependency Chain: 05-cpu-microarchitecture/01-ilp-vs-dependency-chain.md
