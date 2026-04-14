@@ -46,6 +46,7 @@ nav:
         - 05 CPU Microarchitecture:
                 - 00 Branch Prediction: 05-cpu-microarchitecture/00-branch-prediction.md
                 - 01 ILP vs Dependency Chain: 05-cpu-microarchitecture/01-ilp-vs-dependency-chain.md
+                - 02 Loop Unrolling: 05-cpu-microarchitecture/02-loop-unrolling.md
   - About: about.md
 
 markdown_extensions:
