@@ -49,6 +49,7 @@ nav:
                 - 02 Loop Unrolling: 05-cpu-microarchitecture/02-loop-unrolling.md
                 - 03 SIMD vs Scalar: 05-cpu-microarchitecture/03-simd-vs-scalar.md
                 - 04 Branchless Code: 05-cpu-microarchitecture/04-branchless-code.md  
+        - 06 Performance Analysis: 06-performance-analysis/00-perf-stat-basics.md
   - About: about.md
 
 markdown_extensions:
