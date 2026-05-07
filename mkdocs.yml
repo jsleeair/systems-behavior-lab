@@ -52,6 +52,7 @@ nav:
         - 06 Performance Analysis:
                 - 00 Perf Stat Basics: 06-performance-analysis/00-perf-stat-basics.md
                 - 01 Perf Record Hotspot: 06-performance-analysis/01-perf-record-hotspot.md
+                - 02 Flamegraph: 06-performance-analysis/02-flamegraph.md
   - About: about.md
 
 markdown_extensions:

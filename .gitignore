@@ -32,3 +32,6 @@ a.out
 
 # macOS (if ever used)
 .DS_Store
+
+# External tools
+06-performance-analysis/02-flamegraph/tools/FlameGraph/
