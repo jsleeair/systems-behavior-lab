@@ -112,7 +112,7 @@ This is a useful result because both sides of the artificial workload are visibl
 
 ## 4. Flame Graph
 
-![CPU Flame Graph](artifacts/data/flamegraph.svg)
+![CPU Flame Graph](plots/flamegraph.svg)
 
 The Flame Graph shows that most of the execution time is under `run_pipeline`.
 
