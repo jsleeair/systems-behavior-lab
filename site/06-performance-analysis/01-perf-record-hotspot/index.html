@@ -1,0 +1,2143 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Experiments investigating why systems behave the way they do">
+      
+      
+      
+      
+        <link rel="prev" href="../00-perf-stat-basics/">
+      
+      
+        <link rel="next" href="../02-flamegraph/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>01 Perf Record Hotspot - systems-behavior-lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#06-01-perf-record-hotspot-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="systems-behavior-lab" class="md-header__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            systems-behavior-lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 Perf Record Hotspot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jsleeair/systems-behavior-lab" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsleeair/systems-behavior-lab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="systems-behavior-lab" class="md-nav__button md-logo" aria-label="systems-behavior-lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    systems-behavior-lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jsleeair/systems-behavior-lab" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsleeair/systems-behavior-lab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Build & Binary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 Build & Binary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-build-and-binary/00-translation-unit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Translation Unit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-build-and-binary/01-weak-vs-strong-symbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Weak vs Strong Symbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-build-and-binary/02-static-vs-dynamic-link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Static vs Dynamic Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-build-and-binary/03-plt-got-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 plt-got-analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Symbol Resolution
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 Symbol Resolution
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/00-elf-symbol-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 ELF Symbol Table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/01-relocation-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Relocation Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-symbol-resolution/02-abi-and-calling-convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ABI and calling convention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Memory Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Memory Hierarchy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/00-cache-line-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Cache Line Effect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/01-false-sharing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 False Sharing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/02-tlb-effect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 TLB Effect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/03-prefetch-and-locality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Prefetch and Locality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/04-stride-vs-cache-miss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Stride vs Cache Miss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 OS Boundary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 OS Boundary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/00-syscall-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Syscall Cost
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/01-context-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Context Switch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/02-mmap-vs-read/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 mmap vs read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/03-copy-on-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Copy on Write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/04-page-fault-cost-breakdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Page Fault Cost Breakdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/00-mutex-vs-spinlock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Mutex vs Spinloc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/01-memory-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Memory Ordering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/02-lock-contention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Lock Contention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/03-thread-pool-scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Thread Pool Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/04-ring-buffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Ring Buffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/05-producer-consumer-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Producer Consumer Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 CPU Microarchitecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 CPU Microarchitecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-cpu-microarchitecture/00-branch-prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Branch Prediction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-cpu-microarchitecture/01-ilp-vs-dependency-chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 ILP vs Dependency Chain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-cpu-microarchitecture/02-loop-unrolling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Loop Unrolling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-cpu-microarchitecture/03-simd-vs-scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 SIMD vs Scalar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-cpu-microarchitecture/04-branchless-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Branchless Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Performance Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 Performance Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-perf-stat-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Perf Stat Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Perf Record Hotspot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Perf Record Hotspot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-this-lab-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why This Lab Exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Build Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-running-the-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Running the Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-first-result-compute-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. First Result: Compute Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-second-result-branch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Second Result: Branch Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-third-result-memory-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Third Result: Memory Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fourth-result-mixed-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Fourth Result: Mixed Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-about-the-kernel-symbol-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. About the Kernel Symbol Warnings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-about-hybrid-cpu-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. About Hybrid CPU Events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-what-changed-after-adding-fno-optimize-sibling-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. What Changed After Adding -fno-optimize-sibling-calls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-main-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Main Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-final-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Final Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-flamegraph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Flamegraph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="06-01-perf-record-hotspot-analysis">06-01. <code>perf record</code> Hotspot Analysis<a class="headerlink" href="#06-01-perf-record-hotspot-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="1-why-this-lab-exists">1. Why This Lab Exists<a class="headerlink" href="#1-why-this-lab-exists" title="Permanent link">&para;</a></h2>
+<p>In the previous lab, I used <code>perf stat</code> to collect whole-program performance counters.</p>
+<p>That kind of result is useful, but it only answers questions like:</p>
+<ul>
+<li>How many cycles did the program use?</li>
+<li>How many instructions retired?</li>
+<li>How many branches were executed?</li>
+<li>How many branch misses occurred?</li>
+</ul>
+<p>That is not enough when the next question is:</p>
+<blockquote>
+<p>Which function actually consumed the time?</p>
+</blockquote>
+<p>This lab is about moving from <strong>whole-program counters</strong> to <strong>function-level hotspot analysis</strong>.</p>
+<p>The main tool is:</p>
+<div class="highlight"><pre><span></span><code>perf<span class="w"> </span>record
+perf<span class="w"> </span>report
+</code></pre></div>
+<p><code>perf record</code> samples the running program and writes profiling data into a <code>perf.data</code> file.</p>
+<p><code>perf report</code> reads that file and shows where the samples landed.</p>
+<p>The difference is simple:</p>
+<div class="highlight"><pre><span></span><code>perf stat   -&gt; How expensive was the program overall?
+perf record -&gt; Where did the cost happen?
+</code></pre></div>
+<hr />
+<h2 id="2-lab-structure">2. Lab Structure<a class="headerlink" href="#2-lab-structure" title="Permanent link">&para;</a></h2>
+<p>The lab directory is:</p>
+<div class="highlight"><pre><span></span><code>06-performance-analysis/01-perf-record-hotspot
+├── Makefile
+├── run.sh
+├── src
+│   └── perf_record_hotspot.c
+└── artifacts
+    ├── bin
+    ├── data
+    └── perf
+</code></pre></div>
+<p>The program intentionally creates several visible hotspots:</p>
+<div class="highlight"><pre><span></span><code>compute_hotspot()  -&gt; arithmetic-heavy work
+branch_hotspot()   -&gt; branch-heavy work
+memory_hotspot()   -&gt; pseudo-random memory access
+mixed              -&gt; combines compute, memory, and branch work
+</code></pre></div>
+<p>The point is not to build a realistic application.</p>
+<p>The point is to create a controlled workload where <code>perf record</code> can show which function dominates execution.</p>
+<hr />
+<h2 id="3-build-options">3. Build Options<a class="headerlink" href="#3-build-options" title="Permanent link">&para;</a></h2>
+<p>For this lab, the program was compiled with profiling-friendly options:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-fno-omit-frame-pointer
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-fno-optimize-sibling-calls
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-g
+</code></pre></div>
+<p>These options matter because this lab cares about call graphs.</p>
+<p><code>-fno-omit-frame-pointer</code> helps <code>perf</code> unwind the stack using frame pointers.</p>
+<p><code>-fno-optimize-sibling-calls</code> reduces tail-call and sibling-call optimizations that can make the call graph look confusing.</p>
+<p><code>-g</code> keeps debug information in the binary.</p>
+<p>The final build flags are not only about performance. They are also about making the profiling result easier to read.</p>
+<hr />
+<h2 id="4-running-the-lab">4. Running the Lab<a class="headerlink" href="#4-running-the-lab" title="Permanent link">&para;</a></h2>
+<p>The lab was executed with:</p>
+<div class="highlight"><pre><span></span><code>./run.sh
+</code></pre></div>
+<p>The script performs two jobs.</p>
+<p>First, it runs the program directly and writes the timing result to CSV:</p>
+<div class="highlight"><pre><span></span><code>artifacts/data/perf_record_hotspot.csv
+</code></pre></div>
+<p>Second, it runs <code>perf record</code> for each mode and stores the profiling data:</p>
+<div class="highlight"><pre><span></span><code>artifacts/perf/compute.data
+artifacts/perf/branch.data
+artifacts/perf/memory.data
+artifacts/perf/mixed.data
+</code></pre></div>
+<p>It also generates text reports:</p>
+<div class="highlight"><pre><span></span><code>artifacts/perf/compute.report.txt
+artifacts/perf/branch.report.txt
+artifacts/perf/memory.report.txt
+artifacts/perf/mixed.report.txt
+</code></pre></div>
+<p>The main inspection commands were:</p>
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>-80<span class="w"> </span>artifacts/perf/compute.report.txt
+head<span class="w"> </span>-100<span class="w"> </span>artifacts/perf/mixed.report.txt
+</code></pre></div>
+<hr />
+<h2 id="5-first-result-compute-mode">5. First Result: Compute Mode<a class="headerlink" href="#5-first-result-compute-mode" title="Permanent link">&para;</a></h2>
+<p>The compute-mode report showed this result:</p>
+<div class="highlight"><pre><span></span><code>48.45%  mix_u64
+48.07%  compute_hotspot
+</code></pre></div>
+<p>This is a useful result.</p>
+<p>At first glance, I might expect <code>compute_hotspot()</code> to dominate everything. But <code>mix_u64()</code> also appears as a major hotspot because <code>compute_hotspot()</code> repeatedly calls it inside its loop.</p>
+<p>The call graph became clearer after disabling sibling-call optimization:</p>
+<div class="highlight"><pre><span></span><code>mix_u64
+  run_compute_mode
+  main
+
+compute_hotspot
+  run_compute_mode
+  main
+</code></pre></div>
+<p>This is one of the first important lessons of the lab:</p>
+<blockquote>
+<p>The expensive code may be inside a helper function, not directly inside the high-level function name.</p>
+</blockquote>
+<p>If I only looked at the source code casually, I might say, "<code>compute_hotspot()</code> is the expensive function."</p>
+<p>But <code>perf report</code> shows a more precise picture:</p>
+<div class="highlight"><pre><span></span><code>compute_hotspot() spends a large part of its cost in mix_u64().
+</code></pre></div>
+<p>That is already better than guessing.</p>
+<hr />
+<h2 id="6-second-result-branch-mode">6. Second Result: Branch Mode<a class="headerlink" href="#6-second-result-branch-mode" title="Permanent link">&para;</a></h2>
+<p>The branch-mode report showed that the main cost was split between the branch workload and the mixing helper:</p>
+<div class="highlight"><pre><span></span><code>branch_hotspot
+mix_u64
+</code></pre></div>
+<p>This makes sense.</p>
+<p><code>branch_hotspot()</code> contains the branch-heavy control flow, but the branch condition is driven by values generated through <code>mix_u64()</code>.</p>
+<p>So the result is not simply:</p>
+<div class="highlight"><pre><span></span><code>branch_hotspot is expensive
+</code></pre></div>
+<p>It is more accurate to say:</p>
+<div class="highlight"><pre><span></span><code>branch_hotspot dominates the branch-mode workload,
+and mix_u64 is also expensive because it feeds the unpredictable branch pattern.
+</code></pre></div>
+<p>This is another useful profiling lesson.</p>
+<p>A workload name and a hotspot name are not always identical. A workload can be expensive because of helper routines that support the behavior being tested.</p>
+<hr />
+<h2 id="7-third-result-memory-mode">7. Third Result: Memory Mode<a class="headerlink" href="#7-third-result-memory-mode" title="Permanent link">&para;</a></h2>
+<p>The memory-mode report was the clearest single-mode result:</p>
+<div class="highlight"><pre><span></span><code>95.94%  memory_hotspot
+ 3.44%  mix_u64
+</code></pre></div>
+<p>This means almost all sampled cycles landed in <code>memory_hotspot()</code>.</p>
+<p>That is exactly what this mode was designed to show.</p>
+<p>The function performs pseudo-random accesses over a large array. This is hostile to locality. It is much harder for the cache hierarchy and hardware prefetchers than a simple sequential scan.</p>
+<p>The result is very different from a tight arithmetic loop.</p>
+<p>The cost is not just "doing instructions."</p>
+<p>The cost comes from the memory access pattern.</p>
+<p>This is the important distinction:</p>
+<div class="highlight"><pre><span></span><code>Sequential memory access     -&gt; cache-friendly
+Pseudo-random memory access  -&gt; cache-unfriendly
+</code></pre></div>
+<p>In this mode, <code>perf record</code> clearly identifies <code>memory_hotspot()</code> as the bottleneck.</p>
+<hr />
+<h2 id="8-fourth-result-mixed-mode">8. Fourth Result: Mixed Mode<a class="headerlink" href="#8-fourth-result-mixed-mode" title="Permanent link">&para;</a></h2>
+<p>The mixed-mode report is the most important part of the lab.</p>
+<p>The result was:</p>
+<div class="highlight"><pre><span></span><code>78.78%  memory_hotspot
+10.58%  mix_u64
+ 5.81%  branch_hotspot
+ 3.50%  compute_hotspot
+</code></pre></div>
+<p>The call graph also showed the expected structure:</p>
+<div class="highlight"><pre><span></span><code>memory_hotspot
+  run_mixed_mode
+  main
+
+branch_hotspot
+  run_mixed_mode
+  main
+
+compute_hotspot
+  run_mixed_mode
+  main
+</code></pre></div>
+<p>This is the key result.</p>
+<p>The mixed workload contains compute work, branch work, and memory work. But the dominant hotspot is still <code>memory_hotspot()</code>.</p>
+<p>So if this were a real application, the optimization target would be obvious.</p>
+<p>I should not start by optimizing <code>compute_hotspot()</code>.</p>
+<p>I should not start by rewriting the branch logic.</p>
+<p>The first target should be the memory access pattern.</p>
+<p>The profile says:</p>
+<div class="highlight"><pre><span></span><code>The mixed workload is dominated by pseudo-random memory access.
+</code></pre></div>
+<p>This is the practical value of <code>perf record</code>.</p>
+<p>It turns a vague performance problem into a concrete target.</p>
+<hr />
+<h2 id="9-about-the-kernel-symbol-warnings">9. About the Kernel Symbol Warnings<a class="headerlink" href="#9-about-the-kernel-symbol-warnings" title="Permanent link">&para;</a></h2>
+<p>During the run, <code>perf</code> printed warnings like:</p>
+<div class="highlight"><pre><span></span><code>Kernel address maps are restricted
+Samples in kernel functions may not be resolved
+</code></pre></div>
+<p>For this lab, that warning is not a blocker.</p>
+<p>The purpose of the experiment is to analyze user-space symbols from my own binary:</p>
+<div class="highlight"><pre><span></span><code>compute_hotspot
+branch_hotspot
+memory_hotspot
+mix_u64
+</code></pre></div>
+<p>Those symbols were resolved correctly.</p>
+<p>Some kernel samples appeared as unknown addresses, but they were small and not central to this experiment.</p>
+<p>So the warning means:</p>
+<div class="highlight"><pre><span></span><code>Kernel symbols may not be readable.
+</code></pre></div>
+<p>It does not mean:</p>
+<div class="highlight"><pre><span></span><code>The user-space profile failed.
+</code></pre></div>
+<p>For this lab, the user-space result is enough.</p>
+<hr />
+<h2 id="10-about-hybrid-cpu-events">10. About Hybrid CPU Events<a class="headerlink" href="#10-about-hybrid-cpu-events" title="Permanent link">&para;</a></h2>
+<p>The report contained sections such as:</p>
+<div class="highlight"><pre><span></span><code>cpu_atom/cycles/P
+cpu_core/cycles/P
+</code></pre></div>
+<p>This is because the machine appears to expose separate performance events for different CPU core types.</p>
+<p>The important part is that the <code>cpu_core</code> section had the meaningful sample count.</p>
+<p>For example, in mixed mode, the useful section was:</p>
+<div class="highlight"><pre><span></span><code>Samples: 631 of event &#39;cpu_core/cycles/P&#39;
+</code></pre></div>
+<p>The <code>cpu_atom</code> section had very few samples, so I did not use it as the main basis for interpretation.</p>
+<p>For this lab, the practical rule is:</p>
+<div class="highlight"><pre><span></span><code>Use the section with enough samples to make a meaningful judgment.
+</code></pre></div>
+<hr />
+<h2 id="11-what-changed-after-adding-fno-optimize-sibling-calls">11. What Changed After Adding <code>-fno-optimize-sibling-calls</code><a class="headerlink" href="#11-what-changed-after-adding-fno-optimize-sibling-calls" title="Permanent link">&para;</a></h2>
+<p>Before adding this option, some call paths were slightly confusing.</p>
+<p>For example, <code>mix_u64()</code> could appear too directly under <code>main</code>, even though conceptually it was called through a workload function.</p>
+<p>After adding:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-fno-optimize-sibling-calls
+</code></pre></div>
+<p>the call graph became easier to read:</p>
+<div class="highlight"><pre><span></span><code>mix_u64
+  run_compute_mode
+  main
+</code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre><span></span><code>compute_hotspot
+  run_compute_mode
+  main
+</code></pre></div>
+<p>This does not necessarily change the real runtime behavior in a way that matters for this lab.</p>
+<p>But it improves the educational value of the profile.</p>
+<p>The call stack becomes closer to the source-level structure I want to study.</p>
+<hr />
+<h2 id="12-main-takeaways">12. Main Takeaways<a class="headerlink" href="#12-main-takeaways" title="Permanent link">&para;</a></h2>
+<p><code>perf stat</code> is useful when I want whole-program numbers:</p>
+<div class="highlight"><pre><span></span><code>cycles
+instructions
+branches
+branch-misses
+</code></pre></div>
+<p>But <code>perf stat</code> does not directly tell me where the cost happened.</p>
+<p><code>perf record</code> and <code>perf report</code> answer the next question:</p>
+<div class="highlight"><pre><span></span><code>Which function received the samples?
+Which function is the hotspot?
+Which call path led there?
+</code></pre></div>
+<p>In this lab, the final result was:</p>
+<div class="highlight"><pre><span></span><code>compute mode -&gt; mix_u64 and compute_hotspot
+branch mode  -&gt; branch_hotspot and mix_u64
+memory mode  -&gt; memory_hotspot
+mixed mode   -&gt; memory_hotspot
+</code></pre></div>
+<p>The most important conclusion is:</p>
+<div class="highlight"><pre><span></span><code>In the mixed workload, memory_hotspot dominated the profile.
+</code></pre></div>
+<p>That means the bottleneck was not the arithmetic section.</p>
+<p>It was not primarily the branch section.</p>
+<p>It was the pseudo-random memory access section.</p>
+<hr />
+<h2 id="13-final-conclusion">13. Final Conclusion<a class="headerlink" href="#13-final-conclusion" title="Permanent link">&para;</a></h2>
+<p>This lab demonstrated why sampling profilers are necessary.</p>
+<p>Whole-program counters can tell me that a program is expensive.</p>
+<p>But they cannot directly tell me where to optimize.</p>
+<p><code>perf record</code> gives me that missing link.</p>
+<p>In this experiment, the profiler showed that the mixed workload was dominated by <code>memory_hotspot()</code>, taking about 79% of sampled cycles.</p>
+<p>That changes the optimization strategy.</p>
+<p>Instead of guessing, I can follow the profile:</p>
+<div class="highlight"><pre><span></span><code>Record the workload.
+Report the samples.
+Find the dominant function.
+Optimize the real hotspot.
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.sections", "navigation.tracking", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

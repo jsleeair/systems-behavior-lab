@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../04-concurrency/03-thread-pool-scaling/">
+        <link rel="prev" href="../../04-concurrency/05-producer-consumer-queue/">
       
       
-        <link rel="next" href="../../about/">
+        <link rel="next" href="../01-ilp-vs-dependency-chain/">
       
       
         
@@ -769,6 +769,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-hierarchy/04-stride-vs-cache-miss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Stride vs Cache Miss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -924,7 +952,35 @@
   <span class="md-ellipsis">
     
   
-    03 copy on write
+    03 Copy on Write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-os-boundary/04-page-fault-cost-breakdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Page Fault Cost Breakdown
   
 
     
@@ -1107,6 +1163,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/04-ring-buffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Ring Buffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-concurrency/05-producer-consumer-queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Producer Consumer Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1244,6 +1356,117 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ns-per-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ns per iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total-elapsed-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        total elapsed time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We See
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We See">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-predictable-branches-are-basically-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Predictable branches are basically free
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-random-branches-are-catastrophic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Random branches are catastrophic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bias-helps-a-lot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bias helps a lot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-branchless-is-not-automatically-faster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Branchless is NOT automatically faster
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#perf-counter-evidence" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1329,6 +1552,259 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ilp-vs-dependency-chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 ILP vs Dependency Chain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-loop-unrolling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Loop Unrolling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-simd-vs-scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 SIMD vs Scalar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-branchless-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Branchless Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Performance Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 Performance Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-performance-analysis/00-perf-stat-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Perf Stat Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-performance-analysis/01-perf-record-hotspot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Perf Record Hotspot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-performance-analysis/02-flamegraph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Flamegraph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1400,85 +1876,70 @@
 <hr />
 <h2 id="experiment-idea">Experiment Idea<a class="headerlink" href="#experiment-idea" title="Permanent link">&para;</a></h2>
 <p>We run the same loop, but vary only the <strong>branch outcome pattern</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="err">````</span>
-
-<span class="n">The</span><span class="w"> </span><span class="n">computation</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">identical</span><span class="p">.</span>
-<span class="n">Only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">**</span><span class="n">pattern</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="err">`</span><span class="nb">true</span><span class="o">/</span><span class="nb">false</span><span class="err">`</span><span class="o">**</span><span class="w"> </span><span class="n">changes</span><span class="p">.</span>
-
-<span class="n">We</span><span class="w"> </span><span class="n">test</span><span class="o">:</span>
-
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">always_taken</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">always_not_taken</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">alternating</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">random_50</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">random_90_taken</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">branchless_random_50</span><span class="err">`</span>
-
-<span class="o">---</span>
-
-<span class="cp">## Setup</span>
-
-<span class="o">*</span><span class="w"> </span><span class="n">Iterations</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="n">M</span>
-<span class="o">*</span><span class="w"> </span><span class="n">Warmup</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="n">M</span>
-<span class="o">*</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">pinned</span>
-<span class="o">*</span><span class="w"> </span><span class="n">Compiler</span><span class="o">:</span><span class="w"> </span><span class="err">`</span><span class="o">-</span><span class="n">O3</span><span class="err">`</span>
-<span class="o">*</span><span class="w"> </span><span class="n">Measured</span><span class="o">:</span>
-
-<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">time</span>
-<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">perf</span><span class="w"> </span><span class="n">stat</span><span class="err">`</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span><span class="w"> </span><span class="n">instructions</span><span class="p">,</span><span class="w"> </span><span class="n">branches</span><span class="p">,</span><span class="w"> </span><span class="n">branch</span><span class="o">-</span><span class="n">misses</span><span class="p">)</span>
-
-<span class="o">---</span>
-
-<span class="cp">## Results</span>
-
-<span class="cp">### ns per iteration</span>
-
-<span class="o">!</span><span class="p">[</span><span class="n">ns</span><span class="err">\</span><span class="n">_per</span><span class="err">\</span><span class="n">_iter</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">ns_per_iter</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
-
-<span class="cp">### total elapsed time</span>
-
-<span class="o">!</span><span class="p">[</span><span class="n">elapsed</span><span class="err">\</span><span class="n">_ns</span><span class="p">](</span><span class="n">plots</span><span class="o">/</span><span class="n">elapsed_ns</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
-
-<span class="o">---</span>
-
-<span class="cp">## What We See</span>
-
-<span class="cp">### 1. Predictable branches are basically free</span>
 </code></pre></div>
-~0.45–0.53 ns/iter
-<div class="highlight"><pre><span></span><code>* always_taken
-* always_not_taken
-* alternating
-
-Even though there is a branch, performance is excellent.
-
----
-
-### 2. Random branches are catastrophic
+<p>The computation is identical.
+Only the <strong>pattern of <code>true/false</code></strong> changes.</p>
+<p>We test:</p>
+<ul>
+<li><code>always_taken</code></li>
+<li><code>always_not_taken</code></li>
+<li><code>alternating</code></li>
+<li><code>random_50</code></li>
+<li><code>random_90_taken</code></li>
+<li><code>branchless_random_50</code></li>
+</ul>
+<hr />
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Iterations: 100M</li>
+<li>Warmup: 1M</li>
+<li>CPU pinned</li>
+<li>Compiler: <code>-O3</code></li>
+<li>
+<p>Measured:</p>
+</li>
+<li>
+<p>execution time</p>
+</li>
+<li><code>perf stat</code> (cycles, instructions, branches, branch-misses)</li>
+</ul>
+<hr />
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<h3 id="ns-per-iteration">ns per iteration<a class="headerlink" href="#ns-per-iteration" title="Permanent link">&para;</a></h3>
+<p><img alt="ns_per_iter" src="../plots/ns_per_iter.png" /></p>
+<h3 id="total-elapsed-time">total elapsed time<a class="headerlink" href="#total-elapsed-time" title="Permanent link">&para;</a></h3>
+<p><img alt="elapsed_ns" src="../plots/elapsed_ns.png" /></p>
+<hr />
+<h2 id="what-we-see">What We See<a class="headerlink" href="#what-we-see" title="Permanent link">&para;</a></h2>
+<h3 id="1-predictable-branches-are-basically-free">1. Predictable branches are basically free<a class="headerlink" href="#1-predictable-branches-are-basically-free" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>~0.45–0.53 ns/iter
 </code></pre></div>
-~5.9 ns/iter
-<div class="highlight"><pre><span></span><code>The `random_50` case is **10× slower**.
-
-Nothing else changed — just unpredictability.
-
----
-
-### 3. Bias helps a lot
+<ul>
+<li>always_taken</li>
+<li>always_not_taken</li>
+<li>alternating</li>
+</ul>
+<p>Even though there is a branch, performance is excellent.</p>
+<hr />
+<h3 id="2-random-branches-are-catastrophic">2. Random branches are catastrophic<a class="headerlink" href="#2-random-branches-are-catastrophic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>~5.9 ns/iter
 </code></pre></div>
-random_90_taken → ~2.06 ns/iter
-<div class="highlight"><pre><span></span><code>Even partial predictability significantly improves performance.
-
----
-
-### 4. Branchless is NOT automatically faster
+<p>The <code>random_50</code> case is <strong>10× slower</strong>.</p>
+<p>Nothing else changed — just unpredictability.</p>
+<hr />
+<h3 id="3-bias-helps-a-lot">3. Bias helps a lot<a class="headerlink" href="#3-bias-helps-a-lot" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>random_90_taken → ~2.06 ns/iter
 </code></pre></div>
-branchless_random_50 → ~6.48 ns/iter
-```</p>
+<p>Even partial predictability significantly improves performance.</p>
+<hr />
+<h3 id="4-branchless-is-not-automatically-faster">4. Branchless is NOT automatically faster<a class="headerlink" href="#4-branchless-is-not-automatically-faster" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>branchless_random_50 → ~6.48 ns/iter
+</code></pre></div>
 <p>Surprisingly, removing the branch made things <strong>slightly worse</strong>.</p>
 <hr />
 <h2 id="perf-counter-evidence">Perf Counter Evidence<a class="headerlink" href="#perf-counter-evidence" title="Permanent link">&para;</a></h2>

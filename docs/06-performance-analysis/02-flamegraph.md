@@ -223,7 +223,7 @@ The workload is not completely dominated by only one branch.
 
 ## Flame Graph Result
 
-![CPU Flame Graph](plots/flamegraph-lab.svg)
+![CPU Flame Graph](plots/flamegraph.svg)
 
 The Flame Graph makes the same structure easier to see visually.
 
